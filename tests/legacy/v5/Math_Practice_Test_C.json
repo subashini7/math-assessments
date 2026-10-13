@@ -1,0 +1,408 @@
+{
+  "test_id": "C",
+  "version": 5,
+  "qr_payload": "mpt:test=C&v=5",
+  "title": "Math Practice Test C",
+  "page_size": "A4",
+  "standards_jurisdiction": "California / CCSS (identical codes and text at these standards)",
+  "regions_note": "Regions are [x, y, width, height] as fractions of the rectangle between the centres of the four corner markers, origin top-left. Warp the photo so the markers map to that rectangle, then crop. The working region is everything below the question text, so it also contains the answer box.",
+  "questions": [
+    {
+      "id": "C1",
+      "number": 1,
+      "text": "Work out 2 × (9 + 4) – 5",
+      "answer": "21",
+      "accept": [
+        "21"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Evaluate expressions with parentheses",
+      "standard": "5.OA.A.1",
+      "learning_component_ids": [
+        "9355ee95-a7a5-5a41-89e1-8ffaef80af0b"
+      ],
+      "common_wrong_answers": {
+        "17": "Multiplied before the parentheses: 2 × 9 = 18, + 4, – 5"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.1601,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "C2",
+      "number": 2,
+      "text": "Which is greater, 0.4 or 0.38?",
+      "answer": "0.4",
+      "accept": [
+        "0.4",
+        "0.40"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Compare decimals to thousandths",
+      "standard": "5.NBT.A.3",
+      "learning_component_ids": [
+        "b9d27304-5ca2-57b9-968d-e5c946985513"
+      ],
+      "common_wrong_answers": {
+        "0.38": "Took the longer decimal to be the larger one"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.1601,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "C3",
+      "number": 3,
+      "text": "Work out 46 × 27",
+      "answer": "1242",
+      "accept": [
+        "1242"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiply multi-digit whole numbers",
+      "standard": "5.NBT.B.5",
+      "learning_component_ids": [
+        "c944c44a-afc2-5b4c-8e61-a4a8332496e0"
+      ],
+      "common_wrong_answers": {},
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.3303,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "C4",
+      "number": 4,
+      "text": "Work out 936 ÷ 24",
+      "answer": "39",
+      "accept": [
+        "39"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Divide with two-digit divisors",
+      "standard": "5.NBT.B.6",
+      "learning_component_ids": [
+        "e8d8c43a-3608-51dd-86ad-db49bcafef64",
+        "05283aa2-d294-5f59-93ee-ac361e3a10f7"
+      ],
+      "common_wrong_answers": {},
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.3303,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "C5",
+      "number": 5,
+      "text": "Work out 3.4 + 2.85",
+      "answer": "6.25",
+      "accept": [
+        "6.25"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Add decimals to hundredths",
+      "standard": "5.NBT.B.7",
+      "learning_component_ids": [
+        "425dce77-599d-5912-9e92-0802ec13cb68"
+      ],
+      "common_wrong_answers": {
+        "6.24": "Lost a hundredth carrying",
+        "3.74": "Subtracted instead of adding"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.5004,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "C6",
+      "number": 6,
+      "text": "Work out 2/3 + 1/4",
+      "answer": "11/12",
+      "accept": [
+        "11/12"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Add fractions with unlike denominators",
+      "standard": "5.NF.A.1",
+      "learning_component_ids": [
+        "d022d8d2-37f6-5ce9-bb02-e000d731aba0"
+      ],
+      "common_wrong_answers": {
+        "3/7": "Added the numerators and the denominators"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.5004,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "C7",
+      "number": 7,
+      "text": "Work out 2/5 × 3/4",
+      "answer": "3/10",
+      "accept": [
+        "3/10",
+        "6/20"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiply a fraction by a fraction",
+      "standard": "5.NF.B.4",
+      "learning_component_ids": [
+        "4aeee2dd-3e67-5d7e-b843-39650a018660"
+      ],
+      "common_wrong_answers": {
+        "11/20": "Added instead of multiplying"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.6705,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "C8",
+      "number": 8,
+      "text": "Work out 1/3 ÷ 4",
+      "answer": "1/12",
+      "accept": [
+        "1/12"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Divide with unit fractions",
+      "standard": "5.NF.B.7",
+      "learning_component_ids": [
+        "bfa79064-fe1e-5430-81de-c4155d27d0b4"
+      ],
+      "common_wrong_answers": {
+        "4/3": "Multiplied by 4 instead of dividing",
+        "12": "Worked out 4 ÷ 1/3 instead"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.6705,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "C9",
+      "number": 9,
+      "text": "How many centimeters are there in 2.5 meters?",
+      "answer": "250 cm",
+      "accept": [
+        "250 cm",
+        "250cm",
+        "250"
+      ],
+      "unit": "cm",
+      "unit_required": true,
+      "skill": "Convert measurement units",
+      "standard": "5.MD.A.1",
+      "learning_component_ids": [
+        "783e04ae-9b0c-5680-9b1a-7084998118c9"
+      ],
+      "common_wrong_answers": {
+        "25 cm": "Multiplied by 10 instead of 100",
+        "0.025 cm": "Divided by 100 instead of multiplying"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.859,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.2343,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "C10",
+      "number": 10,
+      "text": "A box measures 5 cm by 4 cm by 3 cm. What is its volume?",
+      "answer": "60 cm³",
+      "accept": [
+        "60 cm³",
+        "60 cm3",
+        "60 cubic cm",
+        "60"
+      ],
+      "unit": "cm³",
+      "unit_required": true,
+      "skill": "Find volume by multiplying edge lengths",
+      "standard": "5.MD.C.5",
+      "learning_component_ids": [
+        "f6cc98df-8d45-5acc-868f-9fd3fa9f58e5"
+      ],
+      "common_wrong_answers": {
+        "12 cm³": "Added the edges instead of multiplying them"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.859,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.7177,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    }
+  ]
+}

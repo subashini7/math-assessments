@@ -1,0 +1,436 @@
+{
+  "test_id": "N",
+  "fingerprint": "1b572937",
+  "qr_payload": "mpt:test=N&h=1b572937",
+  "title": "Math Practice Test N",
+  "page_size": "A4",
+  "standards_jurisdiction": "California / CCSS (identical codes and text at these standards)",
+  "regions_note": "Regions are [x, y, width, height] as fractions of the rectangle between the centres of the four corner markers, origin top-left. Warp the photo so the markers map to that rectangle, then crop. The working region is everything below the question text, so it also contains the answer box.",
+  "questions": [
+    {
+      "id": "N1",
+      "number": 1,
+      "text": "A storage box is 12 in long, 5 in wide and 8 in tall. What is its volume?",
+      "answer": "480 in³",
+      "accept": [
+        "480 in³",
+        "480 in3",
+        "480 cubic inches",
+        "480 cubic in"
+      ],
+      "unit": "in³",
+      "unit_required": true,
+      "skill": "Find volume by multiplying edge lengths",
+      "standard": "5.MD.C.5",
+      "learning_component_ids": [
+        "f6cc98df-8d45-5acc-868f-9fd3fa9f58e5"
+      ],
+      "common_wrong_answers": {
+        "480 in": "Correct number, but a volume needs cubic units",
+        "480": "Correct number, but no units",
+        "96 in³": "Multiplied only two of the edges, as on Test K",
+        "25 in³": "Added the edges instead of multiplying them"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.1785,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.2343,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "N2",
+      "number": 2,
+      "text": "A printer prints 45 pages in 3 minutes. At the same rate, how many pages does it print in 8 minutes?",
+      "answer": "120 pages",
+      "accept": [
+        "120 pages"
+      ],
+      "unit": "pages",
+      "unit_required": true,
+      "skill": "Ratio reasoning in a real-world problem",
+      "standard": "6.RP.A.3",
+      "learning_component_ids": [
+        "5b9cd29a-a10c-5d41-af27-9d632630c4db"
+      ],
+      "common_wrong_answers": {
+        "15 pages": "Found the rate (pages in one minute), not the pages in 8 minutes",
+        "120": "Correct number, but no units"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.1969,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.7177,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "N3",
+      "number": 3,
+      "text": "Work out 6.48 + 2.97",
+      "answer": "9.45",
+      "accept": [
+        "9.45"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Add decimals to hundredths",
+      "standard": "5.NBT.B.7",
+      "learning_component_ids": [
+        "425dce77-599d-5912-9e92-0802ec13cb68"
+      ],
+      "common_wrong_answers": {
+        "8.35": "Lined up correctly but never carried",
+        "8.45": "Dropped the carry into the ones, as on Test G"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.3303,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "N4",
+      "number": 4,
+      "text": "Jo walked 1 2/3 miles in the morning and 2 3/4 miles in the afternoon. How far did she walk in all?",
+      "answer": "4 5/12 miles",
+      "accept": [
+        "4 5/12 miles",
+        "53/12 miles",
+        "4 5/12 mi"
+      ],
+      "unit": "miles",
+      "unit_required": true,
+      "skill": "Fraction addition word problem",
+      "standard": "5.NF.A.2",
+      "learning_component_ids": [
+        "4b749054-84a9-5279-bb7c-9ac485005421"
+      ],
+      "common_wrong_answers": {
+        "3 5/7 miles": "Added the numerators and the denominators: 2/3 + 3/4 = 5/7",
+        "4 5/12": "Correct number, but no units"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.367,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.7177,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "N5",
+      "number": 5,
+      "text": "Work out 5/6 + (–3 1/3) + 1/6",
+      "answer": "–2 1/3",
+      "accept": [
+        "-2 1/3",
+        "-7/3",
+        "–2 1/3",
+        "–7/3"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Add rational numbers using properties of operations",
+      "standard": "7.NS.A.1.d",
+      "learning_component_ids": [
+        "685131ac-6579-5a09-b675-995525838be5"
+      ],
+      "common_wrong_answers": {
+        "2 1/3": "Dropped the minus sign",
+        "–4 1/3": "Added the sizes and kept the minus sign, moving away from zero (as on Tests G and I)",
+        "-4 1/3": "Added the sizes and kept the minus sign, moving away from zero (as on Tests G and I)"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.5004,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "N6",
+      "number": 6,
+      "text": "Work out 6 × (15 – 7) + 4",
+      "answer": "52",
+      "accept": [
+        "52"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Evaluate expressions with parentheses",
+      "standard": "5.OA.A.1",
+      "learning_component_ids": [
+        "9355ee95-a7a5-5a41-89e1-8ffaef80af0b"
+      ],
+      "common_wrong_answers": {
+        "87": "Ignored the parentheses and multiplied first"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.5004,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "N7",
+      "number": 7,
+      "text": "A trail is 5 1/4 km long. Ben has walked 2/3 of it. How far has he walked?",
+      "answer": "3 1/2 km",
+      "accept": [
+        "3 1/2 km",
+        "7/2 km",
+        "3.5 km"
+      ],
+      "unit": "km",
+      "unit_required": true,
+      "skill": "Fraction times a mixed number in a real-world problem",
+      "standard": "5.NF.B.6",
+      "learning_component_ids": [
+        "354638aa-87ee-5083-91a8-817370e282d6"
+      ],
+      "common_wrong_answers": {
+        "1 3/4 km": "Found 1/3 of the trail instead of 2/3 (as on Test I, divided instead of taking the fraction)",
+        "4 7/12 km": "Subtracted 2/3 instead of finding 2/3 of the trail",
+        "3 1/2": "Correct number, but no units"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.6889,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.2343,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "N8",
+      "number": 8,
+      "text": "A class has 12 girls and 15 boys. Write the ratio of boys to girls.",
+      "answer": "15:12",
+      "accept": [
+        "15:12",
+        "15 : 12",
+        "15 to 12",
+        "5:4",
+        "5 : 4",
+        "5 to 4",
+        "15/12",
+        "5/4"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Write a ratio using ratio language",
+      "standard": "6.RP.A.1",
+      "learning_component_ids": [
+        "6e6acf93-1f84-564c-8f6f-22c206e5f633",
+        "70393172-f85d-520e-86d2-27ef4b1966d0"
+      ],
+      "common_wrong_answers": {
+        "12:15": "Wrote girls to boys: the order is the other way round",
+        "4:5": "Wrote girls to boys: the order is the other way round",
+        "12 to 15": "Wrote girls to boys: the order is the other way round"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.6889,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.7177,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "N9",
+      "number": 9,
+      "text": "A box is 4 cm long, 3 cm wide and 2 1/2 cm tall. What is its volume?",
+      "answer": "30 cm³",
+      "accept": [
+        "30 cm³",
+        "30 cm3",
+        "30 cubic cm"
+      ],
+      "unit": "cm³",
+      "unit_required": true,
+      "skill": "Volume of a box with a fractional edge (V = lwh)",
+      "standard": "6.G.A.2",
+      "learning_component_ids": [
+        "319c693b-b89f-5532-8d83-d3e00a97dce3"
+      ],
+      "common_wrong_answers": {
+        "30 cm": "Correct number, but a volume needs cubic units",
+        "30": "Correct number, but no units",
+        "9 1/2 cm³": "Added the edges instead of multiplying them"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.859,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.2343,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "N10",
+      "number": 10,
+      "text": "In the expression 5x + 9, what is the coefficient of x?",
+      "answer": "5",
+      "accept": [
+        "5"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Identify the coefficient in an expression",
+      "standard": "6.EE.A.2.b",
+      "learning_component_ids": [
+        "adfe0503-3bf5-5312-898c-aa649df77f3f"
+      ],
+      "common_wrong_answers": {
+        "9": "Gave the constant term, not the number multiplying x",
+        "5x": "Gave the whole term, not its coefficient"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.859,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.7177,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    }
+  ]
+}

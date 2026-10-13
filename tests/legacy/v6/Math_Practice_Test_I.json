@@ -1,0 +1,424 @@
+{
+  "test_id": "I",
+  "version": 6,
+  "qr_payload": "mpt:test=I&v=6",
+  "title": "Math Practice Test I",
+  "page_size": "A4",
+  "standards_jurisdiction": "California / CCSS (identical codes and text at these standards)",
+  "regions_note": "Regions are [x, y, width, height] as fractions of the rectangle between the centres of the four corner markers, origin top-left. Warp the photo so the markers map to that rectangle, then crop. The working region is everything below the question text, so it also contains the answer box.",
+  "questions": [
+    {
+      "id": "I1",
+      "number": 1,
+      "text": "A box has a volume of 120 cm³. It is 6 cm long and 5 cm wide. How tall is it?",
+      "answer": "4 cm",
+      "accept": [
+        "4 cm",
+        "4cm"
+      ],
+      "unit": "cm",
+      "unit_required": true,
+      "skill": "Volume in a mathematical problem",
+      "standard": "5.MD.C.5",
+      "learning_component_ids": [
+        "96b4f4dc-dcd9-5aba-9cb0-97c1d5b77cab"
+      ],
+      "common_wrong_answers": {
+        "4 cm³": "Right number, but a height is a length: cm, not cm³",
+        "4": "Correct number, but no units",
+        "3600 cm": "Multiplied all three numbers instead of dividing"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.1785,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.2343,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "I2",
+      "number": 2,
+      "text": "Work out 40.2 – 17.65",
+      "answer": "22.55",
+      "accept": [
+        "22.55"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Subtract multi-digit decimals",
+      "standard": "6.NS.B.3",
+      "learning_component_ids": [
+        "a58918aa-f725-5a4c-a902-decd4a759336"
+      ],
+      "common_wrong_answers": {
+        "37.45": "Subtracted the smaller digit from the larger in each column instead of borrowing"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.1601,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "I3",
+      "number": 3,
+      "text": "Work out 7854 ÷ 34",
+      "answer": "231",
+      "accept": [
+        "231"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Divide a 4-digit number by a 2-digit number",
+      "standard": "6.NS.B.2",
+      "learning_component_ids": [
+        "019a93e7-1877-5e9b-b4b3-476f201fccc8",
+        "fa745fbb-4e7c-54e0-aa3d-a89ab5e9cbe3"
+      ],
+      "common_wrong_answers": {},
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.3303,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "I4",
+      "number": 4,
+      "text": "Work out 487 × 256",
+      "answer": "124672",
+      "accept": [
+        "124672"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiply 3-digit by 3-digit whole numbers",
+      "standard": "5.NBT.B.5",
+      "learning_component_ids": [
+        "f71f6845-7313-58e0-888a-58cd23fb6266"
+      ],
+      "common_wrong_answers": {},
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.3303,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "I5",
+      "number": 5,
+      "text": "Work out 5.67 + 2.85",
+      "answer": "8.52",
+      "accept": [
+        "8.52"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Add decimals to hundredths",
+      "standard": "5.NBT.B.7",
+      "learning_component_ids": [
+        "425dce77-599d-5912-9e92-0802ec13cb68"
+      ],
+      "common_wrong_answers": {
+        "7.42": "Lined up correctly but never carried",
+        "7.52": "Dropped the carry into the ones, as on Test G"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.5004,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "I6",
+      "number": 6,
+      "text": "A recipe needs 2 1/2 cups of flour. Maya makes 3/4 of the recipe. How many cups of flour does she need?",
+      "answer": "1 7/8 cups",
+      "accept": [
+        "1 7/8 cups",
+        "1 7/8 cup",
+        "15/8 cups"
+      ],
+      "unit": "cups",
+      "unit_required": true,
+      "skill": "Fraction times a mixed number in a real-world problem",
+      "standard": "5.NF.B.6",
+      "learning_component_ids": [
+        "354638aa-87ee-5083-91a8-817370e282d6"
+      ],
+      "common_wrong_answers": {
+        "2 cups": "Multiplied only the 2 by 3/4 and kept the 1/2",
+        "1 7/8": "Correct number, but no units"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.5371,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.7177,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "I7",
+      "number": 7,
+      "text": "Write an expression for: add 9 and 6, then multiply by 4. Do not work it out.",
+      "answer": "4 × (9 + 6)",
+      "accept": [
+        "4 × (9 + 6)",
+        "4×(9+6)",
+        "(9 + 6) × 4",
+        "(9+6)×4",
+        "4(9 + 6)",
+        "4(9+6)"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Write a numerical expression with grouping symbols",
+      "standard": "5.OA.A.2",
+      "learning_component_ids": [
+        "4f28828c-0dd5-5c91-9f0c-8044d2b44890"
+      ],
+      "common_wrong_answers": {
+        "9 + 6 × 4": "Left out the parentheses, so the multiplying happens first",
+        "4 × 9 + 6": "Multiplied before adding"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.6889,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.2343,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "I8",
+      "number": 8,
+      "text": "6n = 14.4. What is n?",
+      "answer": "2.4",
+      "accept": [
+        "2.4",
+        "n = 2.4",
+        "n=2.4"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Solve px = q",
+      "standard": "6.EE.B.7",
+      "learning_component_ids": [
+        "e50eda80-7ed8-5b93-8d57-6608093cea34"
+      ],
+      "common_wrong_answers": {
+        "86.4": "Multiplied by 6 instead of dividing",
+        "8.4": "Subtracted 6 instead of dividing"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.6705,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "I9",
+      "number": 9,
+      "text": "Work out 2/5 + (–3 1/5) + 3/5",
+      "answer": "–2 1/5",
+      "accept": [
+        "-2 1/5",
+        "-11/5",
+        "–2 1/5",
+        "–11/5"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Add rational numbers using properties of operations",
+      "standard": "7.NS.A.1.d",
+      "learning_component_ids": [
+        "685131ac-6579-5a09-b675-995525838be5"
+      ],
+      "common_wrong_answers": {
+        "2 1/5": "Dropped the minus sign",
+        "–4 1/5": "Added the positive parts to the size of the negative number, as on Test G",
+        "-4 1/5": "Added the positive parts to the size of the negative number, as on Test G"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.8406,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "I10",
+      "number": 10,
+      "text": "A bike costs $150. Its price goes up by 20%, and then the new price goes down by 20%. What is the final price?",
+      "answer": "$144.00",
+      "accept": [
+        "$144.00",
+        "$144"
+      ],
+      "unit": "$",
+      "unit_required": true,
+      "skill": "Solve multi-step percent problems",
+      "standard": "7.RP.A.3",
+      "learning_component_ids": [
+        "fda5f0e0-0366-5113-931b-3d9930bdfb5a"
+      ],
+      "common_wrong_answers": {
+        "$150.00": "Assumed up 20% then down 20% cancel out",
+        "$180.00": "Applied only the increase",
+        "$120.00": "Applied only the decrease",
+        "$6.00": "Took 20% of the $30 increase instead of the new price, as on Test A",
+        "144": "Correct number, but no $ sign"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.8774,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.7177,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    }
+  ]
+}

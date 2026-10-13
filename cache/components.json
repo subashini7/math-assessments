@@ -1,0 +1,387 @@
+{
+  "source": "Learning Commons math learning components (ANet), fetched 2026-10-07; grade 6 completed 2026-10-13",
+  "note": "The Coherence Map relates STANDARDS, not components, so components have no prerequisite edges. Walking back to prerequisites happens at the standard level; components say which part of a standard is weak.",
+  "by_standard": {
+    "6.NS.B.3": {
+      "d04b3e78-76db-568d-aeb2-b575eeac1664": "Add multi-digit decimals",
+      "a58918aa-f725-5a4c-a902-decd4a759336": "Subtract multi-digit decimals",
+      "e14eddf0-cf6b-5692-ab30-81f5995f4754": "Multiply multi-digit decimals",
+      "0c3f03b8-3989-5489-aa86-b9a63953e545": "Divide a multi-digit decimal by a whole number",
+      "95700724-a655-5092-ae09-41e4ed0b48c2": "Divide a whole number by a multi-digit decimal",
+      "3b40f296-3bd8-5986-b5a4-52cb04f8c7eb": "Divide multi-digit decimals"
+    },
+    "6.RP.A.3.c": {
+      "c75962da-9a8e-53a7-81cc-b46d56f5100e": "Find a percent of a quantity as a rate per 100",
+      "e6525dd8-5e57-5c8a-abee-57f64d1c9eb4": "Find the whole given a part and the percent"
+    },
+    "7.RP.A.3": {
+      "da9fc2c7-7cf2-52ef-bd89-1f1c625401e6": "Multi-step ratio problems",
+      "fda5f0e0-0366-5113-931b-3d9930bdfb5a": "Multi-step percent problems"
+    },
+    "7.EE.B.4": {
+      "108e49e3-c3ca-58ed-a70d-95086aa90c52": "Use variables for quantities in real-world problems",
+      "ffdefe1f-e62c-5137-89c4-ef901293bfe8": "Construct simple equations to solve problems",
+      "7c6deb43-5973-5923-8c6e-e5d29adbaba1": "Construct simple inequalities"
+    },
+    "5.NBT.B.7": {
+      "425dce77-599d-5912-9e92-0802ec13cb68": "Add decimals to the hundredths",
+      "445dd0dd-00aa-5fef-879e-58f62fd1b8db": "Subtract decimals to the hundredths",
+      "486045b7-a4dd-591f-a78e-3669cc0a8352": "Multiply decimals to the hundredths",
+      "90b36ead-9116-53a0-9331-c9dd7cb6b4c1": "Divide decimals to the hundredths",
+      "9965bcb5-d47b-5345-9c26-e34644fd6724": "Relate strategies for subtracting decimals to a written method",
+      "a42d73b8-5afc-55c3-bce3-7e85e9decb08": "Relate strategies for adding decimals to a written method",
+      "bb674a90-b1f8-5140-b8cb-fa8d8602cde6": "Relate strategies for multiplying decimals to a written method",
+      "c2ad2555-96e4-55a9-882f-9c7c847a912e": "Relate strategies for dividing decimals to a written method"
+    },
+    "5.NF.A.1": {
+      "089c550e-f3a4-5ea2-959a-34e267c3e374": "Subtract fractions with different denominators by using equivalent fractions",
+      "3f8f80e7-a5c3-56e5-bf2d-90c5bb5f4f08": "Subtract mixed numbers with different denominators",
+      "d022d8d2-37f6-5ce9-bb02-e000d731aba0": "Add fractions with different denominators by using equivalent fractions",
+      "d2565c2d-3930-54d3-864e-e532fd65cf6c": "Add mixed numbers with different denominators"
+    },
+    "7.NS.A.3": {
+      "1781e56e-47c9-516c-b629-aae8cd68f41b": "Subtract rational numbers to solve mathematical problems",
+      "1bff6614-a6c0-5ee1-84a5-0da4f870a38f": "Add rational numbers to solve real-world problems",
+      "29a9858d-11e0-5445-9b49-f5eb46ce5341": "Multiply rational numbers to solve real-world problems",
+      "2f8040bb-70fe-5a05-9538-59afb5a6b7f4": "Add rational numbers to solve mathematical problems",
+      "39612eaf-3eed-57be-96d2-4ac4abda7d59": "Subtract rational numbers to solve real-world problems",
+      "8c3bf1a0-0301-5a31-8be8-5df2670b3429": "Multiply rational numbers to solve mathematical problems",
+      "d28fda5e-9a78-52d3-b990-f49ae553a303": "Divide rational numbers to solve real-world problems",
+      "d69891ac-e002-5ba0-a6ef-eaed347d9ef8": "Divide rational numbers to solve mathematical problems"
+    },
+    "5.NBT.B.5": {
+      "39865eff-a84f-5354-b603-13ad5b99dd9f": "Fluently multiply 3-digit by 4-digit whole numbers",
+      "39c3502c-ceeb-583a-aad8-de683defa923": "Fluently multiply 2-digit by 4-digit whole numbers",
+      "c944c44a-afc2-5b4c-8e61-a4a8332496e0": "Fluently multiply 2-digit by up to 3-digit whole numbers",
+      "f71f6845-7313-58e0-888a-58cd23fb6266": "Fluently multiply 3-digit by 3-digit whole numbers"
+    },
+    "5.NBT.B.6": {
+      "05283aa2-d294-5f59-93ee-ac361e3a10f7": "Find quotients with four-digit dividends and two-digit divisors",
+      "3e1d35e9-e0f1-5389-88fc-f3075ab1e682": "Use models to explain division with four-digit dividends",
+      "5a571ee0-155d-59ad-82be-de0386ce7787": "Use models to explain division with three-digit dividends",
+      "e8d8c43a-3608-51dd-86ad-db49bcafef64": "Find quotients with three-digit dividends and two-digit divisors"
+    },
+    "5.NF.B.4": {
+      "4aeee2dd-3e67-5d7e-b843-39650a018660": "Multiply a fraction or whole number by a fraction"
+    },
+    "5.NF.B.7": {
+      "bfa79064-fe1e-5430-81de-c4155d27d0b4": "Divide unit fractions by whole numbers and whole numbers by unit fractions"
+    },
+    "5.OA.A.1": {
+      "79506838-311e-5599-a93e-a9d03c0d80ab": "Evaluate expressions involving nested parentheses, brackets, and/or braces",
+      "9355ee95-a7a5-5a41-89e1-8ffaef80af0b": "Evaluate expressions involving parentheses, brackets, or braces that are not nested"
+    },
+    "5.NBT.A.3": {
+      "b9d27304-5ca2-57b9-968d-e5c946985513": "Convert between forms of writing decimals to the thousandths"
+    },
+    "5.MD.A.1": {
+      "0013fbee-3e76-500f-9978-42aa1a65f105": "Use conversions to solve multi-step real-world problems",
+      "0c81b764-6a02-55dc-b60e-2d7d9806599a": "Convert a measurement from a smaller unit to a larger unit",
+      "783e04ae-9b0c-5680-9b1a-7084998118c9": "Convert a measurement from a larger unit to a smaller unit"
+    },
+    "5.MD.C.5": {
+      "96b4f4dc-dcd9-5aba-9cb0-97c1d5b77cab": "Use multiplication and addition to solve mathematical problems involving volume",
+      "f6cc98df-8d45-5acc-868f-9fd3fa9f58e5": "Use multiplication and addition to solve real-world problems involving volume"
+    },
+    "5.G.A.1": {
+      "7e59ad79-91b7-53a7-98ec-c85624c7fc75": "Identify the origin as the intersection of the axes, with coordinates (0, 0)",
+      "9a9aba52-8867-53e9-b129-9bdb51a5442b": "Interpret the x-coordinate as the horizontal distance from the origin",
+      "9f6772f5-1115-58c8-b53d-b5f26ccd0c9d": "Plot points on the coordinate plane given an ordered pair",
+      "ccfcad8c-5c0e-5b3e-8c98-78b149ecdd97": "Interpret the y-coordinate as the vertical distance from the origin",
+      "cf895e10-7702-59bb-9bc6-11e262f4c2f6": "Interpret both coordinates as distances to travel from the origin",
+      "d94abe72-3f88-5c8f-9fd5-40a0bd9471ec": "Identify an ordered pair given a plotted point"
+    },
+    "6.NS.B.2": {
+      "019a93e7-1877-5e9b-b4b3-476f201fccc8": "Fluently divide multi-digit whole numbers using the standard algorithm",
+      "fa745fbb-4e7c-54e0-aa3d-a89ab5e9cbe3": "Fluently divide multi-digit whole numbers with a dividend of at least 4 digits"
+    },
+    "5.NBT.A.1": {
+      "051034c9-6867-50df-81ba-8a5dc6629e8e": "Recognize that in a multi-digit number (including decimals), a digit in one place represents 1/10 what it represents in the place to its left",
+      "ba0b5da7-336a-54af-bc1d-c4fbceb2df62": "Recognize that in a multi-digit number (including decimals), a digit in one place represents ten times what it represents in the place to its right"
+    },
+    "5.NBT.A.2": {
+      "14c9562d-c985-5d98-8fe5-a8551e0a20ff": "Use whole-number exponents to denote powers of 10",
+      "39c782cc-8c89-5974-98b8-a3158125e227": "Explain patterns in the placement of the decimal point when dividing a decimal by a power of 10",
+      "53dba7fb-c548-5f5b-88cd-e657ec2114d7": "Explain patterns in the placement of the decimal point when multiplying a decimal by a power of 10",
+      "a275a470-8fa8-5bbe-bc69-d7d90b8b1137": "Explain patterns in the number of zeros of a product when multiplying a whole number by a power of 10",
+      "c4a38f79-95a9-5e1b-a031-b214f46d8307": "Explain patterns in the placement of the decimal point when dividing by a power of 10"
+    },
+    "5.NBT.A.4": {
+      "6a3040b7-8da5-55ab-8b46-29194e8d5143": "Use place value understanding to round decimals to any place"
+    },
+    "6.EE.B.7": {
+      "099ceccb-4732-56c0-bdb1-61f9c6fcbd65": "Represent mathematical problems by writing equations in the form x + p = q for cases in which p, q, and x are all nonnegative rational numbers",
+      "1981017a-4fca-5f84-9294-9441faf647db": "Solve mathematical problems by solving equations in the form x + p = q for cases in which p, q, and x are all nonnegative rational numbers",
+      "8d29194f-94ec-51fa-b0c7-fc6d99780d3b": "Represent real-world problems by writing equations in the form px = q for cases in which p, q, and x are all nonnegative rational numbers",
+      "cd69a8c5-90aa-5e64-9abf-112fa7051095": "Solve real-world problems by solving equations in the form x + p = q for cases in which p, q, and x are all nonnegative rational numbers",
+      "e50eda80-7ed8-5b93-8d57-6608093cea34": "Solve mathematical problems by solving equations in the form px = q for cases in which p, q, and x are all nonnegative rational numbers",
+      "e54e642e-caef-5e93-956e-a382564f8e4f": "Represent mathematical problems by writing equations in the form px = q for cases in which p, q, and x are all nonnegative rational numbers",
+      "ed92d2a4-92cb-5365-8471-7494e0390c77": "Represent real-world problems by writing equations in the form x + p = q for cases in which p, q, and x are all nonnegative rational numbers",
+      "fafaead4-3eb8-51f9-aac0-5bbfa4b64f3e": "Solve real-world problems by solving equations in the form px = q for cases in which p, q, and x are all nonnegative rational numbers"
+    },
+    "7.NS.A.1.d": {
+      "685131ac-6579-5a09-b675-995525838be5": "Use properties of operations to add rational numbers",
+      "7aa5ed91-3ba3-5eff-93af-77123a99843d": "Use properties of operations to subtract rational numbers",
+      "ce4afd4b-6f1d-5d6f-83df-ac9b90a40250": "Use properties of operations to add and subtract rational numbers"
+    },
+    "6.EE.B.6": {
+      "12b69651-752f-5e48-b838-0c669df35b64": "Use variables to represent an unknown number or any number in a specified set, depending on the context",
+      "306ce9f4-0018-504d-bf10-70d68c8563ec": "Create a real-world situation to represent an expression using variables to represent numbers",
+      "60a51673-b0e6-57d6-840c-64a3c5b61cc0": "Solve a real-world problem by writing an expression with variables to represent the situation"
+    },
+    "5.NF.A.2": {
+      "109ac5cd-8a05-5f94-8bbb-001e3a91e3c8": "Use benchmark fractions to estimate and assess the reasonableness of answers resulting from fraction subtraction referring to the same whole",
+      "1f6b0f81-22fb-5021-975c-b3a00269a1e9": "Use benchmark fractions to estimate and assess the reasonableness of answers resulting from fraction addition referring to the same whole",
+      "4b749054-84a9-5279-bb7c-9ac485005421": "Solve word problems involving addition of fractions referring to the same whole, including with different denominators",
+      "ed662f1f-210b-5895-8841-60c021a792c2": "Solve word problems involving subtraction of fractions referring to the same whole, including with different denominators"
+    },
+    "5.NF.B.3": {
+      "26645597-c6a9-5497-b3a2-63f304ab1de1": "Solve word problems involving division of whole numbers leading to answers in the form of fractions or mixed numbers, with denominators of 2, 3, 4, 5, 6, 8, 10, and 12",
+      "35bc1efc-c989-50af-b620-a7bd77f2f808": "Interpret a fraction as division of the numerator by the denominator (a/b = a ÷ b)",
+      "46b4aaee-e89d-53f0-abd9-12b676510c8e": "Solve word problems involving division of whole numbers leading to answers in the form of fractions or mixed numbers",
+      "677ac9ea-e253-574e-9754-46a693260709": "Identify the two whole numbers a fraction falls between"
+    },
+    "5.NF.B.5": {
+      "18ed149f-cd3e-5125-a81b-506b27e3af1f": "Interpret multiplication as scaling (resizing)"
+    },
+    "6.G.A.1": {
+      "0d09acef-0351-5d6e-8d35-ec2a950c1cf5": "Find area of quadrilaterals by composing into rectangles or decomposing into triangles and other shapes and use to solve mathematical problems",
+      "5a75b6d4-a3f4-5ff8-bf12-f81ff5586042": "Find area of polygons by composing into rectangles or decomposing into triangles and other shapes and use to solve mathematical problems",
+      "68e69e23-c527-5dbc-b54a-7e1d0b1115fb": "Find area of polygons by composing into rectangles or decomposing into triangles and other shapes and use to solve real-world problems",
+      "924ca975-15b2-59d6-9093-d59fbbc7bbdb": "Find area of quadrilaterals by composing into rectangles or decomposing into triangles and other shapes and use to solve real-world problems",
+      "ae975d69-8c4a-580b-aba0-7d9089b3393b": "Find area of triangles by composing into rectangles or decomposing into triangles and other shapes and use to solve real-world problems",
+      "c2509042-cd73-5665-88f3-317d399b8e9d": "Find area of triangles by composing into rectangles or decomposing into triangles and other shapes and use to solve mathematical problems"
+    },
+    "7.NS.A.2.c": {
+      "54a463dd-df6b-5ace-afb5-b3b179799e8e": "Apply properties of operations as strategies to multiply rational numbers",
+      "c48c1cff-df43-5290-8c24-3a7166311e44": "Apply properties of operations as strategies to divide rational numbers"
+    },
+    "5.OA.A.2": {
+      "4f28828c-0dd5-5c91-9f0c-8044d2b44890": "Write simple expressions of two or more steps and with grouping symbols that record calculations with numbers",
+      "fe00d7de-e6dc-58e5-b9ea-66e330a42eaa": "Interpret numerical expressions without evaluating them"
+    },
+    "5.NF.B.6": {
+      "354638aa-87ee-5083-91a8-817370e282d6": "Solve a real-world problem involving multiplication of fractions and mixed numbers",
+      "46d4232e-8882-5e0f-bb59-73132e55d5a1": "Use visual models to represent and solve a real-world fraction or mixed-number multiplication problem",
+      "ea894526-30b5-50a6-b312-6b4cfe38d624": "Use equations to represent and solve a real-world fraction or mixed-number multiplication problem"
+    },
+    "5.MD.B.2": {
+      "613323d4-dfba-5474-b7cb-c5f104ac37dc": "Make a line plot to display a data set of measurements in fractions of a unit (1/2, 1/4, 1/8)",
+      "fcae5c49-fbc6-5f91-990b-7a786b798824": "Use fraction operations to solve multi-step problems using information presented in line plots"
+    },
+    "6.NS.A.1": {
+      "133abb93-2720-50fc-a417-2fb6d67d32c5": "Solve word problems involving the division of fractions by fractions",
+      "5f4d46ea-edac-5b5f-8fdc-958f76e8f4cd": "Solve word problems involving the division of fractions by fractions by using visual fraction models to represent the problem",
+      "63c4ca02-f441-59d8-af9b-681477d17f16": "Interpret quotients of fractions",
+      "b15981ec-6234-523c-999c-93ce61149102": "Solve word problems involving the division of fractions by fractions by using equations to represent the problem",
+      "bc5dfb39-c4f5-5c20-acd5-13e303f5bace": "Compute quotients of fractions"
+    },
+    "6.NS.C.6.b": {
+      "8e0a9454-edb3-5fb9-be8a-c0f50cff2a4c": "Use the signs of numbers in ordered pairs to identify when two ordered pairs represent reflections across one or both axes",
+      "ef1f09b2-f01e-5045-8446-28d6c9f74463": "Use the signs of numbers in an ordered pair to identify the quadrant of the point"
+    },
+    "6.NS.C.6.c": {
+      "36d0fda5-a6ac-58c4-ba46-33343468ac4b": "Find and position integers and other rational numbers on a vertical or horizontal number line diagram",
+      "58c3fbf4-1e36-588b-bd08-87921589162f": "Find and position integers and other rational numbers on a coordinate plane"
+    },
+    "6.RP.A.2": {
+      "523d04e7-47d8-55c7-bc44-792f3e01bfda": "Use rate language in the context of a ratio relationship",
+      "b9b94f31-b58b-5e26-9efe-680b167046ba": "Identify real-world ratios and use them to determine unit rates",
+      "db4c25ad-9892-5abb-bcba-2fc9781d10f8": "Write a ratio a:b as a unit rate a/b"
+    },
+    "6.RP.A.3": {
+      "5b9cd29a-a10c-5d41-af27-9d632630c4db": "Solve real-world problems using ratio and rate reasoning",
+      "c869a6c1-ffed-596f-a64f-6bffdd8faf92": "Solve mathematical problems using ratio and rate reasoning"
+    },
+    "7.RP.A.2": {
+      "91a4d15a-cda6-510b-ba13-56d5bf536917": "Represent proportional relationships between quantities",
+      "b02c3de8-7535-5bfc-8e3f-8437bc32a140": "Recognize proportional relationships between quantities"
+    },
+    "7.NS.A.2.d": {
+      "0bd082cc-be74-564c-9cf4-941f5d959507": "Identify instances in which the decimal form of a rational number ends in 0 or eventually repeats",
+      "2ab6ac49-716f-507d-bce0-a9696013c6b2": "Convert a rational number to a decimal using long division to solve mathematical problems",
+      "ffd9dc15-b8f1-527e-a374-a6c04d8f6bd7": "Convert a rational number to a decimal using long division to solve real world problems"
+    },
+    "7.SP.B.3": {
+      "5f41fba8-f5db-5d70-9df9-1da0545355d0": "Measure the difference between the centers of two numerical data distributions by expressing it as a multiple of a measure of variability",
+      "5f434177-9416-5a5a-920b-22459ad31d6d": "Informally assess the degree of visual overlap of two numerical data distributions with similar variabilities",
+      "a6f3f96d-a2d8-5ba5-95e8-33991edcecbc": "Interpret the mean absolute deviation (MAD) of a set of data"
+    },
+    "5.MD.C.3": {
+      "af5ac1f9-631b-583e-a202-f436b2c6065f": "Students understand volume as a measure of space taken up by an object",
+      "b39daa6d-6ef9-5322-9331-d38a806b52ec": "Recognize volume as an attribute of solid figures"
+    },
+    "5.MD.C.4": {
+      "7f339f4c-abc1-50e7-a0f3-448af44eabec": "Find the volume of a three-dimensional figure by counting unit cubes"
+    },
+    "5.OA.B.3": {
+      "20eff432-6538-5c5a-862a-cc9e7c5275a6": "Form ordered pairs consisting of corresponding terms from two patterns",
+      "3e8126aa-6241-5782-9e20-7fa694a61e5a": "Identify apparent relationships between corresponding terms",
+      "8a9af9bf-82b8-5b6a-a19b-274dca8e60a0": "Generate two numerical patterns using two given rules",
+      "d39ace9b-023b-5c22-9fe4-d23916fb136b": "Graph ordered pairs consisting of corresponding terms from two patterns on a coordinate plane",
+      "eb4874e5-06e0-5ff1-9cc8-c77c5a246212": "Form ordered pairs consisting of corresponding terms from two patterns and graph the ordered pairs on a coordinate plane"
+    },
+    "5.G.A.2": {
+      "70837fe6-36f0-5208-b7ca-ff1930b38fef": "Represent real-world problems by graphing points in the first quadrant of the coordinate plane",
+      "d2cd8103-3cd7-50de-bb43-390aeff1de3d": "Interpret coordinate values of points in the context of the situation",
+      "ef95113c-01d9-5f74-847f-e6187aeaf3ca": "Represent mathematical problems by graphing points in the first quadrant of the coordinate plane"
+    },
+    "5.G.B.3": {
+      "51e2d683-9271-50f3-8bab-f3d5766156fd": "Identify that attributes belonging to a category of quadrilateral also apply to its subcategories",
+      "e3e2af8b-6691-5559-b154-8d58303dde02": "Identify that attributes belonging to a category of two-dimensional figures also apply to its subcategories"
+    },
+    "5.G.B.4": {
+      "175a45df-f09a-50cd-b5f3-54826ac750a7": "Classify quadrilaterals in a hierarchy based on properties",
+      "8bd3a000-9afe-577e-8781-dd8b8d493289": "Classify triangles in a hierarchy based on properties"
+    },
+    "6.RP.A.1": {
+      "6e6acf93-1f84-564c-8f6f-22c206e5f633": "Write a ratio to represent the relationship between two quantities",
+      "70393172-f85d-520e-86d2-27ef4b1966d0": "Use ratio language to describe a ratio relationship between two quantities",
+      "ff25751a-4675-50fe-ab86-bbaaffdda1dd": "Use equivalent ratios to represent the relationship between  two quantities"
+    },
+    "6.G.A.2": {
+      "0bbc7349-8768-5a94-8461-b718a4547301": "Use the formula V=bh to find volumes of right rectangular prism with fractional edge lengths to solve real-world problems",
+      "1756aedc-6f52-52e3-a1c7-d46cfbba1a88": "Use the formula V=bh to find volumes of right rectangular prism with fractional edge lengths to solve mathematical problems",
+      "2a84aba3-bc85-5130-b97c-7002f6d4e147": "Use the formulas V=lwh and V=bh to find volumes of right rectangular prisms with fractional edge lengths to solve mathematical problems",
+      "319c693b-b89f-5532-8d83-d3e00a97dce3": "Use the formula V=lwh to find volumes of right rectangular prisms with fractional edge lengths to solve real-world problems",
+      "79258680-b81e-5e4e-ada6-19a72b43b8b5": "Find the volume of right rectangular prisms with fraction edge-lengths by packing it with unit cubes of the appropriate unit fraction edge lengths",
+      "e270cd96-fc42-5768-93ac-81c1a7e74069": "Use the formula V=lwh to find volumes of right rectangular prisms with fractional edge lengths to solve mathematical problems",
+      "f3bed57a-ac3f-5e4a-b50f-8395a58ba3b4": "Determine that finding the volume of a right rectangular prism with fractional edge lengths by packing it with unit cubes yields the same volume as multiplying the edge lengths",
+      "f873f320-ef6b-55f6-ab04-ce9b8dc30224": "Use the formulas V=lwh and V=bh to find volumes of right rectangular prisms with fractional edge lengths to solve real-world problems"
+    },
+    "6.EE.A.2.b": {
+      "1ca4a9fc-2a7b-50b8-b67a-3b850141a649": "View one or more parts of an expression as a single entity",
+      "adfe0503-3bf5-5312-898c-aa649df77f3f": "Identify the parts of an expression using mathematical terms (including sum, term, product, factor, quotient, coefficient)"
+    },
+    "6.EE.A.1": {
+      "1f44c510-590f-575c-98ca-c19f2bbfd4c6": "Write numerical expressions involving whole-number exponents in the form a^b, where a and b are non-zero whole numbers",
+      "fe47029d-1ca7-54ae-adb2-098430e3d2a7": "Evaluate numerical expressions involving whole-number exponents, including fractions and decimals raised to whole-number exponents"
+    },
+    "6.SP.A.1": {
+      "3fd3c652-c7ac-5615-b8b7-50ff7718d89a": "Identify statistical questions"
+    },
+    "6.EE.A.2.a": {
+      "115636bf-01c2-5c26-be47-a29f933a2974": "Identify an expression that records operations with numerical values and with letters standing for numbers for a given phrase",
+      "16e16ca9-6704-56a1-b0f9-04d9fd582f4a": "Write an expression to record operations with numerical values and with letters standing for numbers for a given phrase",
+      "ced6fc6b-dfd9-56c0-b8b2-7f7c72b8bfc7": "Identify a phrase that describes a given expression with operations, numerical values and with letters standing for numbers"
+    },
+    "6.SP.A.2": {
+      "24b6a84f-6d61-5663-986d-2494dcef865a": "Recognize a data distribution that is symmetric, skewed left, or skewed right",
+      "ee7501cd-3428-5e0b-944e-8ccaba003efd": "Describe the distribution of data using center, spread, and shape"
+    },
+    "6.RP.A.3.a": {
+      "05492c78-5bc3-51f2-890d-92283c0d1c00": "Use tables to compare ratios",
+      "23e8528c-1687-5088-9a16-d51bc8a145e6": "Find missing values in ratio tables",
+      "31d1aa9e-8254-5472-b22c-36d17d807f58": "Plot pairs of values from ratio tables on the coordinate plane",
+      "8074c052-9641-561c-886a-a9846d3f086f": "Plot pairs of ratio values on the coordinate plane",
+      "96529518-a495-5947-b797-c53a2d3c7a05": "Make tables of equivalent ratios relating quantities with whole-number measurements"
+    },
+    "6.RP.A.3.b": {
+      "29e60e03-2920-51de-aff0-cb317dad7e54": "Solve unit rate problems including those involving unit pricing and constant speed"
+    },
+    "6.RP.A.3.d": {
+      "18baa937-6c61-5248-93a4-1a5bfbc4e99a": "Use ratios to convert between measurement units",
+      "534e2e4c-8189-515f-9241-1b4c011556a7": "Use ratios as conversion factors"
+    },
+    "6.NS.B.4": {
+      "926bf4b0-e045-536b-ac02-2089d77cbf6c": "Find the least common multiple of two whole numbers less than or equal to 12",
+      "9bf54462-5fd0-59bf-8360-cd503e45b884": "Find the greatest common factor of two whole numbers less than or equal to 100",
+      "c587f727-0135-571c-8c60-7ad46e0a28c5": "Use the distributive property to express a sum of two whole numbers 1-100 with a common factor as a multiple of a sum of two whole numbers with no common factor"
+    },
+    "6.NS.C.5": {
+      "8119c47d-f394-50ff-b630-f4aa64763b52": "Use positive and negative numbers to represent quantities in real-world contexts",
+      "f38825db-1963-5e02-85ea-b722bff5635a": "Explain the meaning of 0 when using positive or negative numbers to represent quantities in real-world contexts",
+      "f57f8f6c-ec91-5b37-9632-fdb36c088666": "Use positive and negative numbers to describe quantities having opposite directions or values"
+    },
+    "6.NS.C.6.a": {
+      "22156372-ad11-5837-9b62-4489288590bb": "Recognize that opposite signs of numbers are located on opposite sides of 0 on the number line",
+      "4c975388-0779-5402-ac2e-eda40bc3a324": "Recognize that 0 is its own opposite",
+      "a40a923f-8622-5b74-aa84-849e70cfbf65": "Recognize that the opposite of the opposite of a number is the number itself"
+    },
+    "6.NS.C.7.a": {
+      "e3f2391f-225c-580f-9331-7de98f609d83": "Interpret statements of inequality as statements about the relative position of two numbers on a number line diagram"
+    },
+    "6.NS.C.7.b": {
+      "0a31d080-83c4-50e6-b6f1-b3fe448cfee9": "Write statements of order for rational numbers in real-world contexts",
+      "4afb8365-8988-5ac8-81b1-ac1a39a3f65c": "Explain statements of order for rational numbers in real-world contexts"
+    },
+    "6.NS.C.7.c": {
+      "62c8cf40-084e-5b4c-ab3f-29f473273582": "Describe the absolute value of a rational number as its distance from 0 on the number line",
+      "8ef052eb-6878-5613-b9fd-3efd396d368c": "Interpret absolute value as magnitude for a positive or negative quantity in a real-world situation"
+    },
+    "6.NS.C.7.d": {
+      "f1a27da7-7faf-584a-af58-f16752145363": "Distinguish comparisons of absolute value from statements about order"
+    },
+    "6.NS.C.8": {
+      "181f01a6-ce05-5767-83cc-6d27325f1354": "Solve real-world problems by graphing points in all four quadrants of the coordinate plane",
+      "1ba53b4c-32e9-5cd5-8ee2-6b595e72aa46": "Use coordinates and absolute value to find distances between points with the same first coordinate or the same second coordinate",
+      "c7645c9c-d2e6-5420-bb85-6f0b7dedba2c": "Solve mathematical problems by graphing points in all four quadrants of the coordinate plane"
+    },
+    "6.EE.A.2.c": {
+      "06806313-cfe4-5d7d-9646-fdcf8520cadf": "Evaluate expressions at specific values of their variables in real-world contexts",
+      "5702c4ef-fbfc-533e-b5b5-a5cc126e7c3e": "Evaluate expressions at specific values of their variables in mathematical contexts",
+      "ceb07b7c-b1cf-52cc-97ee-192d8a291f90": "Perform arithmetic operations, including those involving whole-number exponents and whole numbers, fractions, and/or decimals, using the order of operations"
+    },
+    "6.EE.A.3": {
+      "8819fa6b-bd86-58b7-badd-df03a195db74": "Apply the distributive property to factor simple expressions",
+      "977bc6f0-47f9-5d5f-942d-4f3477d4a2fe": "Apply the distributive property to expand simple expressions",
+      "a629106a-c48e-5417-a29e-68ab652c8c5d": "Apply the commutative property to generate one or more equivalent expressions, including combining and separating like terms",
+      "e1d1c595-427d-5dcd-a1e3-8e37184e2a64": "Apply the associative property to generate one or more equivalent expressions, including combining and separating like terms"
+    },
+    "6.EE.A.4": {
+      "52a53073-75a3-592d-a9cf-aba403b0d018": "Determine whether expressions are equivalent using the properties of operations to simplify or expand expressions",
+      "5ccfcd23-a3c0-5104-90a1-74f37f2c2e56": "Explain whether expressions are equivalent using the properties of operations and substitution of the variable",
+      "67cfaafc-d884-51af-b809-d3beb5308379": "Use substitution of the variable to determine whether expressions are equivalent"
+    },
+    "6.EE.B.5": {
+      "10b7ec1d-8484-542d-b7d8-e556ab71ceb5": "Use substitution to determine whether a number or a set of numbers makes an equation true",
+      "25259f33-13ce-5339-a53a-11e0a2ffd95f": "Use substitution to determine whether a number or a set of numbers makes a one-variable, one-step equation true",
+      "8fec2d18-79bd-53a4-8ef9-c4b7ee7a15d5": "Use substitution to determine whether a number or a set of numbers makes a one-variable, one-step inequality true",
+      "a9e1847a-b8cc-5abb-9476-18e1ddb542ea": "Use substitution to determine whether a number or a set of numbers makes an inequality true",
+      "f7a9f0e5-d847-5b6e-8fa1-e1d6d001cc58": "Demonstrate that the solution of an equation or inequality is the value of the variable that will make the equation or inequality true"
+    },
+    "6.EE.B.8": {
+      "56712271-b20c-563b-a20c-9535b5161e72": "Write inequalities in the form x > c  or x < c to represent a constraint or condition in a real-world problem",
+      "94bdf387-6027-5bfe-a80f-9080e4299330": "Identify that inequalities in the form x > c or x < c have infinitely many solutions",
+      "99fa4be6-09b5-5881-93be-8abcae5d7f71": "Write inequalities in the form x > c  or x < c to represent a constraint or condition in a mathematical problem",
+      "facf8a39-ce4d-5084-8d21-3cefcbd0da25": "Represent solutions of inequalities in the form x > c or x < c on number line diagrams"
+    },
+    "6.EE.C.9": {
+      "3435b2aa-520a-583e-9fbf-47110867a9de": "Model the relationship between independent and dependent variables to solve real-world problems",
+      "cc56ee36-cbb8-5387-b845-f41585c0660e": "Represent a real-world situation by writing an equation that expresses the dependent variable in terms of the independent variable",
+      "d29c0749-bd31-5ad3-8a3c-2a24769df8ce": "Analyze the relationship between dependent and independent variables using graphs and tables and relate to an equation"
+    },
+    "6.SP.A.3": {
+      "26d22200-e9bb-556c-81c1-c35a4c64a225": "Recognize that the center of a data set can be described with a single number",
+      "d6f0d3bc-e9a8-5d0c-ae9e-f04c04660fad": "Recognize that the variation of a data set can be described with a single number",
+      "f6b991bd-d534-5502-9a22-b0bc2f095797": "Recognize that the distribution of a data set can be described with a single number"
+    },
+    "6.SP.B.5": {
+      "912cf934-0cdc-5c68-ad4e-133023e02d82": "Summarize numerical data sets in relation to their context"
+    },
+    "6.G.A.3": {
+      "418d3f5e-b571-5056-a7bf-88f3acecc18f": "Use coordinates to find the length of a side joining points with the same first coordinate or the same second coordinate",
+      "89c16385-001c-532e-9171-289208b0519e": "Solve mathematical problems by drawing polygons in the coordinate plane when given coordinates for vertices or by identifying the coordinates of missing vertices",
+      "9303ba90-84ec-54eb-be9d-a586b50f3043": "Solve real-world problems by drawing polygons in the coordinate plane when given coordinates for vertices or by identifying the coordinates of missing vertices",
+      "9dbe375b-d5bf-56e9-9980-9d21682bf1da": "Draw polygons in the coordinate plane when given coordinates from any of the four quadrants for the vertices",
+      "d07119b2-8552-57f9-9bfb-cd9a685d930f": "Solve real-world problems by using coordinates to find the length of a side joining points with the same first coordinate or the same second coordinate",
+      "fcb8e3dc-5656-5f3d-ab79-32a8a67c913f": "Solve mathematical problems by using coordinates to find the length of a side joining points with the same first coordinate or the same second coordinate"
+    },
+    "6.G.A.4": {
+      "20ceb752-7713-5e48-8c71-0a6684079562": "Solve mathematical problems using nets to find the surface area of three-dimensional figures",
+      "6179a7ca-c790-579f-9fd9-a1fecb065163": "Solve real-world problems using nets to find the surface area of three-dimensional figures",
+      "eed1bb5e-2be6-53a7-9341-2412eb7d86e8": "Use nets to find the surface area of three-dimensional figures",
+      "ff4ee7ca-c71f-53c1-b629-74b9a0d961ce": "Represent three-dimensional figures using nets made up of rectangles and triangles"
+    },
+    "6.SP.B.4": {
+      "0bfe77de-2517-5eaf-878d-73a0513d3995": "Display numerical data in plots on a number line",
+      "1525b97c-26c6-5549-8238-21e2ec20039e": "Identify the data set that is being displayed in a number line",
+      "8bf02e1b-dfdd-5c7a-9a1c-fba94e7a2117": "Identify the data set that is being displayed in a box plot",
+      "a5b32d92-952a-5680-aa80-d9048b8d2af9": "Identify the data set that is being displayed in a histogram",
+      "a8fd1516-9ee6-519a-aa68-2c5040d5a97e": "Display numerical data in plots on a histogram",
+      "b274f357-3b0a-52f4-8b72-48ebba4142d7": "Identify the data set that is being displayed in a dot plot",
+      "b81144de-1c27-5c85-b0f2-5ad2449f986d": "Display numerical data in plots on a box plot",
+      "d34f7566-1d4c-5798-b0aa-9fc60f172699": "Display numerical data in plots on a dot plot"
+    }
+  }
+}

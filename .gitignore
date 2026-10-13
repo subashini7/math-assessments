@@ -1,0 +1,17 @@
+__pycache__/
+.venv/
+.DS_Store
+
+# Working notes, not part of the published project.
+HANDOFF.md
+
+# Photos of the child's work and everything derived from them.
+old_photos/
+inbox/
+evidence/
+cache/*
+
+# ...except the curriculum data the planner needs to run. No personal data.
+!cache/syllabus.json
+!cache/components.json
+!cache/prereqs.json

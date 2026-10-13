@@ -1,0 +1,5 @@
+numpy==2.4.6
+opencv-python-headless==4.13.0.92
+pillow==12.2.0
+reportlab==5.0.1
+requests==2.34.2

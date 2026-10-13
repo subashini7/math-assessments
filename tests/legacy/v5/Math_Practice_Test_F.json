@@ -1,0 +1,408 @@
+{
+  "test_id": "F",
+  "version": 5,
+  "qr_payload": "mpt:test=F&v=5",
+  "title": "Math Practice Test F",
+  "page_size": "A4",
+  "standards_jurisdiction": "California / CCSS (identical codes and text at these standards)",
+  "regions_note": "Regions are [x, y, width, height] as fractions of the rectangle between the centres of the four corner markers, origin top-left. Warp the photo so the markers map to that rectangle, then crop. The working region is everything below the question text, so it also contains the answer box.",
+  "questions": [
+    {
+      "id": "F1",
+      "number": 1,
+      "text": "Work out 4 × (7 + 2) – 10",
+      "answer": "26",
+      "accept": [
+        "26"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Evaluate expressions with parentheses",
+      "standard": "5.OA.A.1",
+      "learning_component_ids": [
+        "9355ee95-a7a5-5a41-89e1-8ffaef80af0b"
+      ],
+      "common_wrong_answers": {
+        "20": "Worked left to right, ignoring the parentheses: 4 × 7 = 28, + 2, – 10"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.1601,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "F2",
+      "number": 2,
+      "text": "Work out 36 × 1245",
+      "answer": "44820",
+      "accept": [
+        "44820"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiply 2-digit by 4-digit whole numbers",
+      "standard": "5.NBT.B.5",
+      "learning_component_ids": [
+        "39c3502c-ceeb-583a-aad8-de683defa923"
+      ],
+      "common_wrong_answers": {},
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.1601,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "F3",
+      "number": 3,
+      "text": "Work out 123 × 2045",
+      "answer": "251535",
+      "accept": [
+        "251535"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiply 3-digit by 4-digit whole numbers",
+      "standard": "5.NBT.B.5",
+      "learning_component_ids": [
+        "39865eff-a84f-5354-b603-13ad5b99dd9f"
+      ],
+      "common_wrong_answers": {},
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.3303,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "F4",
+      "number": 4,
+      "text": "Work out 0.84 ÷ 0.4",
+      "answer": "2.1",
+      "accept": [
+        "2.1",
+        "2.10"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Divide decimals to hundredths",
+      "standard": "5.NBT.B.7",
+      "learning_component_ids": [
+        "90b36ead-9116-53a0-9331-c9dd7cb6b4c1"
+      ],
+      "common_wrong_answers": {
+        "0.21": "Decimal point one place out",
+        "21": "Lost the decimal point entirely"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.3303,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "F5",
+      "number": 5,
+      "text": "Work out 3 1/4 – 1 2/3",
+      "answer": "1 7/12",
+      "accept": [
+        "1 7/12",
+        "19/12"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Subtract mixed numbers with unlike denominators",
+      "standard": "5.NF.A.1",
+      "learning_component_ids": [
+        "3f8f80e7-a5c3-56e5-bf2d-90c5bb5f4f08"
+      ],
+      "common_wrong_answers": {},
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.5004,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "F6",
+      "number": 6,
+      "text": "A rope is 2.5 meters long. Three pieces of 40 cm each are cut off. How many centimeters are left?",
+      "answer": "130 cm",
+      "accept": [
+        "130 cm",
+        "130cm",
+        "130"
+      ],
+      "unit": "cm",
+      "unit_required": true,
+      "skill": "Use conversions in a multi-step problem",
+      "standard": "5.MD.A.1",
+      "learning_component_ids": [
+        "0013fbee-3e76-500f-9978-42aa1a65f105"
+      ],
+      "common_wrong_answers": {
+        "130 m": "Correct number, but the answer is in centimeters",
+        "210 cm": "Subtracted only one 40 cm piece instead of three"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.5371,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.7177,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "F7",
+      "number": 7,
+      "text": "A point has coordinates (0, 5). How far up from the origin is it?",
+      "answer": "5",
+      "accept": [
+        "5",
+        "5 units"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Interpret the y-coordinate as vertical distance",
+      "standard": "5.G.A.1",
+      "learning_component_ids": [
+        "ccfcad8c-5c0e-5b3e-8c98-78b149ecdd97"
+      ],
+      "common_wrong_answers": {},
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.6889,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.2343,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "F8",
+      "number": 8,
+      "text": "Which point is 2 to the right of the origin and 7 up? Write its coordinates.",
+      "answer": "(2, 7)",
+      "accept": [
+        "(2, 7)",
+        "(2,7)",
+        "2, 7",
+        "2,7"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Plot a point from an ordered pair",
+      "standard": "5.G.A.1",
+      "learning_component_ids": [
+        "9f6772f5-1115-58c8-b53d-b5f26ccd0c9d"
+      ],
+      "common_wrong_answers": {},
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.6889,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.7177,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "F9",
+      "number": 9,
+      "text": "A tank measures 10 cm by 5 cm by 4 cm. What volume of water fills it?",
+      "answer": "200 cm³",
+      "accept": [
+        "200 cm³",
+        "200 cm3",
+        "200 cubic cm"
+      ],
+      "unit": null,
+      "unit_required": true,
+      "skill": "Find volume by multiplying edge lengths",
+      "standard": "5.MD.C.5",
+      "learning_component_ids": [
+        "f6cc98df-8d45-5acc-868f-9fd3fa9f58e5"
+      ],
+      "common_wrong_answers": {
+        "19 cm³": "Added the edges instead of multiplying them",
+        "200 cm": "Correct number, but a volume needs cubic units"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.859,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.2343,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "F10",
+      "number": 10,
+      "text": "A point is 6 along the x-axis and 3 along the y-axis. Write its coordinates.",
+      "answer": "(6, 3)",
+      "accept": [
+        "(6, 3)",
+        "(6,3)",
+        "6, 3",
+        "6,3"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Name a point on the coordinate plane",
+      "standard": "5.G.A.1",
+      "learning_component_ids": [
+        "cf895e10-7702-59bb-9bc6-11e262f4c2f6",
+        "d94abe72-3f88-5c8f-9fd5-40a0bd9471ec"
+      ],
+      "common_wrong_answers": {
+        "(3, 6)": "Gave the coordinates the wrong way round"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.859,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.7177,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    }
+  ]
+}

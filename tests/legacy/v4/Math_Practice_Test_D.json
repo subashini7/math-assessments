@@ -1,0 +1,409 @@
+{
+  "test_id": "D",
+  "version": 4,
+  "qr_payload": "mpt:test=D&v=4",
+  "title": "Math Practice Test D",
+  "page_size": "A4",
+  "standards_jurisdiction": "California / CCSS (identical codes and text at these standards)",
+  "regions_note": "Regions are [x, y, width, height] as fractions of the rectangle between the centres of the four corner markers, origin top-left. Warp the photo so the markers map to that rectangle, then crop. The working region is everything below the question text, so it also contains the answer box.",
+  "questions": [
+    {
+      "id": "D1",
+      "number": 1,
+      "text": "Work out 20 – (3 × 4) + 6",
+      "answer": "14",
+      "accept": [
+        "14"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Evaluate expressions with parentheses",
+      "standard": "5.OA.A.1",
+      "learning_component_ids": [
+        "9355ee95-a7a5-5a41-89e1-8ffaef80af0b"
+      ],
+      "common_wrong_answers": {
+        "74": "Worked left to right instead of doing the parentheses first"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.1038,
+          0.465,
+          0.162
+        ],
+        "working": [
+          0.0331,
+          0.1374,
+          0.4503,
+          0.1234
+        ],
+        "answer": [
+          0.2343,
+          0.2177,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "D2",
+      "number": 2,
+      "text": "Which is greater, 0.07 or 0.1?",
+      "answer": "0.1",
+      "accept": [
+        "0.1",
+        "0.10"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Compare decimals to thousandths",
+      "standard": "5.NBT.A.3",
+      "learning_component_ids": [
+        "b9d27304-5ca2-57b9-968d-e5c946985513"
+      ],
+      "common_wrong_answers": {
+        "0.07": "Took the longer decimal to be the larger one"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.1038,
+          0.465,
+          0.162
+        ],
+        "working": [
+          0.5166,
+          0.1374,
+          0.4503,
+          0.1234
+        ],
+        "answer": [
+          0.7177,
+          0.2177,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "D3",
+      "number": 3,
+      "text": "Work out 58 × 34",
+      "answer": "1972",
+      "accept": [
+        "1972"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiply multi-digit whole numbers",
+      "standard": "5.NBT.B.5",
+      "learning_component_ids": [
+        "c944c44a-afc2-5b4c-8e61-a4a8332496e0"
+      ],
+      "common_wrong_answers": {},
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.2785,
+          0.465,
+          0.162
+        ],
+        "working": [
+          0.0331,
+          0.312,
+          0.4503,
+          0.1234
+        ],
+        "answer": [
+          0.2343,
+          0.3924,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "D4",
+      "number": 4,
+      "text": "Work out 4284 ÷ 42",
+      "answer": "102",
+      "accept": [
+        "102"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Divide with two-digit divisors",
+      "standard": "5.NBT.B.6",
+      "learning_component_ids": [
+        "e8d8c43a-3608-51dd-86ad-db49bcafef64",
+        "05283aa2-d294-5f59-93ee-ac361e3a10f7"
+      ],
+      "common_wrong_answers": {},
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.2785,
+          0.465,
+          0.162
+        ],
+        "working": [
+          0.5166,
+          0.312,
+          0.4503,
+          0.1234
+        ],
+        "answer": [
+          0.7177,
+          0.3924,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "D5",
+      "number": 5,
+      "text": "Work out 7.2 – 3.45",
+      "answer": "3.75",
+      "accept": [
+        "3.75"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Subtract decimals to hundredths",
+      "standard": "5.NBT.B.7",
+      "learning_component_ids": [
+        "445dd0dd-00aa-5fef-879e-58f62fd1b8db"
+      ],
+      "common_wrong_answers": {
+        "4.25": "Subtracted the smaller digit from the larger in each column instead of borrowing",
+        "3.85": "Borrowing error across the added zero"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.4532,
+          0.465,
+          0.162
+        ],
+        "working": [
+          0.0331,
+          0.4867,
+          0.4503,
+          0.1234
+        ],
+        "answer": [
+          0.2343,
+          0.5671,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "D6",
+      "number": 6,
+      "text": "Work out 5/6 – 1/4",
+      "answer": "7/12",
+      "accept": [
+        "7/12"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Subtract fractions with unlike denominators",
+      "standard": "5.NF.A.1",
+      "learning_component_ids": [
+        "089c550e-f3a4-5ea2-959a-34e267c3e374"
+      ],
+      "common_wrong_answers": {
+        "4/2": "Subtracted the numerators and the denominators",
+        "2": "Subtracted the numerators and the denominators"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.4532,
+          0.465,
+          0.162
+        ],
+        "working": [
+          0.5166,
+          0.4867,
+          0.4503,
+          0.1234
+        ],
+        "answer": [
+          0.7177,
+          0.5671,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "D7",
+      "number": 7,
+      "text": "Work out 3/8 × 2/3",
+      "answer": "1/4",
+      "accept": [
+        "1/4",
+        "6/24"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiply a fraction by a fraction",
+      "standard": "5.NF.B.4",
+      "learning_component_ids": [
+        "4aeee2dd-3e67-5d7e-b843-39650a018660"
+      ],
+      "common_wrong_answers": {
+        "25/24": "Added instead of multiplying"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.6279,
+          0.465,
+          0.162
+        ],
+        "working": [
+          0.0331,
+          0.6614,
+          0.4503,
+          0.1234
+        ],
+        "answer": [
+          0.2343,
+          0.7418,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "D8",
+      "number": 8,
+      "text": "How many halves are there in 6? (Work out 6 ÷ 1/2)",
+      "answer": "12",
+      "accept": [
+        "12"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Divide with unit fractions",
+      "standard": "5.NF.B.7",
+      "learning_component_ids": [
+        "bfa79064-fe1e-5430-81de-c4155d27d0b4"
+      ],
+      "common_wrong_answers": {
+        "3": "Halved 6 instead of dividing by a half"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.6279,
+          0.465,
+          0.162
+        ],
+        "working": [
+          0.5166,
+          0.6798,
+          0.4503,
+          0.1051
+        ],
+        "answer": [
+          0.7177,
+          0.7418,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "D9",
+      "number": 9,
+      "text": "How many meters are there in 3.5 kilometers?",
+      "answer": "3500 m",
+      "accept": [
+        "3500 m",
+        "3500m",
+        "3500"
+      ],
+      "unit": "m",
+      "unit_required": true,
+      "skill": "Convert measurement units",
+      "standard": "5.MD.A.1",
+      "learning_component_ids": [
+        "783e04ae-9b0c-5680-9b1a-7084998118c9"
+      ],
+      "common_wrong_answers": {
+        "350 m": "Multiplied by 100 instead of 1000",
+        "35 m": "Multiplied by 10 instead of 1000"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.8025,
+          0.465,
+          0.162
+        ],
+        "working": [
+          0.0331,
+          0.8544,
+          0.4503,
+          0.1051
+        ],
+        "answer": [
+          0.2343,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "D10",
+      "number": 10,
+      "text": "Start at the origin. Move 3 to the right and 2 up. Write the coordinates of the point you land on.",
+      "answer": "(3, 2)",
+      "accept": [
+        "(3, 2)",
+        "(3,2)",
+        "3, 2",
+        "3,2"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Name a point on the coordinate plane",
+      "standard": "5.G.A.1",
+      "learning_component_ids": [
+        "cf895e10-7702-59bb-9bc6-11e262f4c2f6",
+        "d94abe72-3f88-5c8f-9fd5-40a0bd9471ec"
+      ],
+      "common_wrong_answers": {
+        "(2, 3)": "Gave the coordinates the wrong way round (up before across)"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.8025,
+          0.465,
+          0.162
+        ],
+        "working": [
+          0.5166,
+          0.8728,
+          0.4503,
+          0.0867
+        ],
+        "answer": [
+          0.7177,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    }
+  ]
+}

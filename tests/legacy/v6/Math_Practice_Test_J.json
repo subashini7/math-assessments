@@ -1,0 +1,431 @@
+{
+  "test_id": "J",
+  "version": 6,
+  "qr_payload": "mpt:test=J&v=6",
+  "title": "Math Practice Test J",
+  "page_size": "A4",
+  "standards_jurisdiction": "California / CCSS (identical codes and text at these standards)",
+  "regions_note": "Regions are [x, y, width, height] as fractions of the rectangle between the centres of the four corner markers, origin top-left. Warp the photo so the markers map to that rectangle, then crop. The working region is everything below the question text, so it also contains the answer box.",
+  "questions": [
+    {
+      "id": "J1",
+      "number": 1,
+      "text": "A recipe uses 3 cups of flour for every 2 cups of milk. How much flour goes with 8 cups of milk?",
+      "answer": "12 cups",
+      "accept": [
+        "12 cups",
+        "12 cup"
+      ],
+      "unit": "cups",
+      "unit_required": true,
+      "skill": "Ratio reasoning in a real-world problem",
+      "standard": "6.RP.A.3",
+      "learning_component_ids": [
+        "5b9cd29a-a10c-5d41-af27-9d632630c4db"
+      ],
+      "common_wrong_answers": {
+        "9 cups": "Added 6 to both (2 -> 8, so 3 -> 9) instead of multiplying by 4",
+        "5 1/3 cups": "Turned the ratio upside down: 2/3 of 8",
+        "12": "Correct number, but no units"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.1969,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.2343,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "J2",
+      "number": 2,
+      "text": "2 pens cost $3, 4 pens cost $6, and 6 pens cost $10. Is the cost proportional to the number of pens? Write yes or no.",
+      "answer": "no",
+      "accept": [
+        "no",
+        "No"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Recognize a proportional relationship",
+      "standard": "7.RP.A.2",
+      "learning_component_ids": [
+        "b02c3de8-7535-5bfc-8e3f-8437bc32a140"
+      ],
+      "common_wrong_answers": {
+        "yes": "Saw both amounts going up and called it proportional without checking the unit price",
+        "Yes": "Saw both amounts going up and called it proportional without checking the unit price"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.1969,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.7177,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "J3",
+      "number": 3,
+      "text": "A taxi charges $3 plus $2 for each mile. A ride costs $17. How many miles was the ride?",
+      "answer": "7 miles",
+      "accept": [
+        "7 miles",
+        "7 mi"
+      ],
+      "unit": "miles",
+      "unit_required": true,
+      "skill": "Write and solve an equation from a word problem",
+      "standard": "7.EE.B.4",
+      "learning_component_ids": [
+        "108e49e3-c3ca-58ed-a70d-95086aa90c52",
+        "ffdefe1f-e62c-5137-89c4-ef901293bfe8"
+      ],
+      "common_wrong_answers": {
+        "8.5 miles": "Forgot to take off the $3 fee first",
+        "10 miles": "Added the $3 fee instead of taking it off",
+        "7": "Correct number, but no units"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.367,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.2343,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "J4",
+      "number": 4,
+      "text": "A triangular garden bed has a base of 8 m and a height of 5 m. What is its area?",
+      "answer": "20 m²",
+      "accept": [
+        "20 m²",
+        "20 m2",
+        "20 sq m"
+      ],
+      "unit": "m²",
+      "unit_required": true,
+      "skill": "Area of a triangle in a real-world problem",
+      "standard": "6.G.A.1",
+      "learning_component_ids": [
+        "ae975d69-8c4a-580b-aba0-7d9089b3393b"
+      ],
+      "common_wrong_answers": {
+        "40 m²": "Forgot to halve base × height, as on Test H",
+        "20 m": "Correct number, but an area needs square units",
+        "20": "Correct number, but no units"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.3486,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.7177,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "J5",
+      "number": 5,
+      "text": "Work out 4.6 × 10³",
+      "answer": "4600",
+      "accept": [
+        "4600"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiply a decimal by a power of 10",
+      "standard": "5.NBT.A.2",
+      "learning_component_ids": [
+        "14c9562d-c985-5d98-8fe5-a8551e0a20ff",
+        "53dba7fb-c548-5f5b-88cd-e657ec2114d7"
+      ],
+      "common_wrong_answers": {
+        "46": "Moved the point one place: read 10³ as 10",
+        "460": "Moved the point two places",
+        "138": "Read 10³ as 10 × 3"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.5004,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "J6",
+      "number": 6,
+      "text": "Without working it out: is 5/6 × 72 greater than or less than 72?",
+      "answer": "less than",
+      "accept": [
+        "less than",
+        "less",
+        "less than 72",
+        "<"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiplication as scaling",
+      "standard": "5.NF.B.5",
+      "learning_component_ids": [
+        "18ed149f-cd3e-5125-a81b-506b27e3af1f"
+      ],
+      "common_wrong_answers": {
+        "greater than": "Assumed multiplying always makes a number bigger, as on Test H",
+        "greater": "Assumed multiplying always makes a number bigger, as on Test H"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.5188,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.7177,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "J7",
+      "number": 7,
+      "text": "The 7 in 0.7 is worth how many times the 7 in 0.07?",
+      "answer": "10",
+      "accept": [
+        "10",
+        "10 times"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "A digit is worth 10 times the place to its right",
+      "standard": "5.NBT.A.1",
+      "learning_component_ids": [
+        "ba0b5da7-336a-54af-bc1d-c4fbceb2df62"
+      ],
+      "common_wrong_answers": {
+        "1/10": "Gave the relationship the wrong way round",
+        "0.1": "Gave the relationship the wrong way round"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.6889,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.2343,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "J8",
+      "number": 8,
+      "text": "Work out (–8) × 3/4 × (–1/2)",
+      "answer": "3",
+      "accept": [
+        "3"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiply rational numbers using properties of operations",
+      "standard": "7.NS.A.2.c",
+      "learning_component_ids": [
+        "54a463dd-df6b-5ace-afb5-b3b179799e8e"
+      ],
+      "common_wrong_answers": {
+        "-3": "Sign error: two negatives multiply to a positive",
+        "–3": "Sign error: two negatives multiply to a positive"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.6705,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "J9",
+      "number": 9,
+      "text": "A ribbon 1 3/4 m long is joined to one 2 1/3 m long. What is the total length?",
+      "answer": "4 1/12 m",
+      "accept": [
+        "4 1/12 m",
+        "4 1/12m",
+        "49/12 m"
+      ],
+      "unit": "m",
+      "unit_required": true,
+      "skill": "Fraction addition word problem",
+      "standard": "5.NF.A.2",
+      "learning_component_ids": [
+        "4b749054-84a9-5279-bb7c-9ac485005421"
+      ],
+      "common_wrong_answers": {
+        "3 4/7 m": "Added the numerators and the denominators: 3/4 + 1/3 = 4/7",
+        "4 1/12": "Correct number, but no units"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.859,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.2343,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "J10",
+      "number": 10,
+      "text": "Start at the origin. Move 5 to the right and 3 up. Write the coordinates of the point.",
+      "answer": "(5, 3)",
+      "accept": [
+        "(5, 3)",
+        "(5,3)",
+        "5, 3",
+        "5,3"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Interpret both coordinates as moves from the origin",
+      "standard": "5.G.A.1",
+      "learning_component_ids": [
+        "cf895e10-7702-59bb-9bc6-11e262f4c2f6"
+      ],
+      "common_wrong_answers": {
+        "(3, 5)": "Gave the coordinates the wrong way round (up before across)",
+        "(0, 3)": "Kept the origin's x-coordinate and applied only the vertical move, as on Test D"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.859,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.7177,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    }
+  ]
+}

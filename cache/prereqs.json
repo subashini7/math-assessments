@@ -1,0 +1,86 @@
+{
+  "standards": {
+    "6.NS.B.3": {
+      "description": "Fluently add, subtract, multiply, and divide multi-digit decimals using the standard algorithm for each operation.",
+      "grade": "6",
+      "prereqs": [
+        "6.NS.B.2",
+        "5.NBT.B.5",
+        "5.NBT.B.6",
+        "5.NBT.B.7"
+      ]
+    },
+    "7.RP.A.3": {
+      "description": "Use proportional relationships to solve multistep ratio and percent problems.",
+      "grade": "7",
+      "prereqs": [
+        "7.RP.A.2",
+        "6.RP.A.3"
+      ]
+    },
+    "7.NS.A.3": {
+      "description": "Solve real-world and mathematical problems involving the four operations with rational numbers.",
+      "grade": "7",
+      "prereqs": [
+        "4.OA.A.3",
+        "6.NS.B.3",
+        "7.NS.A.2.c",
+        "7.NS.A.1.d",
+        "7.NS.A.2.d"
+      ]
+    },
+    "7.EE.B.4.a": {
+      "description": "Solve word problems leading to equations of the form px + q = r and p(x + q) = r.",
+      "grade": "7",
+      "prereqs": [
+        "7.NS.A.3",
+        "6.EE.B.6",
+        "6.EE.B.7"
+      ]
+    },
+    "6.RP.A.3.c": {
+      "description": "Find a percent of a quantity as a rate per 100; solve problems involving finding the whole given a part and the percent.",
+      "grade": "6",
+      "prereqs": [
+        "6.RP.A.2"
+      ]
+    },
+    "7.EE.B.4": {
+      "description": "Use variables to represent quantities ... construct simple equations and inequalities.",
+      "grade": "7",
+      "prereqs": [],
+      "substandards": [
+        "7.EE.B.4.a",
+        "7.EE.B.4.b"
+      ]
+    },
+    "6.RP.A.3": {
+      "description": "Use ratio and rate reasoning to solve real-world and mathematical problems.",
+      "grade": "6",
+      "prereqs": [],
+      "substandards": [
+        "6.RP.A.3.a",
+        "6.RP.A.3.b",
+        "6.RP.A.3.c",
+        "6.RP.A.3.d"
+      ]
+    }
+  },
+  "descriptions": {
+    "6.NS.B.2": "Fluently divide multi-digit numbers using the standard algorithm.",
+    "5.NBT.B.5": "Fluently multiply multi-digit whole numbers using the standard algorithm.",
+    "5.NBT.B.6": "Find whole-number quotients of whole numbers with up to four-digit dividends and two-digit divisors, using strategies based on place value, the properties of operations, and/or the relationship between multiplication and division. Illustrate and explain the calculation by using equations, rectangular arrays, and/or area models.",
+    "5.NBT.B.7": "Add, subtract, multiply, and divide decimals to hundredths, using concrete models or drawings and strategies based on place value, properties of operations, and/or the relationship between addition and subtraction; relate the strategy to a written method and explain the reasoning used.",
+    "7.RP.A.2": "Recognize and represent proportional relationships between quantities.",
+    "4.OA.A.3": "Solve multistep word problems posed with whole numbers and having whole-number answers using the four operations, including problems in which remainders must be interpreted. Represent these problems using equations with a letter standing for the unknown quantity. Assess the reasonableness of answers using mental computation and estimation strategies including rounding.",
+    "6.EE.B.6": "Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set.",
+    "6.EE.B.7": "Solve real-world and mathematical problems by writing and solving equations of the form $x + p = q$ and $px = q$ for cases in which $p$, $q$ and $x$ are all nonnegative rational numbers.",
+    "6.RP.A.2": "Understand the concept of a unit rate $\\frac{a}{b}$ associated with a ratio a:b with $b \\neq 0$, and use rate language in the context of a ratio relationship.",
+    "7.NS.A.2.c": "Apply properties of operations as strategies to multiply and divide rational numbers.",
+    "7.NS.A.1.d": "Apply properties of operations as strategies to add and subtract rational numbers.",
+    "7.NS.A.2.d": "Convert a rational number to a decimal using long division; know that the decimal form of a rational number terminates in 0s or eventually repeats."
+  },
+  "attribution": "Learning Commons knowledge graph, CC BY 4.0",
+  "source": "seeded 2026-10-07 from the SAP Coherence Map",
+  "description_source": "verbatim from the Learning Commons knowledge graph, re-checked 2026-10-07"
+}

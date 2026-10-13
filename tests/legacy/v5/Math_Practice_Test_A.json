@@ -1,0 +1,424 @@
+{
+  "test_id": "A",
+  "version": 5,
+  "qr_payload": "mpt:test=A&v=5",
+  "title": "Math Practice Test A",
+  "page_size": "A4",
+  "standards_jurisdiction": "California / CCSS (identical codes and text at these standards)",
+  "regions_note": "Regions are [x, y, width, height] as fractions of the rectangle between the centres of the four corner markers, origin top-left. Warp the photo so the markers map to that rectangle, then crop. The working region is everything below the question text, so it also contains the answer box.",
+  "questions": [
+    {
+      "id": "A1",
+      "number": 1,
+      "text": "Work out 10.4 – 6.785",
+      "answer": "3.615",
+      "accept": [
+        "3.615"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Subtract multi-digit decimals",
+      "standard": "6.NS.B.3",
+      "learning_component_ids": [
+        "a58918aa-f725-5a4c-a902-decd4a759336"
+      ],
+      "common_wrong_answers": {
+        "4.615": "Borrowing error across the added zeros",
+        "4.385": "Subtracted the smaller digit from the larger in each column instead of borrowing",
+        "4.415": "Did 7 − 3 in the tenths column instead of borrowing (observed 2026-10-06)"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.1601,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "A2",
+      "number": 2,
+      "text": "Work out 3.6 × 7",
+      "answer": "25.2",
+      "accept": [
+        "25.2"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiply multi-digit decimals",
+      "standard": "6.NS.B.3",
+      "learning_component_ids": [
+        "e14eddf0-cf6b-5692-ab30-81f5995f4754"
+      ],
+      "common_wrong_answers": {
+        "252": "Dropped the decimal point",
+        "2.52": "Too many decimal places"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.1601,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "A3",
+      "number": 3,
+      "text": "Work out 0.25 × 1.6",
+      "answer": "0.4",
+      "accept": [
+        "0.4",
+        "0.40",
+        "0.400"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiply multi-digit decimals",
+      "standard": "6.NS.B.3",
+      "learning_component_ids": [
+        "e14eddf0-cf6b-5692-ab30-81f5995f4754"
+      ],
+      "common_wrong_answers": {
+        "4": "Too few decimal places",
+        "0.04": "Too many decimal places"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.3303,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "A4",
+      "number": 4,
+      "text": "Work out 17.25 + 8.9 + 0.65",
+      "answer": "26.8",
+      "accept": [
+        "26.8",
+        "26.80"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Add multi-digit decimals",
+      "standard": "6.NS.B.3",
+      "learning_component_ids": [
+        "d04b3e78-76db-568d-aeb2-b575eeac1664"
+      ],
+      "common_wrong_answers": {
+        "18.79": "Misaligned 8.9 as 0.89"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.3303,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "A5",
+      "number": 5,
+      "text": "Work out 9.36 ÷ 4",
+      "answer": "2.34",
+      "accept": [
+        "2.34"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Divide a decimal by a whole number",
+      "standard": "6.NS.B.3",
+      "learning_component_ids": [
+        "0c3f03b8-3989-5489-aa86-b9a63953e545"
+      ],
+      "common_wrong_answers": {
+        "23.4": "Misplaced the decimal point"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.5004,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "A6",
+      "number": 6,
+      "text": "30% of a number is 18. What is the number?",
+      "answer": "60",
+      "accept": [
+        "60"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Find the whole given a part and the percent",
+      "standard": "6.RP.A.3.c",
+      "learning_component_ids": [
+        "e6525dd8-5e57-5c8a-abee-57f64d1c9eb4"
+      ],
+      "common_wrong_answers": {
+        "5.4": "Found 30% of 18 instead of the whole",
+        "23.4": "Added 30% instead of finding the whole"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.5188,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.7177,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "A7",
+      "number": 7,
+      "text": "A game costs $45. Its price is reduced by 20%, and then the new price is reduced by a further 10%. What is the final price?",
+      "answer": "$32.40",
+      "accept": [
+        "$32.40",
+        "$32.4"
+      ],
+      "unit": "$",
+      "unit_required": true,
+      "skill": "Solve multi-step percent problems",
+      "standard": "7.RP.A.3",
+      "learning_component_ids": [
+        "fda5f0e0-0366-5113-931b-3d9930bdfb5a"
+      ],
+      "common_wrong_answers": {
+        "$31.50": "Took 30% off in one step instead of 20% then 10%",
+        "$36.00": "Applied only the first discount",
+        "$13.50": "Gave the discount amount, not the final price",
+        "$0.90": "Took 10% of the $9 discount instead of the new price; never subtracted (observed 2026-10-06)"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.7072,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.2343,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "A8",
+      "number": 8,
+      "text": "Mia buys 4 pens at $1.35 each and a ruler for 85¢. How much change does she get from $10?",
+      "answer": "$3.75",
+      "accept": [
+        "$3.75",
+        "375¢"
+      ],
+      "unit": "$",
+      "unit_required": true,
+      "skill": "Multi-step money problem with decimals",
+      "standard": "7.NS.A.3",
+      "learning_component_ids": [
+        "29a9858d-11e0-5445-9b49-f5eb46ce5341",
+        "1bff6614-a6c0-5ee1-84a5-0da4f870a38f",
+        "39612eaf-3eed-57be-96d2-4ac4abda7d59"
+      ],
+      "common_wrong_answers": {
+        "$7.80": "Forgot to multiply the pens by 4",
+        "$6.25": "Gave the total cost, not the change"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.7072,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.7177,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "A9",
+      "number": 9,
+      "text": "Mom is 5 times as old as Leo. In 3 years' time, Mom will be 4 times as old as Leo. How old is Leo now?",
+      "answer": "9 years",
+      "accept": [
+        "9",
+        "9 years",
+        "9 yrs"
+      ],
+      "unit": "years",
+      "unit_required": false,
+      "skill": "Write and solve an equation from a word problem",
+      "standard": "7.EE.B.4",
+      "learning_component_ids": [
+        "108e49e3-c3ca-58ed-a70d-95086aa90c52",
+        "ffdefe1f-e62c-5137-89c4-ef901293bfe8"
+      ],
+      "common_wrong_answers": {
+        "45": "Gave Mom's age instead of Leo's",
+        "45 years": "Gave Mom's age instead of Leo's"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.8774,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.2343,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "A10",
+      "number": 10,
+      "text": "A ruler and a pencil cost $1.20 together. The ruler costs 40¢ more than the pencil. How much does the pencil cost?",
+      "answer": "40¢",
+      "accept": [
+        "40¢",
+        "$0.40"
+      ],
+      "unit": "¢",
+      "unit_required": true,
+      "skill": "Write and solve an equation from a word problem",
+      "standard": "7.EE.B.4",
+      "learning_component_ids": [
+        "108e49e3-c3ca-58ed-a70d-95086aa90c52",
+        "ffdefe1f-e62c-5137-89c4-ef901293bfe8"
+      ],
+      "common_wrong_answers": {
+        "80¢": "Gave the ruler's price",
+        "60¢": "Split $1.20 in half without the 40¢ difference"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.8774,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.7177,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    }
+  ]
+}

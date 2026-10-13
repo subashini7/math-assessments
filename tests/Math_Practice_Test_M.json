@@ -1,0 +1,597 @@
+{
+  "test_id": "M",
+  "fingerprint": "a1f72acd",
+  "qr_payload": "mpt:test=M&h=a1f72acd",
+  "title": "Math Practice Test M",
+  "page_size": "A4",
+  "standards_jurisdiction": "California / CCSS (identical codes and text at these standards)",
+  "regions_note": "Regions are [x, y, width, height] as fractions of the rectangle between the centres of the four corner markers, origin top-left. Warp the photo so the markers map to that rectangle, then crop. The working region is everything below the question text, so it also contains the answer box.",
+  "questions": [
+    {
+      "id": "M1",
+      "number": 1,
+      "text": "Which unit measures the space inside a box: cm, cm² or cm³?",
+      "answer": "cm³",
+      "accept": [
+        "cm³",
+        "cm3",
+        "cubic cm",
+        "cubic centimeters",
+        "cubic centimetres"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Volume is measured in cubic units",
+      "standard": "5.MD.C.3",
+      "learning_component_ids": [
+        "b39daa6d-6ef9-5322-9331-d38a806b52ec"
+      ],
+      "common_wrong_answers": {
+        "cm²": "Picked square units, which measure a flat area",
+        "cm": "Picked a length unit"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.1785,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.2343,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "M2",
+      "number": 2,
+      "text": "Pattern A starts at 0 and adds 3. Pattern B starts at 0 and adds 6. The first pair is (0, 0). Write the 4th pair (A, B).",
+      "answer": "(9, 18)",
+      "accept": [
+        "(9, 18)",
+        "(9,18)",
+        "9, 18",
+        "9,18"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Ordered pairs from two number patterns",
+      "standard": "5.OA.B.3",
+      "learning_component_ids": [
+        "8a9af9bf-82b8-5b6a-a19b-274dca8e60a0",
+        "20eff432-6538-5c5a-862a-cc9e7c5275a6"
+      ],
+      "common_wrong_answers": {
+        "(18, 9)": "Wrote the pair the wrong way round (B before A)",
+        "(12, 24)": "Took the 5th terms: counted from 3 and 6 instead of from 0",
+        "(9, 12)": "Added 3 to B instead of 6"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.1969,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.7177,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "M3",
+      "number": 3,
+      "text": "This box is full of unit cubes. How many cubes?",
+      "answer": "24",
+      "accept": [
+        "24",
+        "24 cubes",
+        "24 unit cubes",
+        "24 cubic units"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Volume by counting unit cubes",
+      "standard": "5.MD.C.4",
+      "learning_component_ids": [
+        "7f339f4c-abc1-50e7-a0f3-448af44eabec"
+      ],
+      "common_wrong_answers": {
+        "18": "Counted only the cubes that can be seen",
+        "9": "Added the edges instead of multiplying"
+      },
+      "figure": {
+        "kind": "cubes",
+        "l": 4,
+        "w": 3,
+        "h": 2
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.367,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.2343,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "M4",
+      "number": 4,
+      "text": "This box is full of unit cubes. How many cubes?",
+      "answer": "18",
+      "accept": [
+        "18",
+        "18 cubes",
+        "18 unit cubes",
+        "18 cubic units"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Volume by counting unit cubes",
+      "standard": "5.MD.C.4",
+      "learning_component_ids": [
+        "7f339f4c-abc1-50e7-a0f3-448af44eabec"
+      ],
+      "common_wrong_answers": {
+        "14": "Counted only the cubes that can be seen",
+        "8": "Added the edges instead of multiplying"
+      },
+      "figure": {
+        "kind": "cubes",
+        "l": 3,
+        "w": 2,
+        "h": 3
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.367,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.7177,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "M5",
+      "number": 5,
+      "text": "Every rectangle has four right angles. Which of these must have four right angles? A square, B rhombus, C rectangle, D parallelogram. Write the letters.",
+      "answer": "A, C",
+      "accept": [
+        "A, C"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Attributes of a category apply to its subcategories",
+      "standard": "5.G.B.3",
+      "learning_component_ids": [
+        "51e2d683-9271-50f3-8bab-f3d5766156fd"
+      ],
+      "common_wrong_answers": {
+        "A": "Missed that a square is a rectangle",
+        "C": "Missed that a square has four right angles too",
+        "A, B, C, D": "Thought every four-sided shape has right angles"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.5738,
+          0.4503,
+          0.0454
+        ],
+        "answer": [
+          0.2343,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "M6",
+      "number": 6,
+      "text": "Which of these shapes are parallelograms? Write the letters.",
+      "answer": "A, C",
+      "accept": [
+        "A, C"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Classify quadrilaterals by their properties",
+      "standard": "5.G.B.4",
+      "learning_component_ids": [
+        "175a45df-f09a-50cd-b5f3-54826ac750a7"
+      ],
+      "common_wrong_answers": {
+        "A": "Missed the rhombus: it is a parallelogram with equal sides",
+        "A, B, C": "Counted the trapezoid, which has only one pair of parallel sides",
+        "A, C, D": "Counted the kite, which has no parallel sides"
+      },
+      "figure": {
+        "kind": "shapes",
+        "shapes": [
+          {
+            "label": "A",
+            "pts": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0.6
+              ],
+              [
+                0,
+                0.6
+              ]
+            ]
+          },
+          {
+            "label": "B",
+            "pts": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                0.75,
+                0.6
+              ],
+              [
+                0.25,
+                0.6
+              ]
+            ]
+          },
+          {
+            "label": "C",
+            "pts": [
+              [
+                0.5,
+                0
+              ],
+              [
+                1,
+                0.35
+              ],
+              [
+                0.5,
+                0.7
+              ],
+              [
+                0,
+                0.35
+              ]
+            ]
+          },
+          {
+            "label": "D",
+            "pts": [
+              [
+                0.5,
+                0
+              ],
+              [
+                0.95,
+                0.52
+              ],
+              [
+                0.5,
+                0.72
+              ],
+              [
+                0.05,
+                0.52
+              ]
+            ]
+          }
+        ]
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.5555,
+          0.4503,
+          0.0638
+        ],
+        "answer": [
+          0.7177,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "M7",
+      "number": 7,
+      "text": "The line plot shows the juice in each glass. How much juice is there in all?",
+      "answer": "4 3/4 cups",
+      "accept": [
+        "4 3/4 cups",
+        "19/4 cups"
+      ],
+      "unit": "cups",
+      "unit_required": true,
+      "skill": "Use fraction operations on a line plot",
+      "standard": "5.MD.B.2",
+      "learning_component_ids": [
+        "fcae5c49-fbc6-5f91-990b-7a786b798824"
+      ],
+      "common_wrong_answers": {
+        "8 cups": "Counted the glasses (the x marks) instead of adding the amounts",
+        "8": "Counted the glasses",
+        "2 1/2 cups": "Added each amount once, ignoring how many x marks it has",
+        "4 3/4": "Correct number, but no units"
+      },
+      "figure": {
+        "kind": "lineplot",
+        "denominator": 4,
+        "max": 1,
+        "caption": "cups of juice in each glass",
+        "values": {
+          "1/4": 2,
+          "1/2": 3,
+          "3/4": 1,
+          "1": 2
+        }
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.7439,
+          0.4503,
+          0.0454
+        ],
+        "answer": [
+          0.2343,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "M8",
+      "number": 8,
+      "text": "How much more juice is in the fullest glass than in the emptiest?",
+      "answer": "3/4 cup",
+      "accept": [
+        "3/4 cup",
+        "3/4 cups"
+      ],
+      "unit": "cups",
+      "unit_required": true,
+      "skill": "Use fraction operations on a line plot",
+      "standard": "5.MD.B.2",
+      "learning_component_ids": [
+        "fcae5c49-fbc6-5f91-990b-7a786b798824"
+      ],
+      "common_wrong_answers": {
+        "1 cup": "Gave the fullest glass, not the difference",
+        "1/4 cup": "Gave the emptiest glass, not the difference",
+        "3/4": "Correct number, but no units"
+      },
+      "figure": {
+        "kind": "lineplot",
+        "denominator": 4,
+        "max": 1,
+        "caption": "cups of juice in each glass",
+        "values": {
+          "1/4": 2,
+          "1/2": 3,
+          "3/4": 1,
+          "1": 2
+        }
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.7256,
+          0.4503,
+          0.0638
+        ],
+        "answer": [
+          0.7177,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "M9",
+      "number": 9,
+      "text": "On this map, x is blocks east and y is blocks north. Write the coordinates of B.",
+      "answer": "(5, 3)",
+      "accept": [
+        "(5, 3)",
+        "(5,3)",
+        "5, 3",
+        "5,3"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Interpret coordinates of points in context",
+      "standard": "5.G.A.2",
+      "learning_component_ids": [
+        "d2cd8103-3cd7-50de-bb43-390aeff1de3d"
+      ],
+      "common_wrong_answers": {
+        "(3, 5)": "Gave the coordinates the wrong way round (north before east)"
+      },
+      "figure": {
+        "kind": "grid",
+        "size": 6,
+        "points": {
+          "A": [
+            1,
+            1
+          ],
+          "B": [
+            5,
+            3
+          ],
+          "C": [
+            1,
+            5
+          ]
+        }
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.9141,
+          0.4503,
+          0.0454
+        ],
+        "answer": [
+          0.2343,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "M10",
+      "number": 10,
+      "text": "How many blocks north of point A is point C?",
+      "answer": "4",
+      "accept": [
+        "4",
+        "4 blocks"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Interpret coordinates of points in context",
+      "standard": "5.G.A.2",
+      "learning_component_ids": [
+        "d2cd8103-3cd7-50de-bb43-390aeff1de3d"
+      ],
+      "common_wrong_answers": {
+        "5": "Gave C's y-coordinate, not the distance from A",
+        "6": "Counted grid lines, not spaces"
+      },
+      "figure": {
+        "kind": "grid",
+        "size": 6,
+        "points": {
+          "A": [
+            1,
+            1
+          ],
+          "B": [
+            5,
+            3
+          ],
+          "C": [
+            1,
+            5
+          ]
+        }
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.8774,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.7177,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    }
+  ]
+}

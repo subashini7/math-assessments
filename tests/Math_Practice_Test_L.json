@@ -1,0 +1,432 @@
+{
+  "test_id": "L",
+  "fingerprint": "93b585f6",
+  "qr_payload": "mpt:test=L&h=93b585f6",
+  "title": "Math Practice Test L",
+  "page_size": "A4",
+  "standards_jurisdiction": "California / CCSS (identical codes and text at these standards)",
+  "regions_note": "Regions are [x, y, width, height] as fractions of the rectangle between the centres of the four corner markers, origin top-left. Warp the photo so the markers map to that rectangle, then crop. The working region is everything below the question text, so it also contains the answer box.",
+  "questions": [
+    {
+      "id": "L1",
+      "number": 1,
+      "text": "Mia has m marbles. Leo has 4 fewer than twice as many as Mia. Write an expression for Leo's marbles.",
+      "answer": "2m – 4",
+      "accept": [
+        "2m – 4",
+        "2m-4",
+        "2m - 4",
+        "2 × m – 4",
+        "2×m-4",
+        "m × 2 – 4"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Use a variable for an unknown number in an expression",
+      "standard": "6.EE.B.6",
+      "learning_component_ids": [
+        "12b69651-752f-5e48-b838-0c669df35b64"
+      ],
+      "common_wrong_answers": {
+        "4 – 2m": "Wrote the subtraction the wrong way round",
+        "4-2m": "Wrote the subtraction the wrong way round",
+        "2m + 4": "Added 4 instead of taking it away"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.1969,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.2343,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "L2",
+      "number": 2,
+      "text": "A bag has 3 1/4 kg of rice. 1 2/3 kg is used. How much rice is left?",
+      "answer": "1 7/12 kg",
+      "accept": [
+        "1 7/12 kg",
+        "19/12 kg"
+      ],
+      "unit": "kg",
+      "unit_required": true,
+      "skill": "Fraction subtraction word problem",
+      "standard": "5.NF.A.2",
+      "learning_component_ids": [
+        "ed662f1f-210b-5895-8841-60c021a792c2"
+      ],
+      "common_wrong_answers": {
+        "2 5/12 kg": "Subtracted the smaller fraction from the larger (2/3 – 1/4) instead of borrowing",
+        "4 11/12 kg": "Added instead of subtracting",
+        "1 7/12": "Correct number, but no units"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.1785,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.7177,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "L3",
+      "number": 3,
+      "text": "What is 35% of 80?",
+      "answer": "28",
+      "accept": [
+        "28"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Find a percent of a quantity",
+      "standard": "6.RP.A.3.c",
+      "learning_component_ids": [
+        "c75962da-9a8e-53a7-81cc-b46d56f5100e"
+      ],
+      "common_wrong_answers": {
+        "52": "Found the part that is left (65%), not 35%",
+        "228.5714285714285714285714286": "Divided by 35% instead of multiplying"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.3303,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "L4",
+      "number": 4,
+      "text": "A rope is 3 1/3 m long. Ella uses 3/5 of it. How long is the piece she uses?",
+      "answer": "2 m",
+      "accept": [
+        "2 m",
+        "2m"
+      ],
+      "unit": "m",
+      "unit_required": true,
+      "skill": "Fraction times a mixed number in a real-world problem",
+      "standard": "5.NF.B.6",
+      "learning_component_ids": [
+        "354638aa-87ee-5083-91a8-817370e282d6"
+      ],
+      "common_wrong_answers": {
+        "2/3 m": "Found 1/5 of the rope instead of 3/5 (as on Test I, divided instead of taking the fraction)",
+        "2 11/15 m": "Subtracted 3/5 instead of finding 3/5 of the rope",
+        "2": "Correct number, but no units"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.3486,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.7177,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "L5",
+      "number": 5,
+      "text": "How many 1/4-cup scoops are there in 5 cups of flour?",
+      "answer": "20",
+      "accept": [
+        "20",
+        "20 scoops"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Divide with unit fractions",
+      "standard": "5.NF.B.7",
+      "learning_component_ids": [
+        "bfa79064-fe1e-5430-81de-c4155d27d0b4"
+      ],
+      "common_wrong_answers": {
+        "1 1/4": "Multiplied by 1/4 instead of dividing",
+        "1/20": "Flipped the dividend instead of the divisor, as on Test C"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.5188,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.2343,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "L6",
+      "number": 6,
+      "text": "A point is at (7, 2). How far is it from the x-axis?",
+      "answer": "2",
+      "accept": [
+        "2",
+        "2 units"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Interpret the y-coordinate as vertical distance",
+      "standard": "5.G.A.1",
+      "learning_component_ids": [
+        "ccfcad8c-5c0e-5b3e-8c98-78b149ecdd97"
+      ],
+      "common_wrong_answers": {
+        "7": "Gave the x-coordinate, the distance across, not up"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.5188,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.7177,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "L7",
+      "number": 7,
+      "text": "Without working it out: is 1 1/2 × 64 greater than or less than 64?",
+      "answer": "greater than",
+      "accept": [
+        "greater than",
+        "greater",
+        "greater than 64",
+        ">"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiplication as scaling",
+      "standard": "5.NF.B.5",
+      "learning_component_ids": [
+        "18ed149f-cd3e-5125-a81b-506b27e3af1f"
+      ],
+      "common_wrong_answers": {
+        "less than": "Thought multiplying by a fraction always makes a number smaller",
+        "less": "Thought multiplying by a fraction always makes a number smaller"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.6889,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.2343,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "L8",
+      "number": 8,
+      "text": "A parallelogram has a base of 9 m and a height of 4 m. What is its area?",
+      "answer": "36 m²",
+      "accept": [
+        "36 m²",
+        "36 m2",
+        "36 sq m"
+      ],
+      "unit": "m²",
+      "unit_required": true,
+      "skill": "Area of a quadrilateral",
+      "standard": "6.G.A.1",
+      "learning_component_ids": [
+        "0d09acef-0351-5d6e-8d35-ec2a950c1cf5"
+      ],
+      "common_wrong_answers": {
+        "18 m²": "Halved base × height as for a triangle; a parallelogram is not halved",
+        "36 m": "Correct number, but an area needs square units",
+        "36": "Correct number, but no units"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.6889,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.7177,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "L9",
+      "number": 9,
+      "text": "Work out 52.7 ÷ 10³",
+      "answer": "0.0527",
+      "accept": [
+        "0.0527"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Divide a decimal by a power of 10",
+      "standard": "5.NBT.A.2",
+      "learning_component_ids": [
+        "14c9562d-c985-5d98-8fe5-a8551e0a20ff",
+        "39c782cc-8c89-5974-98b8-a3158125e227"
+      ],
+      "common_wrong_answers": {
+        "0.527": "Moved the point two places: read 10³ as 100",
+        "5.27": "Moved the point one place",
+        "52700": "Multiplied by 1000 instead of dividing"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.8406,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "L10",
+      "number": 10,
+      "text": "The 3 in 0.03 is what fraction of the 3 in 0.3?",
+      "answer": "1/10",
+      "accept": [
+        "1/10",
+        "0.1",
+        "one tenth"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "A digit is worth 1/10 of the place to its left",
+      "standard": "5.NBT.A.1",
+      "learning_component_ids": [
+        "051034c9-6867-50df-81ba-8a5dc6629e8e"
+      ],
+      "common_wrong_answers": {
+        "10": "Gave the relationship the wrong way round",
+        "10 times": "Gave the relationship the wrong way round"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.859,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.7177,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    }
+  ]
+}

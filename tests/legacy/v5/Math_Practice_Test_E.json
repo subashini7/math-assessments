@@ -1,0 +1,411 @@
+{
+  "test_id": "E",
+  "version": 5,
+  "qr_payload": "mpt:test=E&v=5",
+  "title": "Math Practice Test E",
+  "page_size": "A4",
+  "standards_jurisdiction": "California / CCSS (identical codes and text at these standards)",
+  "regions_note": "Regions are [x, y, width, height] as fractions of the rectangle between the centres of the four corner markers, origin top-left. Warp the photo so the markers map to that rectangle, then crop. The working region is everything below the question text, so it also contains the answer box.",
+  "questions": [
+    {
+      "id": "E1",
+      "number": 1,
+      "text": "Work out 3 × [2 + (8 – 5)]",
+      "answer": "15",
+      "accept": [
+        "15"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Evaluate expressions with nested parentheses",
+      "standard": "5.OA.A.1",
+      "learning_component_ids": [
+        "79506838-311e-5599-a93e-a9d03c0d80ab"
+      ],
+      "common_wrong_answers": {
+        "9": "Worked left to right, ignoring the brackets: 3 × 2 = 6, + 8, – 5"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.1601,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "E2",
+      "number": 2,
+      "text": "Work out 214 × 132",
+      "answer": "28248",
+      "accept": [
+        "28248"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiply 3-digit by 3-digit whole numbers",
+      "standard": "5.NBT.B.5",
+      "learning_component_ids": [
+        "f71f6845-7313-58e0-888a-58cd23fb6266"
+      ],
+      "common_wrong_answers": {},
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.1601,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "E3",
+      "number": 3,
+      "text": "Work out 0.6 × 0.45",
+      "answer": "0.27",
+      "accept": [
+        "0.27",
+        "0.270"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiply decimals to hundredths",
+      "standard": "5.NBT.B.7",
+      "learning_component_ids": [
+        "486045b7-a4dd-591f-a78e-3669cc0a8352"
+      ],
+      "common_wrong_answers": {
+        "2.7": "One decimal place too few",
+        "0.027": "One decimal place too many"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.3303,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "E4",
+      "number": 4,
+      "text": "Work out 8.3 – 4.67",
+      "answer": "3.63",
+      "accept": [
+        "3.63"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Subtract decimals to hundredths",
+      "standard": "5.NBT.B.7",
+      "learning_component_ids": [
+        "445dd0dd-00aa-5fef-879e-58f62fd1b8db"
+      ],
+      "common_wrong_answers": {
+        "4.37": "Subtracted the smaller digit from the larger in each column instead of borrowing"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.3303,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "E5",
+      "number": 5,
+      "text": "Work out 1 1/2 + 2 1/3",
+      "answer": "3 5/6",
+      "accept": [
+        "3 5/6",
+        "23/6"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Add mixed numbers with unlike denominators",
+      "standard": "5.NF.A.1",
+      "learning_component_ids": [
+        "d2565c2d-3930-54d3-864e-e532fd65cf6c"
+      ],
+      "common_wrong_answers": {},
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.5004,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "E6",
+      "number": 6,
+      "text": "Work out 1/5 ÷ 3",
+      "answer": "1/15",
+      "accept": [
+        "1/15"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Divide with unit fractions",
+      "standard": "5.NF.B.7",
+      "learning_component_ids": [
+        "bfa79064-fe1e-5430-81de-c4155d27d0b4"
+      ],
+      "common_wrong_answers": {
+        "15": "Flipped the dividend and multiplied, as on Test C",
+        "5/3": "Flipped the dividend instead of the divisor"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.5004,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "E7",
+      "number": 7,
+      "text": "How many meters are there in 450 centimeters?",
+      "answer": "4.5 m",
+      "accept": [
+        "4.5 m",
+        "4.5m",
+        "4.5"
+      ],
+      "unit": "m",
+      "unit_required": true,
+      "skill": "Convert from a smaller unit to a larger unit",
+      "standard": "5.MD.A.1",
+      "learning_component_ids": [
+        "0c81b764-6a02-55dc-b60e-2d7d9806599a"
+      ],
+      "common_wrong_answers": {
+        "45000": "Multiplied by 100 instead of dividing",
+        "45": "Divided by 10 instead of 100"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.6889,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.2343,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "E8",
+      "number": 8,
+      "text": "A cuboid measures 6 cm by 3 cm by 2 cm. What is its volume?",
+      "answer": "36 cm³",
+      "accept": [
+        "36 cm³",
+        "36 cm3",
+        "36 cubic cm"
+      ],
+      "unit": "cm³",
+      "unit_required": true,
+      "skill": "Volume in a mathematical problem",
+      "standard": "5.MD.C.5",
+      "learning_component_ids": [
+        "96b4f4dc-dcd9-5aba-9cb0-97c1d5b77cab"
+      ],
+      "common_wrong_answers": {
+        "11 cm³": "Added the edges instead of multiplying them",
+        "36 cm": "Correct number, but a volume needs cubic units"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.6889,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.7177,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "E9",
+      "number": 9,
+      "text": "Start at the origin. Move 4 to the right and stay on the x-axis. Write the coordinates of the point.",
+      "answer": "(4, 0)",
+      "accept": [
+        "(4, 0)",
+        "(4,0)",
+        "4, 0",
+        "4,0"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Interpret the x-coordinate as horizontal distance",
+      "standard": "5.G.A.1",
+      "learning_component_ids": [
+        "9a9aba52-8867-53e9-b129-9bdb51a5442b"
+      ],
+      "common_wrong_answers": {
+        "(0, 4)": "Kept the origin's x-coordinate, as on Test D"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.8774,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.2343,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "E10",
+      "number": 10,
+      "text": "What are the coordinates of the origin?",
+      "answer": "(0, 0)",
+      "accept": [
+        "(0, 0)",
+        "(0,0)",
+        "0, 0",
+        "0,0"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Identify the origin",
+      "standard": "5.G.A.1",
+      "learning_component_ids": [
+        "7e59ad79-91b7-53a7-98ec-c85624c7fc75"
+      ],
+      "common_wrong_answers": {},
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.8406,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,425 @@
+{
+  "test_id": "K",
+  "fingerprint": "503f01d0",
+  "qr_payload": "mpt:test=K&h=503f01d0",
+  "title": "Math Practice Test K",
+  "page_size": "A4",
+  "standards_jurisdiction": "California / CCSS (identical codes and text at these standards)",
+  "regions_note": "Regions are [x, y, width, height] as fractions of the rectangle between the centres of the four corner markers, origin top-left. Warp the photo so the markers map to that rectangle, then crop. The working region is everything below the question text, so it also contains the answer box.",
+  "questions": [
+    {
+      "id": "K1",
+      "number": 1,
+      "text": "A jacket costs $60. Its price goes up by 10%, and then the new price is reduced by 25%. What is the final price?",
+      "answer": "$49.50",
+      "accept": [
+        "$49.50",
+        "$49.5"
+      ],
+      "unit": "$",
+      "unit_required": true,
+      "skill": "Solve multi-step percent problems",
+      "standard": "7.RP.A.3",
+      "learning_component_ids": [
+        "fda5f0e0-0366-5113-931b-3d9930bdfb5a"
+      ],
+      "common_wrong_answers": {
+        "$51.00": "Combined +10% and –25% into –15%",
+        "$45.00": "Applied only the decrease",
+        "$66.00": "Applied only the increase",
+        "$1.50": "Took 25% of the $6 increase instead of the new price, as on Test A",
+        "49.50": "Correct number, but no $ sign",
+        "49.5": "Correct number, but no $ sign"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.1969,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.2343,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "K2",
+      "number": 2,
+      "text": "x is 2, 5 and 8. y is 6, 15 and 24. Is y proportional to x? Write yes or no.",
+      "answer": "yes",
+      "accept": [
+        "yes",
+        "Yes"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Recognize a proportional relationship",
+      "standard": "7.RP.A.2",
+      "learning_component_ids": [
+        "b02c3de8-7535-5bfc-8e3f-8437bc32a140"
+      ],
+      "common_wrong_answers": {
+        "no": "Said not proportional, though y ÷ x is 3 every time",
+        "No": "Said not proportional, though y ÷ x is 3 every time"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.1785,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.7177,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "K3",
+      "number": 3,
+      "text": "A car travels 150 miles in 3 hours. At the same speed, how far does it travel in 5 hours?",
+      "answer": "250 miles",
+      "accept": [
+        "250 miles",
+        "250 mi"
+      ],
+      "unit": "miles",
+      "unit_required": true,
+      "skill": "Ratio reasoning in a real-world problem",
+      "standard": "6.RP.A.3",
+      "learning_component_ids": [
+        "5b9cd29a-a10c-5d41-af27-9d632630c4db"
+      ],
+      "common_wrong_answers": {
+        "250": "Correct number, but no units",
+        "50 miles": "Found the speed (miles in one hour), not the distance in 5 hours",
+        "90 miles": "Turned the rate upside down: 150 × 3 ÷ 5"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.367,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.2343,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "K4",
+      "number": 4,
+      "text": "A fish tank is 40 cm long, 25 cm wide and 30 cm tall. What is its volume?",
+      "answer": "30000 cm³",
+      "accept": [
+        "30000 cm³",
+        "30000 cm3",
+        "30000 cubic cm"
+      ],
+      "unit": "cm³",
+      "unit_required": true,
+      "skill": "Find volume by multiplying edge lengths",
+      "standard": "5.MD.C.5",
+      "learning_component_ids": [
+        "f6cc98df-8d45-5acc-868f-9fd3fa9f58e5"
+      ],
+      "common_wrong_answers": {
+        "30000 cm": "Correct number, but a volume needs cubic units",
+        "30000": "Correct number, but no units",
+        "95 cm³": "Added the edges instead of multiplying them"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.3486,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.7177,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "K5",
+      "number": 5,
+      "text": "Work out 608 × 347",
+      "answer": "210976",
+      "accept": [
+        "210976"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiply 3-digit by 3-digit whole numbers",
+      "standard": "5.NBT.B.5",
+      "learning_component_ids": [
+        "f71f6845-7313-58e0-888a-58cd23fb6266"
+      ],
+      "common_wrong_answers": {},
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.5004,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "K6",
+      "number": 6,
+      "text": "Work out 7.56 ÷ 0.36",
+      "answer": "21",
+      "accept": [
+        "21"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Divide multi-digit decimals",
+      "standard": "6.NS.B.3",
+      "learning_component_ids": [
+        "3b40f296-3bd8-5986-b5a4-52cb04f8c7eb"
+      ],
+      "common_wrong_answers": {
+        "2.1": "Decimal point one place out",
+        "0.21": "Decimal point two places out"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.5004,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "K7",
+      "number": 7,
+      "text": "A club costs $20 to join and then $15 a month. Sam has paid $110 in all. For how many months has he been a member?",
+      "answer": "6",
+      "accept": [
+        "6",
+        "6 months",
+        "6 month"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Write and solve an equation from a word problem",
+      "standard": "7.EE.B.4",
+      "learning_component_ids": [
+        "108e49e3-c3ca-58ed-a70d-95086aa90c52",
+        "ffdefe1f-e62c-5137-89c4-ef901293bfe8"
+      ],
+      "common_wrong_answers": {
+        "7": "Divided the total by 15 without taking off the $20 first",
+        "8": "Added the $20 instead of taking it off"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.7072,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.2343,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "K8",
+      "number": 8,
+      "text": "Work out 9.05 – 3.68",
+      "answer": "5.37",
+      "accept": [
+        "5.37"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Subtract decimals to hundredths",
+      "standard": "5.NBT.B.7",
+      "learning_component_ids": [
+        "445dd0dd-00aa-5fef-879e-58f62fd1b8db"
+      ],
+      "common_wrong_answers": {
+        "6.63": "Subtracted the smaller digit from the larger in each column instead of borrowing"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.6705,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "K9",
+      "number": 9,
+      "text": "Work out –4 1/2 + 2 3/4",
+      "answer": "–1 3/4",
+      "accept": [
+        "-1 3/4",
+        "-7/4",
+        "–1 3/4",
+        "–7/4"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Add rational numbers using properties of operations",
+      "standard": "7.NS.A.1.d",
+      "learning_component_ids": [
+        "685131ac-6579-5a09-b675-995525838be5"
+      ],
+      "common_wrong_answers": {
+        "1 3/4": "Dropped the minus sign",
+        "–7 1/4": "Added the sizes and kept the minus sign, moving away from zero (as on Tests G and I)",
+        "-7 1/4": "Added the sizes and kept the minus sign, moving away from zero (as on Tests G and I)"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.8406,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "K10",
+      "number": 10,
+      "text": "Work out (–3) × (–2/3) × 5",
+      "answer": "10",
+      "accept": [
+        "10"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiply rational numbers using properties of operations",
+      "standard": "7.NS.A.2.c",
+      "learning_component_ids": [
+        "54a463dd-df6b-5ace-afb5-b3b179799e8e"
+      ],
+      "common_wrong_answers": {
+        "-10": "Kept a minus sign: two negatives make a positive (as on Test J)",
+        "–10": "Kept a minus sign: two negatives make a positive (as on Test J)"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.8406,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    }
+  ]
+}

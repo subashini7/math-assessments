@@ -1,0 +1,425 @@
+{
+  "test_id": "B",
+  "version": 5,
+  "qr_payload": "mpt:test=B&v=5",
+  "title": "Math Practice Test B",
+  "page_size": "A4",
+  "standards_jurisdiction": "California / CCSS (identical codes and text at these standards)",
+  "regions_note": "Regions are [x, y, width, height] as fractions of the rectangle between the centres of the four corner markers, origin top-left. Warp the photo so the markers map to that rectangle, then crop. The working region is everything below the question text, so it also contains the answer box.",
+  "questions": [
+    {
+      "id": "B1",
+      "number": 1,
+      "text": "Work out 15.1 – 7.46",
+      "answer": "7.64",
+      "accept": [
+        "7.64"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Subtract multi-digit decimals",
+      "standard": "6.NS.B.3",
+      "learning_component_ids": [
+        "a58918aa-f725-5a4c-a902-decd4a759336"
+      ],
+      "common_wrong_answers": {
+        "8.64": "Borrowing error across the added zero"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.1601,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "B2",
+      "number": 2,
+      "text": "Work out 0.6 × 0.07",
+      "answer": "0.042",
+      "accept": [
+        "0.042"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiply multi-digit decimals",
+      "standard": "6.NS.B.3",
+      "learning_component_ids": [
+        "e14eddf0-cf6b-5692-ab30-81f5995f4754"
+      ],
+      "common_wrong_answers": {
+        "0.42": "Too few decimal places",
+        "4.2": "Too few decimal places"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.1601,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "B3",
+      "number": 3,
+      "text": "Work out 4.75 × 8",
+      "answer": "38",
+      "accept": [
+        "38",
+        "38.00",
+        "38.0"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiply multi-digit decimals",
+      "standard": "6.NS.B.3",
+      "learning_component_ids": [
+        "e14eddf0-cf6b-5692-ab30-81f5995f4754"
+      ],
+      "common_wrong_answers": {
+        "3800": "Dropped the decimal point"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.3303,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "B4",
+      "number": 4,
+      "text": "Work out 6.08 + 12.7 + 3.425",
+      "answer": "22.205",
+      "accept": [
+        "22.205"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Add multi-digit decimals",
+      "standard": "6.NS.B.3",
+      "learning_component_ids": [
+        "d04b3e78-76db-568d-aeb2-b575eeac1664"
+      ],
+      "common_wrong_answers": {
+        "10.775": "Misaligned 12.7 as 1.27"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.3303,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "B5",
+      "number": 5,
+      "text": "Work out 13.5 ÷ 6",
+      "answer": "2.25",
+      "accept": [
+        "2.25"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Divide a decimal by a whole number",
+      "standard": "6.NS.B.3",
+      "learning_component_ids": [
+        "0c3f03b8-3989-5489-aa86-b9a63953e545"
+      ],
+      "common_wrong_answers": {
+        "22.5": "Misplaced the decimal point",
+        "2.2": "Stopped dividing too early (remainder dropped)"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.5004,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.2343,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "B6",
+      "number": 6,
+      "text": "36 students went on a field trip. This was 45% of the grade. How many students are in the grade?",
+      "answer": "80 students",
+      "accept": [
+        "80",
+        "80 students"
+      ],
+      "unit": "students",
+      "unit_required": false,
+      "skill": "Find the whole given a part and the percent",
+      "standard": "6.RP.A.3.c",
+      "learning_component_ids": [
+        "e6525dd8-5e57-5c8a-abee-57f64d1c9eb4"
+      ],
+      "common_wrong_answers": {
+        "16.2": "Found 45% of 36 instead of the whole",
+        "16.2 students": "Found 45% of 36 instead of the whole"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.5371,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.7177,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "B7",
+      "number": 7,
+      "text": "A bike costs $240. The price goes up by 10%. Then the new price is reduced by 25%. What is the price now?",
+      "answer": "$198.00",
+      "accept": [
+        "$198.00",
+        "$198"
+      ],
+      "unit": "$",
+      "unit_required": true,
+      "skill": "Solve multi-step percent problems",
+      "standard": "7.RP.A.3",
+      "learning_component_ids": [
+        "fda5f0e0-0366-5113-931b-3d9930bdfb5a"
+      ],
+      "common_wrong_answers": {
+        "$204.00": "Combined +10% and –25% into –15%",
+        "$180.00": "Ignored the 10% increase",
+        "$264.00": "Applied only the increase"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.7072,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.2343,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "B8",
+      "number": 8,
+      "text": "Movie tickets cost $8.75 for an adult and $5.40 for a child. A family buys 2 adult and 3 child tickets and pays with $40. How much change do they get?",
+      "answer": "$6.30",
+      "accept": [
+        "$6.30",
+        "$6.3"
+      ],
+      "unit": "$",
+      "unit_required": true,
+      "skill": "Multi-step money problem with decimals",
+      "standard": "7.NS.A.3",
+      "learning_component_ids": [
+        "29a9858d-11e0-5445-9b49-f5eb46ce5341",
+        "1bff6614-a6c0-5ee1-84a5-0da4f870a38f",
+        "39612eaf-3eed-57be-96d2-4ac4abda7d59"
+      ],
+      "common_wrong_answers": {
+        "$25.85": "Forgot to multiply the tickets",
+        "$33.70": "Gave the total cost, not the change"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.7256,
+          0.4503,
+          0.0638
+        ],
+        "answer": [
+          0.7177,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "B9",
+      "number": 9,
+      "text": "Sara is 6 years older than Tom. Their ages add up to 30. How old is Sara?",
+      "answer": "18 years",
+      "accept": [
+        "18",
+        "18 years",
+        "18 yrs"
+      ],
+      "unit": "years",
+      "unit_required": false,
+      "skill": "Write and solve an equation from a word problem",
+      "standard": "7.EE.B.4",
+      "learning_component_ids": [
+        "108e49e3-c3ca-58ed-a70d-95086aa90c52",
+        "ffdefe1f-e62c-5137-89c4-ef901293bfe8"
+      ],
+      "common_wrong_answers": {
+        "12": "Gave Tom's age instead of Sara's",
+        "12 years": "Gave Tom's age instead of Sara's",
+        "15": "Split 30 in half without the 6-year difference",
+        "15 years": "Split 30 in half without the 6-year difference"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.859,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.2343,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "B10",
+      "number": 10,
+      "text": "A pen costs 3 times as much as a pencil. Together they cost $2.40. How much does the pen cost?",
+      "answer": "$1.80",
+      "accept": [
+        "$1.80",
+        "$1.8",
+        "180¢"
+      ],
+      "unit": "$",
+      "unit_required": true,
+      "skill": "Write and solve an equation from a word problem",
+      "standard": "7.EE.B.4",
+      "learning_component_ids": [
+        "108e49e3-c3ca-58ed-a70d-95086aa90c52",
+        "ffdefe1f-e62c-5137-89c4-ef901293bfe8"
+      ],
+      "common_wrong_answers": {
+        "$0.60": "Gave the pencil's price",
+        "60¢": "Gave the pencil's price",
+        "$0.80": "Divided $2.40 by 3 instead of 4"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.8774,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.7177,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    }
+  ]
+}

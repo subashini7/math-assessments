@@ -1,0 +1,436 @@
+{
+  "test_id": "H",
+  "version": 5,
+  "qr_payload": "mpt:test=H&v=5",
+  "title": "Math Practice Test H",
+  "page_size": "A4",
+  "standards_jurisdiction": "California / CCSS (identical codes and text at these standards)",
+  "regions_note": "Regions are [x, y, width, height] as fractions of the rectangle between the centres of the four corner markers, origin top-left. Warp the photo so the markers map to that rectangle, then crop. The working region is everything below the question text, so it also contains the answer box.",
+  "questions": [
+    {
+      "id": "H1",
+      "number": 1,
+      "text": "5 friends share 3 pizzas equally. What fraction of a pizza does each friend get?",
+      "answer": "3/5",
+      "accept": [
+        "3/5",
+        "3/5 pizza",
+        "3/5 of a pizza"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "A fraction as division in a sharing problem",
+      "standard": "5.NF.B.3",
+      "learning_component_ids": [
+        "35bc1efc-c989-50af-b620-a7bd77f2f808",
+        "26645597-c6a9-5497-b3a2-63f304ab1de1"
+      ],
+      "common_wrong_answers": {
+        "5/3": "Divided 5 by 3 instead of 3 by 5",
+        "1 2/3": "Divided 5 by 3 instead of 3 by 5"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.1785,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.2343,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "H2",
+      "number": 2,
+      "text": "Without working it out: is 3/4 × 250 greater than, less than, or equal to 250?",
+      "answer": "less than",
+      "accept": [
+        "less than",
+        "less",
+        "less than 250",
+        "<"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiplication as scaling",
+      "standard": "5.NF.B.5",
+      "learning_component_ids": [
+        "18ed149f-cd3e-5125-a81b-506b27e3af1f"
+      ],
+      "common_wrong_answers": {
+        "greater than": "Assumed multiplying always makes a number bigger",
+        "greater": "Assumed multiplying always makes a number bigger"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.1266,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.1785,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.7177,
+          0.236,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "H3",
+      "number": 3,
+      "text": "Sam ran 2 1/4 miles on Monday and 1 2/3 miles on Tuesday. How much farther did he run on Monday?",
+      "answer": "7/12 mile",
+      "accept": [
+        "7/12 mile",
+        "7/12 miles",
+        "7/12 mi"
+      ],
+      "unit": "miles",
+      "unit_required": true,
+      "skill": "Fraction subtraction word problem",
+      "standard": "5.NF.A.2",
+      "learning_component_ids": [
+        "ed662f1f-210b-5895-8841-60c021a792c2"
+      ],
+      "common_wrong_answers": {
+        "3 11/12 miles": "Added the distances instead of subtracting",
+        "1 5/12 miles": "Subtracted the smaller fraction from the larger (2/3 – 1/4) instead of borrowing",
+        "7/12": "Correct number, but no units"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.367,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.2343,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "H4",
+      "number": 4,
+      "text": "Half a pizza is shared equally among 3 friends. What fraction of the whole pizza does each friend get?",
+      "answer": "1/6",
+      "accept": [
+        "1/6",
+        "1/6 pizza",
+        "1/6 of the pizza"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Divide with unit fractions",
+      "standard": "5.NF.B.7",
+      "learning_component_ids": [
+        "bfa79064-fe1e-5430-81de-c4155d27d0b4"
+      ],
+      "common_wrong_answers": {
+        "6": "Flipped the dividend and multiplied, as on Test C (2/1 × 3)",
+        "1 1/2": "Multiplied by 3 instead of dividing"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.2967,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.367,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.7177,
+          0.4061,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "H5",
+      "number": 5,
+      "text": "A jar has 15 red marbles. That is 25% of all the marbles. How many marbles are in the jar?",
+      "answer": "60",
+      "accept": [
+        "60",
+        "60 marbles"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Find the whole given a part and the percent",
+      "standard": "6.RP.A.3.c",
+      "learning_component_ids": [
+        "e6525dd8-5e57-5c8a-abee-57f64d1c9eb4"
+      ],
+      "common_wrong_answers": {
+        "3.75": "Found 25% of 15 instead of the whole",
+        "18.75": "Added 25% to 15 instead of finding the whole"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.5371,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.2343,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "H6",
+      "number": 6,
+      "text": "A jacket costs $80. Its price is reduced by 25%, and then the new price is reduced by a further 10%. What is the final price?",
+      "answer": "$54.00",
+      "accept": [
+        "$54.00",
+        "$54"
+      ],
+      "unit": "$",
+      "unit_required": true,
+      "skill": "Solve multi-step percent problems",
+      "standard": "7.RP.A.3",
+      "learning_component_ids": [
+        "fda5f0e0-0366-5113-931b-3d9930bdfb5a"
+      ],
+      "common_wrong_answers": {
+        "$52.00": "Took 35% off in one step instead of 25% then 10%",
+        "$60.00": "Applied only the first discount",
+        "$2.00": "Took 10% of the $20 discount instead of the new price, as on Test A",
+        "$26.00": "Gave the total discount, not the final price",
+        "54": "Correct number, but no $ sign"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.4668,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.5371,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.7177,
+          0.5762,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "H7",
+      "number": 7,
+      "text": "Pencils cost p cents each. Write an expression for the cost, in cents, of 7 pencils and a 45¢ eraser.",
+      "answer": "7p + 45",
+      "accept": [
+        "7p + 45",
+        "7p+45",
+        "45 + 7p",
+        "45+7p",
+        "7 × p + 45",
+        "7×p+45",
+        "p × 7 + 45"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Write an expression with a variable for a real-world problem",
+      "standard": "6.EE.B.6",
+      "learning_component_ids": [
+        "60a51673-b0e6-57d6-840c-64a3c5b61cc0"
+      ],
+      "common_wrong_answers": {},
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.7072,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.2343,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "H8",
+      "number": 8,
+      "text": "Dad is 4 times as old as Mia. In 6 years he will be 3 times as old as Mia. How old is Mia now?",
+      "answer": "12 years",
+      "accept": [
+        "12",
+        "12 years",
+        "12 yrs"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Write and solve an equation from a word problem",
+      "standard": "7.EE.B.4",
+      "learning_component_ids": [
+        "108e49e3-c3ca-58ed-a70d-95086aa90c52",
+        "ffdefe1f-e62c-5137-89c4-ef901293bfe8"
+      ],
+      "common_wrong_answers": {
+        "48": "Gave Dad's age instead of Mia's",
+        "48 years": "Gave Dad's age instead of Mia's"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.637,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.7072,
+          0.4503,
+          0.0821
+        ],
+        "answer": [
+          0.7177,
+          0.7463,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "H9",
+      "number": 9,
+      "text": "A triangular flag has a base of 9 cm and a height of 6 cm. What is its area?",
+      "answer": "27 cm²",
+      "accept": [
+        "27 cm²",
+        "27 cm2",
+        "27 sq cm"
+      ],
+      "unit": "cm²",
+      "unit_required": true,
+      "skill": "Area of a triangle in a real-world problem",
+      "standard": "6.G.A.1",
+      "learning_component_ids": [
+        "ae975d69-8c4a-580b-aba0-7d9089b3393b"
+      ],
+      "common_wrong_answers": {
+        "54 cm²": "Forgot to halve base × height",
+        "27 cm": "Correct number, but an area needs square units",
+        "27": "Correct number, but no units"
+      },
+      "regions": {
+        "question_box": [
+          0.0258,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.0331,
+          0.859,
+          0.4503,
+          0.1005
+        ],
+        "answer": [
+          0.2343,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    },
+    {
+      "id": "H10",
+      "number": 10,
+      "text": "Work out (–6) × 2/3 × (–1/4)",
+      "answer": "1",
+      "accept": [
+        "1"
+      ],
+      "unit": null,
+      "unit_required": false,
+      "skill": "Multiply rational numbers using properties of operations",
+      "standard": "7.NS.A.2.c",
+      "learning_component_ids": [
+        "54a463dd-df6b-5ace-afb5-b3b179799e8e"
+      ],
+      "common_wrong_answers": {
+        "-1": "Sign error: two negatives multiply to a positive",
+        "–1": "Sign error: two negatives multiply to a positive"
+      },
+      "regions": {
+        "question_box": [
+          0.5092,
+          0.8071,
+          0.465,
+          0.1575
+        ],
+        "working": [
+          0.5166,
+          0.8406,
+          0.4503,
+          0.1188
+        ],
+        "answer": [
+          0.7177,
+          0.9164,
+          0.2418,
+          0.038
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+ "source": "California mathematics framework, Learning Commons knowledge graph, verified 2026-10-07",
+ "note": "The graph shows tested standards plus their prerequisites. This roster is the whole grade, so coverage gaps are visible rather than merely absent.",
+ "grades": {
+  "5": {
+   "5.OA.A.1": "Use parentheses, brackets, or braces in numerical expressions, and evaluate expressions with these symbols.",
+   "5.OA.A.2": "Write simple expressions that record calculations with numbers, and interpret numerical expressions without evaluating them.",
+   "5.OA.B.3": "Generate two numerical patterns using two given rules; form ordered pairs and graph them on a coordinate plane.",
+   "5.NBT.A.1": "Recognize that a digit in one place represents 10 times what it represents to its right and 1/10 of what it represents to its left.",
+   "5.NBT.A.2": "Explain patterns in zeros when multiplying by powers of 10, and in decimal point placement; use whole-number exponents.",
+   "5.NBT.A.3": "Read, write, and compare decimals to thousandths.",
+   "5.NBT.A.4": "Use place value understanding to round decimals to any place.",
+   "5.NBT.B.5": "Fluently multiply multi-digit whole numbers using the standard algorithm.",
+   "5.NBT.B.6": "Find whole-number quotients with up to four-digit dividends and two-digit divisors.",
+   "5.NBT.B.7": "Add, subtract, multiply, and divide decimals to hundredths.",
+   "5.NF.A.1": "Add and subtract fractions with unlike denominators (including mixed numbers).",
+   "5.NF.A.2": "Solve word problems involving addition and subtraction of fractions; use benchmark fractions to assess reasonableness.",
+   "5.NF.B.3": "Interpret a fraction as division of the numerator by the denominator; solve word problems with fraction or mixed-number answers.",
+   "5.NF.B.4": "Apply and extend previous understandings of multiplication to multiply a fraction or whole number by a fraction.",
+   "5.NF.B.5": "Interpret multiplication as scaling (resizing).",
+   "5.NF.B.6": "Solve real world problems involving multiplication of fractions and mixed numbers.",
+   "5.NF.B.7": "Divide unit fractions by whole numbers and whole numbers by unit fractions.",
+   "5.MD.A.1": "Convert among different-sized standard measurement units, and use these conversions in multi-step problems.",
+   "5.MD.B.2": "Make a line plot of measurements in fractions of a unit; use fraction operations on the data.",
+   "5.MD.C.3": "Recognize volume as an attribute of solid figures and understand concepts of volume measurement.",
+   "5.MD.C.4": "Measure volumes by counting unit cubes.",
+   "5.MD.C.5": "Relate volume to multiplication and addition, and solve problems involving volume.",
+   "5.G.A.1": "Use a pair of perpendicular number lines (axes) to define a coordinate system and locate points by ordered pairs.",
+   "5.G.A.2": "Represent real world and mathematical problems by graphing points in the first quadrant, and interpret the coordinates in context.",
+   "5.G.B.3": "Understand that attributes of a category of two-dimensional figures belong to all its subcategories.",
+   "5.G.B.4": "Classify two-dimensional figures in a hierarchy based on properties."
+  },
+  "6": {
+   "6.NS.A.1": "Interpret and compute quotients of fractions; solve word problems involving division of fractions by fractions.",
+   "6.NS.B.2": "Fluently divide multi-digit numbers using the standard algorithm.",
+   "6.NS.B.3": "Fluently add, subtract, multiply, and divide multi-digit decimals using the standard algorithm.",
+   "6.NS.C.6.b": "Understand signs of numbers in ordered pairs as indicating locations in quadrants of the coordinate plane.",
+   "6.NS.C.6.c": "Find and position integers and rational numbers on a number line and on a coordinate plane.",
+   "6.RP.A.2": "Understand the concept of a unit rate a/b associated with a ratio a:b, and use rate language.",
+   "6.RP.A.3": "Use ratio and rate reasoning to solve real-world and mathematical problems.",
+   "6.RP.A.3.c": "Find a percent of a quantity as a rate per 100; find the whole given a part and the percent.",
+   "6.EE.B.6": "Use variables to represent numbers and write expressions when solving a problem.",
+   "6.EE.B.7": "Solve problems by writing and solving equations of the form x + p = q and px = q.",
+   "6.G.A.1": "Find the area of triangles, special quadrilaterals and polygons by composing or decomposing.",
+   "6.RP.A.1": "Understand the concept of a ratio and use ratio language to describe a ratio relationship between two quantities.",
+   "6.RP.A.3.a": "Make tables of equivalent ratios, find missing values in the tables, and plot the pairs of values on the coordinate plane; use tables to compare ratios.",
+   "6.RP.A.3.b": "Solve unit rate problems including those involving unit pricing and constant speed.",
+   "6.RP.A.3.d": "Use ratio reasoning to convert measurement units; manipulate and transform units appropriately when multiplying or dividing quantities.",
+   "6.NS.B.4": "Find the greatest common factor and least common multiple of two whole numbers; use the distributive property to express a sum with a common factor.",
+   "6.NS.C.5": "Use positive and negative numbers to describe quantities with opposite directions or values, explaining the meaning of 0.",
+   "6.NS.C.6.a": "Recognize opposite signs of numbers as locations on opposite sides of 0 on the number line; the opposite of the opposite is the number itself.",
+   "6.NS.C.7.a": "Interpret statements of inequality as statements about the relative position of two numbers on a number line.",
+   "6.NS.C.7.b": "Write, interpret, and explain statements of order for rational numbers in real-world contexts.",
+   "6.NS.C.7.c": "Understand the absolute value of a rational number as its distance from 0 on the number line.",
+   "6.NS.C.7.d": "Distinguish comparisons of absolute value from statements about order.",
+   "6.NS.C.8": "Solve problems by graphing points in all four quadrants; use coordinates and absolute value to find distances between points.",
+   "6.EE.A.1": "Write and evaluate numerical expressions involving whole-number exponents.",
+   "6.EE.A.2.a": "Write expressions that record operations with numbers and with letters standing for numbers.",
+   "6.EE.A.2.b": "Identify parts of an expression using mathematical terms (sum, term, product, factor, quotient, coefficient).",
+   "6.EE.A.2.c": "Evaluate expressions at specific values of their variables, including formulas, using the order of operations.",
+   "6.EE.A.3": "Apply the properties of operations to generate equivalent expressions.",
+   "6.EE.A.4": "Identify when two expressions are equivalent.",
+   "6.EE.B.5": "Understand solving an equation or inequality as finding which values make it true; use substitution to check.",
+   "6.EE.B.8": "Write an inequality of the form x > c or x < c for a real-world or mathematical condition; represent solutions on a number line.",
+   "6.EE.C.9": "Use variables for two quantities that change together; write an equation for the dependent variable and relate it to graphs and tables.",
+   "6.G.A.2": "Find the volume of a right rectangular prism with fractional edge lengths; apply V = l w h and V = b h.",
+   "6.G.A.3": "Draw polygons in the coordinate plane given coordinates for the vertices; find side lengths from coordinates.",
+   "6.G.A.4": "Represent three-dimensional figures using nets made up of rectangles and triangles, and use the nets to find surface area.",
+   "6.SP.A.1": "Recognize a statistical question as one that anticipates variability in the data.",
+   "6.SP.A.2": "Understand that a data set has a distribution described by its center, spread, and overall shape.",
+   "6.SP.A.3": "Recognize that a measure of center summarizes a data set with one number, while a measure of variation describes how its values vary.",
+   "6.SP.B.4": "Display numerical data in plots on a number line, including dot plots, histograms, and box plots.",
+   "6.SP.B.5": "Summarize numerical data sets in relation to their context."
+  },
+  "7": {
+   "7.RP.A.2": "Recognize and represent proportional relationships between quantities.",
+   "7.RP.A.3": "Use proportional relationships to solve multistep ratio and percent problems.",
+   "7.NS.A.1.d": "Apply properties of operations as strategies to add and subtract rational numbers.",
+   "7.NS.A.2.c": "Apply properties of operations as strategies to multiply and divide rational numbers.",
+   "7.NS.A.2.d": "Convert a rational number to a decimal using long division.",
+   "7.NS.A.3": "Solve real-world and mathematical problems involving the four operations with rational numbers.",
+   "7.EE.B.4": "Use variables to represent quantities and construct simple equations and inequalities.",
+   "7.SP.B.3": "Informally assess the degree of visual overlap of two numerical data distributions."
+  }
+ },
+ "unlocks": {
+  "5.NBT.B.7": [
+   "5.MD.A.1",
+   "6.NS.B.3"
+  ],
+  "5.NF.A.1": [
+   "5.NF.A.2",
+   "5.NBT.B.7",
+   "6.EE.B.7",
+   "7.NS.A.1.d"
+  ],
+  "5.NBT.B.5": [
+   "5.NBT.B.6",
+   "6.NS.B.3"
+  ],
+  "5.NF.B.7": [
+   "5.MD.B.2",
+   "5.NBT.B.7",
+   "6.NS.A.1",
+   "6.RP.A.2"
+  ],
+  "5.OA.A.1": [
+   "5.OA.A.2"
+  ],
+  "5.NBT.B.6": [
+   "6.NS.B.2",
+   "6.NS.B.3"
+  ],
+  "5.NF.B.4": [
+   "5.NF.B.5",
+   "5.NBT.B.7",
+   "6.G.A.1",
+   "6.EE.B.7",
+   "7.NS.A.2.c",
+   "7.SP.B.3"
+  ],
+  "5.NBT.A.3": [
+   "5.NBT.A.4"
+  ],
+  "5.G.A.1": [
+   "6.NS.C.6.b",
+   "6.NS.C.6.c"
+  ],
+  "5.MD.A.1": []
+ },
+ "grades_note": "Grades 5 and 6 are the complete roster (grade 6 completed 2026-10-12 from the Learning Commons knowledge graph). Grade 7 holds only the standards reachable from grade 5 through the Coherence Map, or already tested.",
+ "needs_diagram": {
+  "6.G.A.3": "drawing polygons on a coordinate grid needs a drawn answer",
+  "6.G.A.4": "nets need a drawing to read or make",
+  "6.SP.B.4": "displaying data in dot plots, histograms and box plots needs a drawn answer",
+  "7.SP.B.3": "comparing the overlap of two data distributions needs drawn dot plots"
+ },
+ "needs_diagram_note": "Standards whose only meaningful question needs a drawn answer. Picture questions with written answers (Test M) lifted the grade-5 flags on 2026-10-12; their drawing parts are left untested through the components."
+}
