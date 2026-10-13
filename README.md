@@ -77,6 +77,40 @@ Two Claude Code skills in `.claude/skills/` drive the loop from chat:
 `new-assessment` (plan the next sheet and write it into `make_tests.py`). Both run
 the scripts with `.venv/bin/python`.
 
+## One paper, start to finish
+
+Test K, from printout to updated skill record.
+
+**1. The generated sheet.** `make_tests.py` writes page 1 for the child and an
+answer key on page 2. The QR code identifies the sheet and the exact layout of
+its answer boxes.
+
+<img src="docs/test_K_page1.png" alt="Page 1 of Math Practice Test K: ten questions, each with a working area and an answer box, and a QR code top right" width="480">
+
+**2. What `prepare_inbox.py` cuts out** from a phone photo of the finished
+paper dropped in `inbox/`. The page is straightened on the ten
+answer boxes, then each box is cropped. These crops are what Claude reads, so a
+stray mark elsewhere on the page cannot be mistaken for an answer.
+
+<img src="docs/test_K_answer_boxes.png" alt="The ten cropped answer boxes K1 to K10" width="480">
+
+A working region is cropped alongside each box and read when an answer is wrong,
+because the answer alone often points at the wrong skill. Claude compares the
+working with the question text from the spec. An example from Test C, shown here
+as the whole question cell from the straightened page: the question asks for
+3.4 + 2.85, and the answer is 6.24 against 6.25. The answer alone suggests an
+addition error. The working shows 2.85 copied as 2.84 and then added correctly,
+so the diagnosis is a transcription slip, not a carrying or place-value gap:
+
+<img src="docs/test_C_working_q5.png" alt="Question 5 of Test C, 'Work out 3.4 + 2.85', with the working written as 3.40 + 2.84 = 6.24 and 6.24 in the answer box" width="480">
+
+**3. The review card.** `record_paper.py` marks the readings against the spec
+and renders one row per question: the answer box, what was read against what
+was expected, how the standard and each component moved, and the diagnosis
+with where it came from.
+
+<img src="docs/test_K_review.png" alt="Review card for Test K, 8 out of 10: per-question result, skill-record change and diagnosis">
+
 ## Files
 
 | | |
@@ -100,6 +134,7 @@ the scripts with `.venv/bin/python`.
 | `cache/syllabus.json` | The grade rosters, and which standards cannot be asked on a ten-box sheet. |
 | `cache/components.json` | Learning Commons components for each standard. |
 | `cache/prereqs.json` | Learning Commons prerequisites, seeded so the pipeline runs without an API key. |
+| `docs/` | The example images in this README. |
 
 Created when the loop runs, and kept out of git because they hold the child's
 work:
@@ -164,6 +199,18 @@ behind the boxes — `7.NS.A.3` alone has three grade-7 prerequisites.
 
 A solid border means the skill has been tested; dashed means it is only in view
 as a prerequisite. Colour is the status.
+
+Part of the dependency view. Each card lists the components inside the
+standard, so 6.NS.B.3 reads as mastered overall while subtracting decimals is
+still 2/4. The bottom row is where the cached prerequisites run out:
+
+<img src="docs/graph_dependency.png" alt="Dependency view: grade 5 measurement standards at the bottom, grade 6 decimals and ratios in the middle, grade 7 expressions at the top, with arrows from prerequisites up to what they support">
+
+The by-grade view, grade 6 only. Seven of the 40 standards have been asked;
+the dashed cards are the coverage gaps the planner works through, and
+"no sheet format" marks the ones a ten-box sheet cannot ask:
+
+<img src="docs/graph_grade6.svg" alt="Grade 6 standards grouped by domain, coloured by status: mastered in green, shaky in amber, never asked dashed">
 
 In VS Code, an SVG opens in the editor directly; `.dot` needs an extension such
 as *Graphviz Interactive Preview*.
