@@ -25,13 +25,22 @@ from its own section of the output, one new letter per sheet.
 This weighs four things, with a quota so none crowds the others out:
 
 - **failure** (4 of 10) — wrong before. A standard wrong twice also pulls in what it rests on.
-- **coverage** (3 of 10) — in the grade roster, never asked. Grade 5 first, so gaps are found before they are inherited; grade 6 once grade 5 runs short, rotating through the domains. A grade-6 standard whose known grade-5 foundations are not mastered is held back here too.
+- **coverage** (3 of 10) — in the grade roster, never asked. Grade 5 first, so gaps are found before they are inherited; grade 6 once grade 5 runs short, rotating through the domains. A grade-6 standard whose known grade-5 foundations are not mastered is held back here too. Once those run out, standards already asked but with components never asked.
 - **readiness** (1 of 10) — a never-asked grade 6/7 standard whose grade-5 foundations are mastered.
 - **review** (2 of 10) — spaced repetition. A skill whose last answer was right comes back once its gap is up: 2 days after one right answer in a row, then 7, 21 and 60 days. Most overdue first. Ask it fresh (new numbers, same skill), not as a copy of the last question.
 
-Unused slots in one bucket go to the others. Mastered means right at least twice
-with no mistakes, or **three right in a row since the last mistake** - so one old
-slip no longer holds a skill, and everything gated on it, back for good.
+Unused slots in one bucket go to the others. Mastered means **every component a
+written answer can show has been asked**, and the standard is right at least twice
+with no mistakes, or **three right in a row on different days since the last
+mistake** - so one old slip no longer holds a skill, and everything gated on it,
+back for good, but one sitting cannot clear it either. Components needing a drawing
+or a free explanation are listed in `not_on_sheet` in `cache/components.json` and
+do not count. `--coverage` lists what has never been asked.
+
+**Each pick gets one question, so choose its target from the plan:** `aim at` (the
+part that is failing) first, otherwise a `never asked` component. Tag the question
+with that component, in a new skill key if needed - 6.NS.B.4 stayed green on nine
+GCF answers because `g6gcf` was its only key.
 Planning uses each paper's `date` (set by `record_paper.py` from the camera
 app's file name, or the marking day).
 
@@ -94,16 +103,18 @@ on a grid, nets, displaying data in plots) are flagged `needs_diagram` in
 ## 3. Generate
 
 ```
-$V make_tests.py            # writes tests/Math_Practice_Test_<X>.pdf/.json
+$V make_tests.py            # writes only new letters: tests/Math_Practice_Test_<X>.pdf/.json
 ```
 
 Give each new sheet the **next unused letter**. Each sheet is written once, flat
 in `tests/`, with the QR payload `mpt:test=<X>&h=<fingerprint>`. The
 fingerprint covers what page 1 prints (title, question text, box layout), so:
 
-- Re-running is safe. A sheet whose page 1 is unchanged is rewritten in place
-  ("refreshed"), so new component ids or newly observed wrong answers reach
-  its spec without invalidating the printed copy. Nothing to delete by hand.
+- Re-running is safe. Existing sheets are left untouched, so only the new
+  letters appear. The build names any whose spec is behind `make_tests.py`
+  (new component ids, newly observed wrong answers). `$V make_tests.py --refresh`
+  rewrites those in place without invalidating the printed copy; use it only
+  when that is what you want. Nothing to delete by hand.
 - If a question's wording or the layout would change, the build refuses and
   writes nothing. The sheet may already be printed: put the new questions
   under a new letter instead of editing the old one.

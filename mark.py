@@ -9,6 +9,11 @@ UNITS = [
     (r"(m3|m\^?3|m³|cubicm|cubicmet(er|re)s?)", "m³"),
     (r"(cm2|cm\^?2|cm²|sqcm|squarecm|squarecentimet(er|re)s?)", "cm²"),
     (r"(m2|m\^?2|m²|sqm|squarem|squaremet(er|re)s?)", "m²"),
+    (r"(in3|in\^?3|in³|cubicin(ch(es)?)?)", "in³"),
+    (r"(ft2|ft\^?2|ft²|sqft|square(ft|feet|foot))", "ft²"),
+    (r"(feet|foot|ft)", "ft"),
+    (r"(inch(es)?|in)", "in"),
+    (r"(pages?)", "pages"),
     (r"(centimet(er|re)s?|cm)", "cm"),
     (r"(kilomet(er|re)s?|km)", "km"),
     (r"(millilit(er|re)s?|ml)", "ml"),
@@ -19,10 +24,17 @@ UNITS = [
     (r"(minutes?|mins?)", "min"),
     (r"(hours?|hrs?)", "hr"),
     (r"(cups?)", "cups"),
+    (r"(lit(er|re)s?|l)\b", "liters"),
+    (r"(quarts?|qt)", "quarts"),
+    (r"(lit(er|re)s?)\b", "liters"),
     (r"y(ea)?rs?", "years"),
 ]
 # Spelling variants a spec may use for the same unit.
-UNIT_ALIASES = {"mile": "miles", "cup": "cups", "cm3": "cm³", "m2": "m²", "cm2": "cm²"}
+UNIT_ALIASES = {"mile": "miles", "cup": "cups", "cm3": "cm³", "m2": "m²", "cm2": "cm²", "in3": "in³", "ft2": "ft²", "page": "pages",
+                # A spec may name a unit in the singular or abbreviated; parse()
+                # always reports the plural form, and without these the question
+                # fails its own answer key.
+                "liter": "liters", "litre": "liters", "l": "liters", "quart": "quarts"}
 
 _NUM = r"\d+(?:[.,]\d+)?|[.,]\d+"
 
@@ -58,8 +70,12 @@ def _strip_unit(s):
 def _number(s):
     """Exact value of an integer, decimal (point or comma), fraction or mixed number."""
     s = s.strip()
+    if m := re.fullmatch(r"(\d+)\.(\d*)(\d)\u0305", s):
+        # 4.66̅ : the bar sits over the last digit, which repeats forever.
+        k = len(m[2])
+        return Fraction(int(m[1])) + (Fraction(int(m[2]), 10 ** k) if k else 0) + Fraction(int(m[3]), 9 * 10 ** k)
     neg = s.startswith("-")
-    if neg: s = s[1:].strip()
+    if neg or s.startswith("+"): s = s[1:].strip()   # "+9" is 9
     f = lambda t: Fraction(Decimal(t.replace(",", ".")))
     m = re.fullmatch(rf"({_NUM})", s)
     if m: v = f(m[1])
@@ -142,6 +158,10 @@ def same(a, b, units=True):
         # the expected answer has a variable - "4 × (9 + 6), do not work it out"
         # must stay a comparison of the writing, or 60 would count as right.
         ea, eb = _expr_values(a), _expr_values(b)
+        if eb and eb[0] != "x" and re.search(r"\dx|x\s*\(|\)\s*x|\dx\d|\s[x]\s", _clean(a)):
+            # This child writes x for times: "4x(15-p)" is 4 × (15 - p) when the
+            # variable in the expected answer is not x.
+            ea = _expr_values(re.sub(r"(?<![a-z])x(?![a-z])", "×", _clean(a))) or ea
         if ea and eb:
             return ea == eb
     if _LETTER_LIST.fullmatch(str(b)):
@@ -164,7 +184,31 @@ NEEDS_MODEL = "-> send working to model"
 
 def judge(q, r):
     """Mark one answer. `diag` is NEEDS_MODEL when the code cannot explain it."""
+    # "A = 60 students" or "7/4 m = 1 3/4 m": the final answer is after the last "=".
+    if "=" in str(r):
+        r = str(r).rsplit("=", 1)[1].strip() or r
     ok = any(same(r, a, units=False) for a in q["accept"])
+    if (not ok and not q["unit_required"] and not (q.get("unit") or "").strip()
+            and parse(q["answer"])[0][0] == "num" and parse(q["answer"])[1] is None):
+        # A label the question never asked for ("9 blocks", "13°") does not change
+        # a plain-number answer.
+        m = re.fullmatch(r"\s*([-+–−]?\s*[\d.,/ ]*\d)\s*(?:°|[A-Za-z]+[\d²³]?\.?)\s*", str(r))
+        if m:
+            ok = any(same(m[1], a, units=False) for a in q["accept"])
+    if not ok and "°" in str(r):
+        # Temperature labels ("-8°C, -3C°") do not change a list or number.
+        r2 = re.sub(r"°\s*[CcFf]?|[CcFf]\s*°", "", str(r))
+        ok = any(same(r2, a, units=False) for a in q["accept"])
+    if not ok and all(re.fullmatch(r"[A-H]", str(a)) for a in q["accept"]):
+        # "C range": the letter is the answer, the word after it is a label.
+        m = re.fullmatch(r"\s*([A-Ha-h])\b[\s.:)\-,]*[A-Za-z ]*", str(r))
+        if m:
+            ok = any(m[1].upper() == a for a in q["accept"])
+    if not ok and re.search(r"[<>]", str(r)):
+        # "h>120 cm": a unit written after an inequality is a label, not part of it.
+        r2 = re.sub(r"(\d)\s*[A-Za-z]+\.?\s*$", r"\1", str(r))
+        if r2 != str(r):
+            ok = any(same(r2, a, units=False) for a in q["accept"])
     got_unit = parse(r)[1]
     want_unit = (q.get("unit") or "").strip() or None
     want_unit = UNIT_ALIASES.get(want_unit, want_unit)

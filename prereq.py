@@ -190,6 +190,14 @@ def components_of(code):
     return out
 
 
+def sheet_components(code):
+    """The components of `code` a written answer can show, {id: description}.
+    Those needing a drawing or a free explanation are listed in `not_on_sheet`."""
+    cache = load_components()
+    skip = cache.get("not_on_sheet", {})
+    return {c: d for c, d in (cache["by_standard"].get(code) or {}).items() if c not in skip}
+
+
 def component_name(cid):
     for comps in load_components()["by_standard"].values():
         if cid in comps:

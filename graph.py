@@ -2,13 +2,10 @@
 
 Printed at the end of every `skills.py` run.
 
-Mastery is a proportion estimated from a handful of questions, so a bare
-percentage would lie: 1 out of 1 is not "100% mastered". Each standard carries a
-Wilson score interval instead, and its status is read off the *conservative* end
-of that interval. One right answer gives a wide interval that does not reach
-"strong"; the interval narrows as more questions accumulate, so a skill becomes
-strong by being tested repeatedly rather than by a single lucky answer. That is
-the whole mechanism by which confidence improves with more tests.
+Every status here is the planner's own (`skills.status`), so the pictures say
+what drives the next sheets: mastered, ok, shaky or weak. A 90% Wilson interval
+over all answers is shown alongside as context - 1 out of 1 is not "100%
+mastered", and the interval narrows as more questions accumulate.
 
 Edges come from the SAP Coherence Map via `prereq.py`: an arrow means the
 Coherence Map places that standard before this one.
@@ -20,11 +17,34 @@ import prereq
 Z = 1.645          # 90% interval
 
 STATUS = {
-    "strong":   ("STRONG  ", "even the cautious end of the interval is above 60%"),
-    "shaky":    ("shaky   ", "mixed, or too few questions to tell"),
-    "weak":     ("WEAK    ", "even the optimistic end of the interval is below 60%"),
+    "mastered": ("MASTERED", "every part asked, and right twice with no mistakes or 3 in a row on different days since the last"),
+    "ok":       ("ok      ", "right so far, not yet enough to call mastered, or parts never asked"),
+    "shaky":    ("shaky   ", "one mistake, not yet back to 3 in a row on different days"),
+    "weak":     ("WEAK    ", "two or more mistakes, not yet back to 3 in a row on different days"),
     "untested": ("untested", "no answered questions yet"),
 }
+
+
+def planner_status(r):
+    """The planner's status for a record with right/wrong (and streak, if any).
+    Imported late: skills imports this module."""
+    from skills import status
+    if not r or not (r.get("right", 0) + r.get("wrong", 0)):
+        return "untested"
+    return status({"right": r.get("right", 0), "wrong": r.get("wrong", 0),
+                   "streak_days": r.get("streak_days", 0), "unasked": r.get("unasked")})
+
+
+def to_mastered(r):
+    """How many more right answers in a row would make this mastered, by the
+    planner's rule: 2 with no mistakes yet, otherwise a run of 3 on different days.
+    Parts never asked are a separate condition, reported on their own."""
+    if planner_status(r) == "mastered":
+        return 0
+    if not r.get("wrong", 0):
+        return max(0, 2 - r.get("right", 0))
+    from skills import MASTERED_STREAK
+    return max(0, MASTERED_STREAK - r.get("streak_days", 0))
 
 
 def wilson(k, n, z=Z):
@@ -38,25 +58,6 @@ def wilson(k, n, z=Z):
     return p, max(0.0, centre - half), min(1.0, centre + half)
 
 
-def classify(k, n):
-    if n == 0:
-        return "untested"
-    _, lo, hi = wilson(k, n)
-    # Calibrated for how much evidence this actually accumulates: a skill gets
-    # one or two questions per 10-question test, so thresholds that need ~11
-    # perfect answers would never fire. At these levels four correct in a row
-    # reaches strong, and two wrong with nothing right reaches weak - which also
-    # matches when skills.py starts walking back to prerequisites.
-    # 0.58 rather than a round 0.60 so that four correct in a row reads strong:
-    # 4/4 puts the low end at 0.5965 and was missing a 0.60 cut by 0.0004, which
-    # is an artifact of where the bar sits, not a judgement about the child.
-    if lo >= 0.58:
-        return "strong"
-    if hi <= 0.58:
-        return "weak"
-    return "shaky"
-
-
 def confidence_bar(n, lo, hi, width=5):
     """How tightly the interval pins the estimate down. Fills as n grows."""
     if n == 0:
@@ -65,18 +66,6 @@ def confidence_bar(n, lo, hi, width=5):
     return "#" * max(0, filled) + "." * (width - max(0, filled))
 
 
-def needed_for_strong(k, n):
-    """How many more consecutive correct answers would make this strong.
-
-    Answers the question a parent actually asks: how much more testing until we
-    can call this solid?
-    """
-    if classify(k, n) == "strong":
-        return 0
-    for extra in range(1, 25):
-        if classify(k + extra, n + extra) == "strong":
-            return extra
-    return None
 
 
 def build(rec, cache=None, max_depth=2):
@@ -92,7 +81,7 @@ def build(rec, cache=None, max_depth=2):
         k, n = r.get("right", 0), r.get("right", 0) + r.get("wrong", 0)
         p, lo, hi = wilson(k, n)
         nodes[code] = {"code": code, "right": k, "n": n, "point": p, "lo": lo, "hi": hi,
-                       "status": classify(k, n), "tested": tested,
+                       "status": planner_status(r), "tested": tested, "record": r,
                        "description": prereq.describe(code, cache) or r.get("description"),
                        "unsure": r.get("unsure", 0),
                        "diagnoses": list(dict.fromkeys(r.get("diagnoses", [])))}
@@ -136,10 +125,10 @@ def render(rec, comp=None, cache=None, width=100):
            "KNOWLEDGE GRAPH   ->  means the Coherence Map puts that skill first", "=" * width]
     tested = [c for c, nd in nodes.items() if nd["tested"]]
     out.append(f"{len(tested)} skill(s) tested, {len(nodes)} in view "
-               f"(mastery shown with a 90% interval; status uses its cautious end)")
+               f"(status as the planner sees it; 90% interval shown for context)")
 
-    order = sorted(tested, key=lambda c: ({"weak": 0, "shaky": 1, "untested": 2,
-                                           "strong": 3}[nodes[c]["status"]], c))
+    order = sorted(tested, key=lambda c: ({"weak": 0, "shaky": 1, "ok": 2, "untested": 3,
+                                           "mastered": 4}[nodes[c]["status"]], c))
     for code in order:
         nd = nodes[code]
         out.append("")
@@ -148,9 +137,12 @@ def render(rec, comp=None, cache=None, width=100):
             out.append(f"    {clip(nd['description'], width - 6)}")
         for d in nd["diagnoses"][:3]:
             out.append(f"    mistake seen: {clip(d, width - 20)}")
-        more = needed_for_strong(nd["right"], nd["n"])
+        more = to_mastered(nd["record"])
         if more:
-            out.append(f"    {more} more correct in a row would make this strong")
+            then = "is also needed" if nd["record"].get("unasked") else "would make this mastered"
+            out.append(f"    {more} more right in a row on different days {then}")
+        for d in sorted((nd["record"].get("unasked") or {}).values()):
+            out.append(f"    not mastered until asked: {clip(d, width - 31)}")
         # Which PART of the standard is weak. A standard bundles several
         # components - 6.NS.B.3 covers all four decimal operations - so the
         # headline score can say "decimals" when only subtraction is failing.
@@ -159,7 +151,7 @@ def render(rec, comp=None, cache=None, width=100):
             out.append("    inside this standard:")
             for cid, r in sorted(mine.items(), key=lambda kv: (-kv[1]["wrong"], kv[1]["name"] or "")):
                 n = r["right"] + r["wrong"]
-                st = classify(r["right"], n)
+                st = planner_status(r)
                 flag = "  <-- the weak part" if r["wrong"] and not r["right"] else ""
                 out.append(f"      {STATUS[st][0]} {r['right']}/{n}  "
                            f"{clip(r['name'], width - 34)}{flag}")
@@ -225,7 +217,8 @@ def bar(nd):
 def to_dot(rec, cache=None):
     """Graphviz, for when a picture is wanted: `python3 graph.py --dot | dot -Tpng -o g.png`"""
     nodes, edges, _ = build(rec, cache)
-    colour = {"strong": "#2e7d32", "shaky": "#f9a825", "weak": "#c62828", "untested": "#9e9e9e"}
+    colour = {"mastered": "#2e7d32", "ok": "#00796b", "shaky": "#f9a825", "weak": "#c62828",
+              "untested": "#9e9e9e"}
     lines = ["digraph skills {", '  rankdir=BT; node [shape=box, style="rounded,filled", '
              'fontname="Helvetica", fontsize=10, fillcolor=white];']
     for code, nd in nodes.items():
@@ -242,9 +235,9 @@ def to_dot(rec, cache=None):
 # grades at the bottom, so every prerequisite arrow points upward and the
 # picture reads as a progression. Written directly rather than through Graphviz,
 # which is not installed by default and is a lot to ask for one diagram.
-COLOUR = {"strong": "#2e7d32", "shaky": "#b26a00", "weak": "#c62828", "untested": "#8a8a8a",
+COLOUR = {"shaky": "#b26a00", "weak": "#c62828", "untested": "#8a8a8a",
           "mastered": "#2e7d32", "ok": "#00796b"}
-FILL = {"strong": "#e8f5e9", "shaky": "#fff8e1", "weak": "#ffebee", "untested": "#f4f4f4",
+FILL = {"shaky": "#fff8e1", "weak": "#ffebee", "untested": "#f4f4f4",
         "mastered": "#e8f5e9", "ok": "#e0f2f1"}
 
 
@@ -382,7 +375,7 @@ def to_svg(rec, comp=None, cache=None, box=(206, 48), gap=(26, 86), pad=28):
         # One line per component: the part of the standard, and how it scored.
         for j, (name, k, n) in enumerate(parts.get(code, [])):
             ty = y + bh + 4 + j * 14
-            st = classify(k, n)
+            st = planner_status({"right": k, "wrong": n - k})
             out.append(f'<circle cx="{x + 13:.0f}" cy="{ty + 5:.0f}" r="3.6" '
                        f'fill="{COLOUR[st]}"/>')
             label = clip(name, 30)
@@ -398,7 +391,7 @@ def to_svg(rec, comp=None, cache=None, box=(206, 48), gap=(26, 86), pad=28):
                        f'stroke-width="1.2" stroke-dasharray="3 3"/>')
             out.append(f'<text x="{cx:.0f}" y="{yb + 25:.0f}" text-anchor="middle" '
                        f'font-size="9.5" fill="#9aa0a6">prereqs not looked up</text>')
-    legend = "  ".join(f"{k}" for k in ("strong", "shaky", "weak", "untested"))
+    legend = "  ".join(f"{k}" for k in ("mastered", "ok", "shaky", "weak", "untested"))
     out.append(f'<text x="{pad}" y="{height - 10:.0f}" font-size="11" fill="#5f6368">'
                f'every arrow runs from a prerequisite up to what it supports; rows are '
                f'dependency depth, not grade (G = grade); solid border = tested; '
@@ -546,7 +539,6 @@ def _topic_lines(code, roster, width_chars=30, max_lines=2):
 
 def to_svg_by_grade(rec, comp=None, cache=None, cols=5, card=(200, 78), gap=12, pad=24):
     """Standards grouped by grade then domain, coloured by status. No edges."""
-    from skills import status as planner_status    # skills imports this module
     roster, no_sheet = _roster()
     cw, ch = card
 
@@ -621,8 +613,9 @@ def to_svg_by_grade(rec, comp=None, cache=None, cols=5, card=(200, 78), gap=12, 
         n = (r["right"] + r["wrong"]) if r else 0
         # The planner's own status, so the chart says what drives the next
         # sheets: mastered / ok / shaky / weak, with recent answers counting
-        # (three right in a row since the last mistake is mastered).
-        st = planner_status(r) if r and n else "untested"
+        # (three right in a row on different days since the last mistake is mastered,
+        # once every part of the standard has been asked).
+        st = planner_status(r)
         col, fill = COLOUR[st], FILL[st]
         dash = "" if r else ' stroke-dasharray="4 3"'
         out.append(f'<rect x="{x}" y="{yy:.0f}" width="{cw}" height="{ch}" rx="7" '
@@ -647,7 +640,7 @@ def to_svg_by_grade(rec, comp=None, cache=None, cols=5, card=(200, 78), gap=12, 
             out.append(f'<text x="{x + 10}" y="{yy + ch - 9:.0f}" font-size="10" fill="#9aa0a6">'
                        f'{tag}</text>')
     out.append(f'<text x="{pad}" y="{height - 8:.0f}" font-size="11" fill="#5f6368">'
-               f'status is the planner\'s: mastered = right twice with no mistakes, or 3 in a row since the last; '
+               f'status is the planner\'s: mastered = every part asked, and right twice with no mistakes or 3 in a row on different days since the last; '
                f'ok = right so far; shaky = one mistake; weak = two or more. Grey % = 90% range over all answers.'
                f'</text>')
     out.append("</svg>")

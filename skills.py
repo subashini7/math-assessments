@@ -79,7 +79,7 @@ def record(papers):
     without conflict, count - a disputed reading is not evidence about a skill."""
     by = defaultdict(lambda: {"right": 0, "wrong": 0, "unsure": 0,
                               "diagnoses": [], "papers": [], "description": None,
-                              "history": []})
+                              "history": [], "asked": set()})
     # Oldest paper first, so `history` reads in the order the child did them.
     for p in sorted(papers, key=lambda p: p.get("date") or ""):
         for q in p.get("questions", []):
@@ -101,9 +101,14 @@ def record(papers):
                     r["diagnoses"].append(q["diagnosis"])
             if q.get("right") is not None:
                 r["history"].append((p.get("date") or "", q["right"]))
-    for r in by.values():
+                r["asked"].update(q.get("learning_component_ids") or [])
+    for code, r in by.items():
         h = r["history"]
         r["streak"] = next((i for i, (_, ok) in enumerate(reversed(h)) if not ok), len(h))
+        r["streak_days"] = len({day for day, _ in h[len(h) - r["streak"]:]})
+        r["unasked"] = {c: d for c, d in prereq.sheet_components(code).items()
+                        if c not in r["asked"]}
+        r["asked"] = sorted(r["asked"])
         r["last_asked"] = h[-1][0] if h else None
     return dict(by)
 
@@ -114,10 +119,13 @@ MASTERED_STREAK = 3
 def status(r):
     if r["right"] + r["wrong"] == 0:
         return "untested"
-    # Three right in a row since the last mistake counts as mastered too, so one
-    # old slip does not hold a skill - and everything gated on it - back forever.
-    if (r["wrong"] == 0 and r["right"] >= 2) or r.get("streak", 0) >= MASTERED_STREAK:
-        return "mastered"
+    # Three right in a row since the last mistake, on three different days, counts
+    # too, so one old slip does not hold a skill - and everything gated on it - back
+    # forever. Answers from one sitting are one piece of evidence, not three.
+    if (r["wrong"] == 0 and r["right"] >= 2) or r.get("streak_days", 0) >= MASTERED_STREAK:
+        # A standard bundles components: 6.NS.B.4 is GCF, LCM and the distributive
+        # property, and nine GCF answers say nothing about the other two.
+        return "ok" if r.get("unasked") else "mastered"
     if r["wrong"] >= 2:
         return "weak"
     if r["wrong"] >= 1:
@@ -206,7 +214,8 @@ def coverage(rec, grade="5"):
         n = (r["right"] + r["wrong"]) if r else 0
         rows.append({"standard": code, "domain": code.split(".")[1],
                      "description": desc, "n": n,
-                     "status": status(r) if r else "never asked"})
+                     "status": status(r) if r else "never asked",
+                     "unasked": list((r or {}).get("unasked", {}).values())})
     return rows
 
 
@@ -268,7 +277,8 @@ def plan_tests(rec, comp=None, base_grade="5", n=10, quota=None, coverage_grades
         picks.append({"standard": code, "grade": grade, "reason": source, "why": why,
                       "description": (roster.get(grade) or {}).get(code)
                                      or prereq.describe(code),
-                      "focus": [name for _, name in parts] or None})
+                      "focus": [name for _, name in parts] or None,
+                      "unasked": sorted((rec.get(code) or {}).get("unasked", {}).values())})
 
     def coverage_candidates():
         """(code, grade) never asked and askable on a sheet, lowest grade first.
@@ -291,6 +301,17 @@ def plan_tests(rec, comp=None, base_grade="5", n=10, quota=None, coverage_grades
                     if any(not mastered(f) for f in foundations):
                         continue
                 yield code, g
+
+    def gap_candidates():
+        """(code, grade) asked before, but with components never asked. Nothing else
+        would reach these, and until they are asked the standard cannot be mastered.
+        Same readiness gate as coverage_candidates."""
+        for g in coverage_grades:
+            for code in sorted(c for c in rec if rec[c].get("unasked")
+                               and str(prereq.grade_of(c)) == g and c not in no_sheet):
+                foundations = [l for l, hs in unlocks.items() if code in hs]
+                if g == base_grade or all(mastered(f) for f in foundations):
+                    yield code, g
 
     def due_for_review():
         import datetime
@@ -328,6 +349,8 @@ def plan_tests(rec, comp=None, base_grade="5", n=10, quota=None, coverage_grades
     # untested standards, so gaps are still found before they are inherited.
     for code, g in coverage_candidates():
         add(code, f"in the grade {g} roster, never asked", "coverage", g)
+    for code, g in gap_candidates():
+        add(code, "asked, but parts of it never have been", "coverage", g)
 
     # 3. READINESS: higher grades, gated on their grade-5 foundations.
     for lower, higher in sorted(unlocks.items()):
@@ -361,6 +384,8 @@ def plan_tests(rec, comp=None, base_grade="5", n=10, quota=None, coverage_grades
                     str(prereq.grade_of(code) or ""))
         for code, g in coverage_candidates():
             add(code, f"in the grade {g} roster, never asked", "coverage", g)
+        for code, g in gap_candidates():
+            add(code, "asked, but parts of it never have been", "coverage", g)
         for code, why in due_for_review():
             add(code, why, "review", str(prereq.grade_of(code) or ""))
 
@@ -467,6 +492,8 @@ def main():
                     print(f"    {p['description'][:92]}")
                 if p.get("focus"):
                     print(f"    aim at: {', '.join(p['focus'])}")
+                if p.get("unasked"):
+                    print(f"    never asked: {'; '.join(p['unasked'])}")
             if k > 1:
                 print()
         if out.get("off_sheet"):
@@ -493,6 +520,12 @@ def main():
             print(f"    {r['standard']:<11} {mark:<22} {r['description'][:62]}")
         miss = [r["standard"] for r in rows if not r["n"]]
         print(f"\n{len(miss)} never asked: {', '.join(miss)}")
+        gaps = [r for r in rows if r["n"] and r["unasked"]]
+        print(f"\n{len(gaps)} asked, but with parts never asked:")
+        for r in gaps:
+            print(f"  {r['standard']:<11} {r['status']}")
+            for name in sorted(r["unasked"]):
+                print(f"    - {name[:88]}")
         return
     if args.expand:
         expand_cache(rec)

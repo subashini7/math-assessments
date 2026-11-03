@@ -56,6 +56,7 @@ under a new letter. → [How the next test is chosen](#choosing-the-next-test)
 
 ```
 python3 make_tests.py                 # new sheets into tests/: PDF + JSON spec each
+python3 make_tests.py --refresh       # also update existing specs (printed page unchanged)
 ```
 
 Page 1 is for the child; page 2 is the answer key. The QR code identifies the
@@ -164,7 +165,8 @@ out (4 / 3 / 1 / 2 of ten questions; unused slots go to the others):
 - **Failure** — something is known to be wrong. Retest it, and if it has failed
   twice, test what it rests on.
 - **Coverage** — a standard in the grade roster nobody has been asked about.
-  Grade 5 first, so gaps are found before they are inherited.
+  Grade 5 first, so gaps are found before they are inherited. Then standards
+  already asked with components never asked, which the plan names.
 - **Readiness** — a grade 6 or 7 standard whose grade-5 foundations are
   mastered. One whose foundations are still shaky is held back, and the plan
   prints what it is waiting on, because "why is this *not* on the test" is as
@@ -187,16 +189,18 @@ still need teaching; they need a different sheet.
 ### How sure the record is
 
 A mastery figure from a handful of questions would lie — 1 out of 1 is not
-"100% mastered". Every skill carries a Wilson 90% interval, and its status is
-read off the cautious end: a skill is **strong** only when even the low end of
-the interval clears 58%, and **weak** when even the high end falls below it.
+"100% mastered". A standard is **mastered** only when both of these hold:
 
-One right answer gives a wide interval that cannot reach strong. The interval
-narrows as questions accumulate, so a skill earns "strong" by being tested
-repeatedly rather than by one lucky answer — four correct in a row, or more if
-there have been slips. That is the whole mechanism by which confidence improves
-with testing, and the graph prints how many more correct answers each skill
-still needs.
+- Every component a written answer can show has been asked. 6.NS.B.4 is GCF, LCM
+  and the distributive property, so nine GCF answers cannot master it. Components
+  needing a drawing or a free explanation are listed in `not_on_sheet` in
+  `cache/components.json` and do not count.
+- It has been right twice with no mistakes, or three times in a row on different
+  days since the last mistake. Answers from one sitting are one piece of evidence.
+
+Otherwise it is **ok** (right so far, or recovered with parts never asked),
+**shaky** (one mistake) or **weak** (two or more). Every skill also carries a
+Wilson 90% interval as context, and the graph prints what each skill still needs.
 
 Thresholds are set for how much evidence actually accumulates here: a skill gets
 one or two questions per 10-question test. The cut is 58% rather than 60%
@@ -338,7 +342,7 @@ answer in that column onto the wrong question.
 
 | | |
 |---|---|
-| `tests/` | One PDF and JSON spec per sheet (`tests/legacy/v<N>/` holds the earlier per-run folders, still matched by their QR codes). The spec is what marking reads, so it has to outlive the printout. |
+| `tests/` | Local only, not in this repository. One PDF and JSON spec per sheet (`tests/legacy/v<N>/` holds the earlier per-run folders, still matched by their QR codes). The spec is what marking reads, so it has to outlive the printout. |
 | `cache/syllabus.json` | The grade rosters, and which standards cannot be asked on a ten-box sheet. |
 | `cache/components.json` | Learning Commons components for each standard. |
 | `cache/prereqs.json` | Learning Commons prerequisites, seeded so the pipeline runs without an API key. |
