@@ -2876,6 +2876,1370 @@ def test_az():
     return qs
 
 
+# Tests BA, BB and BC are one batch from `skills.py --plan --sheets 3` after AX, AY
+# and AZ were marked. The plan now names the component to aim at (a failing one,
+# else one never asked), so each of the 30 questions is tagged with exactly that
+# component in a new skill key (see SK.update below).
+def test_ba():
+    qs = []
+    v = round(F(49, 8)) - round(F(23, 8))
+    assert v == 3
+    qs.append(Q("Estimate 6 1/8 – 2 7/8 by rounding each number to the nearest whole number.",
+                str(v), [str(v)], False, "6 1/8 is nearly 6 and 2 7/8 is nearly 3: 6 – 3 = 3", "g5fbench_sub"))
+    qs.append(Q("A pay table: 1 hour pays $9, 2 hours pay $18, 3 hours pay $27, 4 hours pay $36. "
+                "Which equation matches, with p for pay and h for hours? A: p = h + 8  B: p = 9h  "
+                "C: h = 9p. Write A, B or C.", "B", ["B"], False,
+                "Each hour adds $9, so pay is 9 times the hours: p = 9h", "g6tableeq"))
+    qs.append(Q("Which equation gives s, the number of 3/4-cup servings in 4 1/2 cups? A: s = 4 1/2 × 3/4  "
+                "B: s = 4 1/2 ÷ 3/4  C: s = 3/4 ÷ 4 1/2. Write A, B or C.", "B", ["B"], False,
+                "How many 3/4s fit in 4 1/2: divide 4 1/2 by 3/4", "g6fdiveq"))
+    qs.append(Q("A triangle has sides 5 cm, 5 cm and 5 cm. Is it an isosceles triangle (at least 2 "
+                "equal sides)? Write yes or no.", "yes", ["yes", "Yes"], False,
+                "All three sides are equal, so at least two are: yes", "g5tri"))
+    v = F(9, 4)
+    qs.append(Q("9 pies are shared equally among 4 friends. How much pie does each friend get?",
+                mixed(v), [mixed(v), frac(v), f"{mixed(v)} pies", "2.25"], False,
+                "9 ÷ 4 = 9/4 = 2 1/4", "g5divfrac"))
+    qs.append(Q("Tickets cost $6 each. Mia pays $42 in all for t tickets. Which equation fits? "
+                "A: t + 6 = 42  B: 6t = 42  C: t = 42 × 6. Write A, B or C.", "B", ["B"], False,
+                "Cost = price × number of tickets: 6t = 42", "g6eqrep_px"))
+    v = F(7, 2) * 4
+    qs.append(Q("A fish tank has a base of 3 1/2 m² and is 4 m tall. Use V = b × h to find its volume.",
+                f"{v} m³", [f"{v} m³", f"{v} m3", f"{v} cubic m"], True,
+                "Base area × height: 3 1/2 × 4 = 14 cubic meters", "g6volbh", "m³"))
+    qs.append(Q("What is the opposite of 0?", "0", ["0", "zero"], False,
+                "0 is its own opposite", "g6zeroopp"))
+    v = F(12, 3)
+    qs.append(Q("A car goes 12 miles in 3 hours at a steady rate. Write this as a unit rate in miles "
+                "per hour.", str(v), [str(v), f"{v} miles", f"{v} mi", f"{v} miles per hour", f"{v} mph"], False,
+                "12 ÷ 3 = 4 miles for each 1 hour", "g6unitrate_ab"))
+    v = D(80) * D("0.35")
+    qs.append(Q("What is 35% of 80?", dec(v), [dec(v)], False,
+                "10% of 80 is 8, so 30% is 24 and 5% is 4: 28", "g6pct_of"))
+    return qs
+
+
+def test_bb():
+    qs = []
+    plot = {"kind": "lineplot", "denominator": 4, "max": 1, "caption": "length of each rope (m)",
+            "values": {"1/4": 2, "1/2": 2, "3/4": 3, "1": 1}}
+    vals = {F(k): n for k, n in plot["values"].items()}
+    v = sum(k * n for k, n in vals.items() if k > F(1, 2))
+    qs.append(Q("What is the total length of only the ropes that are longer than 1/2 m?",
+                f"{mixed(v)} m", [f"{mixed(v)} m", f"{frac(v)} m"], True,
+                "Ropes longer than 1/2 m: three of 3/4 and one of 1: 9/4 + 1 = 3 1/4 m",
+                "g5lineplot", "m", figure=plot))
+    qs.append(Q("Which phrase describes 4n + 3? A: 4 more than 3 times n  B: 3 more than 4 times n  "
+                "C: 4 times the sum of n and 3. Write A, B or C.", "B", ["B"], False,
+                "4n is 4 times n, and + 3 adds 3: 3 more than 4 times n", "g6exprphrase"))
+    pair = "(4, 7)"
+    qs.append(Q("The point (–4, 7) is reflected across the y-axis. Write the new point.", pair,
+                [pair, "(4,7)", "4, 7", "4,7"], False,
+                "Reflecting across the y-axis flips the sign of x only: (–4, 7) goes to (4, 7)",
+                "g6reflect"))
+    v = 5 + 4 * 6
+    qs.append(Q("Renting a bike costs 5 + 4h dollars for h hours. How much does it cost for 6 hours?",
+                f"${v}", [f"${v}", str(v), f"{v} dollars"], False,
+                "Put h = 6: 5 + 4 × 6 = 5 + 24 = 29", "g6evalrw"))
+    forms = ["m – 4", "m-4", "(m – 4)", "(m-4)", "m − 4"]
+    qs.append(Q("In 6(m – 4), which part is treated as one quantity and multiplied by 6?", forms[0],
+                forms, False, "The parentheses group m – 4 into one quantity", "g6oneentity"))
+    qs.append(Q("Does the inequality x > 5 have exactly one solution or infinitely many solutions? "
+                "Write one or infinitely many.", "infinitely many",
+                ["infinitely many", "infinite", "infinitely many solutions", "Infinitely many"], False,
+                "6, 7, 8, 6.5, 100 ... every number above 5 works, so there is no end", "g6inf"))
+    v = D(18) / D("0.45")
+    qs.append(Q("Work out 18 ÷ 0.45", dec(v), [dec(v)], False,
+                "Multiply both by 100: 1800 ÷ 45 = 40", "g6divdecwhole"))
+    qs.append(Q("An account balance is –$80. How many dollars does the owner owe?", "$80",
+                ["$80", "80", "80 dollars"], False,
+                "The amount owed is the size of the balance: |–80| = 80", "g6absreal"))
+    v = F(21, 3) * 7
+    qs.append(Q("The ratio of x to y is 3 : 7. If x is 21, what is y?", str(v), [str(v)], False,
+                "21 is 7 times 3, so y is 7 × 7 = 49", "g6ratiomath"))
+    v = D("3.4") * D("2.5")
+    qs.append(Q("Work out 3.4 × 2.5", dec(v), [dec(v), "8.50"], False,
+                "34 × 25 = 850, with two decimal places: 8.50 = 8.5", "g5decmul"))
+    return qs
+
+
+def test_bc():
+    qs = []
+    v = F(-9, 4) + 5 - F(7, 4)
+    assert v == 1
+    qs.append(Q("Work out –2 1/4 + 5 – 1 3/4", str(v), [str(v)], False,
+                "Combine the fractions: –2 1/4 – 1 3/4 = –4. Then –4 + 5 = 1", "g7addsub"))
+    qs.append(Q("A rope is 2 1/2 m long. Maya uses 3/5 of it. Let u be the meters she uses. Which "
+                "equation fits? A: u = 3/5 + 2 1/2  B: u = 3/5 × 2 1/2  C: u = 2 1/2 ÷ 3/5. "
+                "Write A, B or C.", "B", ["B"], False,
+                "3/5 of the rope means 3/5 times the length", "g5fmuleq"))
+    forms = ["8(2a + 3)", "8 × (2a + 3)", "8(2a+3)", "8×(2a+3)", "(2a + 3) × 8", "(2a+3)×8"]
+    _expr_ok(forms, 16 * 5 + 24, a=5)
+    qs.append(Q("Factor 16a + 24 using the greatest common factor of 16 and 24.", forms[0], forms, False,
+                "GCF is 8: 16a = 8 × 2a and 24 = 8 × 3, so 8(2a + 3)", "g6factor"))
+    qs.append(Q("A bottle is full of water. Which measures how much space the water takes up: "
+                "height, surface area or volume?", "volume", ["volume", "Volume"], False,
+                "Space taken up is volume", "g5volspace"))
+    qs.append(Q("Does n = 5 make 3n = 18 true? Write yes or no.", "no", ["no", "No"], False,
+                "3 × 5 = 15, not 18: no", "g6substeq"))
+    v = 6 * 4 + 3 * 2
+    qs.append(Q("An L-shape is made by joining a 6 by 4 rectangle and a 3 by 2 rectangle side by "
+                "side without overlap. What is its total area?", str(v), [str(v), f"{v} square units"],
+                False, "6 × 4 = 24 and 3 × 2 = 6; 24 + 6 = 30", "g6areapoly"))
+    forms = ["9(2 + 3)", "9(2+3)", "9 × (2 + 3)", "9×(2+3)", "(2 + 3) × 9", "(2+3)×9"]
+    assert 9 * (2 + 3) == 18 + 27
+    qs.append(Q("Write 18 + 27 as a number times a sum of two numbers that have no common factor.",
+                forms[0], forms, False, "GCF of 18 and 27 is 9: 18 + 27 = 9 × 2 + 9 × 3 = 9(2 + 3)",
+                "g6gcfsum"))
+    qs.append(Q("The ratio of cats to dogs is 2 : 3. Which ratio is equivalent: 4:5, 6:9 or 5:8? "
+                "Write the ratio.", "6:9", ["6:9", "6 : 9", "6 to 9"], False,
+                "Multiply both by 3: 2 : 3 = 6 : 9", "g6equivratio"))
+    fa, fb = F(2, 3), F(3, 5)
+    v = "A" if fa > fb else "B"
+    qs.append(Q("Recipe A: 2 cups flour for 3 cups milk. Recipe B: 3 cups flour for 5 cups milk. "
+                "Which recipe has more flour for each cup of milk? Write A or B.", v, [v], False,
+                "Flour per cup of milk: A 2/3 = 10/15, B 3/5 = 9/15. A has more", "g6tablecmp"))
+    qs.append(Q("In 7.66, the 6 in the tenths place is worth how many times the 6 in the hundredths "
+                "place?", "10", ["10", "10 times", "ten"], False,
+                "Each place is 10 times the place to its right", "g5pv10"))
+    return qs
+
+
+SK.update({
+    "g6tableeq": ("Relate a table of values to an equation for the dependent variable", "6.EE.C.9",
+                  ["d29c0749-bd31-5ad3-8a3c-2a24769df8ce"]),
+    "g6fdiveq": ("Choose the equation for a fraction-division word problem", "6.NS.A.1",
+                 ["b15981ec-6234-523c-999c-93ce61149102"]),
+    "g5tri": ("Classify triangles in a hierarchy based on properties", "5.G.B.4",
+              ["8bd3a000-9afe-577e-8781-dd8b8d493289"]),
+    "g5divfrac": ("Whole-number division with a fraction or mixed-number answer", "5.NF.B.3",
+                  ["26645597-c6a9-5497-b3a2-63f304ab1de1", "46b4aaee-e89d-53f0-abd9-12b676510c8e"]),
+    "g6eqrep_px": ("Represent a real-world problem with px = q", "6.EE.B.7",
+                   ["8d29194f-94ec-51fa-b0c7-fc6d99780d3b"]),
+    "g6volbh": ("Volume with V = bh and a fractional edge, real-world", "6.G.A.2",
+                ["0bbc7349-8768-5a94-8461-b718a4547301"]),
+    "g6zeroopp": ("Zero is its own opposite", "6.NS.C.6.a", ["4c975388-0779-5402-ac2e-eda40bc3a324"]),
+    "g6unitrate_ab": ("Write a ratio a:b as a unit rate a/b", "6.RP.A.2",
+                      ["db4c25ad-9892-5abb-bcba-2fc9781d10f8"]),
+    "g6exprphrase": ("Identify a phrase that describes a given expression", "6.EE.A.2.a",
+                     ["ced6fc6b-dfd9-56c0-b8b2-7f7c72b8bfc7"]),
+    "g6evalrw": ("Evaluate an expression at a value in a real-world context", "6.EE.A.2.c",
+                 ["06806313-cfe4-5d7d-9646-fdcf8520cadf"]),
+    "g6oneentity": ("View part of an expression as a single entity", "6.EE.A.2.b",
+                    ["1ca4a9fc-2a7b-50b8-b67a-3b850141a649"]),
+    "g6inf": ("Inequalities x > c have infinitely many solutions", "6.EE.B.8",
+              ["94bdf387-6027-5bfe-a80f-9080e4299330"]),
+    "g6divdecwhole": ("Divide a whole number by a multi-digit decimal", "6.NS.B.3",
+                      ["95700724-a655-5092-ae09-41e4ed0b48c2"]),
+    "g6absreal": ("Interpret absolute value as magnitude in a real-world situation", "6.NS.C.7.c",
+                  ["8ef052eb-6878-5613-b9fd-3efd396d368c"]),
+    "g6ratiomath": ("Solve a mathematical problem with ratio and rate reasoning", "6.RP.A.3",
+                    ["c869a6c1-ffed-596f-a64f-6bffdd8faf92"]),
+    "g7addsub": ("Use properties of operations to add and subtract rational numbers", "7.NS.A.1.d",
+                 ["ce4afd4b-6f1d-5d6f-83df-ac9b90a40250"]),
+    "g5fmuleq": ("Use an equation for a fraction-multiplication word problem", "5.NF.B.6",
+                 ["ea894526-30b5-50a6-b312-6b4cfe38d624"]),
+    "g6factor": ("Apply the distributive property to factor simple expressions", "6.EE.A.3",
+                 ["8819fa6b-bd86-58b7-badd-df03a195db74"]),
+    "g5volspace": ("Volume is the space an object takes up", "5.MD.C.3",
+                   ["af5ac1f9-631b-583e-a202-f436b2c6065f"]),
+    "g6substeq": ("Substitute to test a one-variable, one-step equation", "6.EE.B.5",
+                  ["25259f33-13ce-5339-a53a-11e0a2ffd95f"]),
+    "g6areapoly": ("Find the area of a polygon by composing rectangles", "6.G.A.1",
+                   ["5a75b6d4-a3f4-5ff8-bf12-f81ff5586042"]),
+    "g6gcfsum": ("Use the distributive property to write a sum as a multiple of a sum", "6.NS.B.4",
+                 ["c587f727-0135-571c-8c60-7ad46e0a28c5"]),
+    "g6equivratio": ("Use equivalent ratios to represent a relationship", "6.RP.A.1",
+                     ["ff25751a-4675-50fe-ab86-bbaaffdda1dd"]),
+    "g6tablecmp": ("Use tables of ratios to compare ratios", "6.RP.A.3.a",
+                   ["05492c78-5bc3-51f2-890d-92283c0d1c00"]),
+})
+
+
+# Tests BD, BE and BF are one batch from `skills.py --plan --sheets 3` after BA, BB
+# and BC were marked. The plan returned 22 picks (14 failures, 8 coverage) for 30
+# questions, so eight extras go to the weakest standards, each on a different
+# component than the plan pick. Every question is tagged with the component the plan
+# named (a failing `aim at`, else one never asked).
+def test_bd():
+    qs = []
+    plot = {"kind": "lineplot", "denominator": 4, "max": 1, "caption": "length of each rope (m)",
+            "values": {"1/4": 1, "1/2": 3, "3/4": 2, "1": 2}}
+    vals = {F(k): n for k, n in plot["values"].items()}
+    v = sum(k * n for k, n in vals.items() if k >= F(3, 4))
+    qs.append(Q("What is the total length of only the ropes that are 3/4 m or longer?",
+                f"{mixed(v)} m", [f"{mixed(v)} m", f"{frac(v)} m"], True,
+                "Ropes 3/4 m or longer: two of 3/4 and two of 1: 1 1/2 + 2 = 3 1/2 m",
+                "g5lineplot", "m", figure=plot))
+    qs.append(Q("Jan runs 3/4 of a 5 1/2 km trail. Let d be the km she runs. Which equation fits? "
+                "A: d = 3/4 + 5 1/2  B: d = 3/4 × 5 1/2  C: d = 5 1/2 ÷ 3/4. Write A, B or C.",
+                "B", ["B"], False, "3/4 of the trail means 3/4 times the length", "g5fmuleq"))
+    qs.append(Q("The points (5, –2) and (–5, –2) are reflections of each other. Across which axis? "
+                "Write x-axis or y-axis.", "y-axis", ["y-axis", "y axis", "the y-axis", "Y-axis"], False,
+                "The y-coordinate stays the same and x changes sign: reflected across the y-axis",
+                "g6reflect"))
+    v = D(27) / D("0.45")
+    qs.append(Q("Work out 27 ÷ 0.45", dec(v), [dec(v)], False,
+                "Multiply both by 100: 2700 ÷ 45 = 60", "g6divdecwhole"))
+    qs.append(Q("Every equilateral triangle has 3 equal sides. Does every equilateral triangle have "
+                "at least 2 equal sides? Write yes or no.", "yes", ["yes", "Yes"], False,
+                "3 equal sides includes at least 2 equal sides: yes", "g5tri"))
+    v = 8 * 5 + 3 * 4
+    qs.append(Q("A garden is made by joining an 8 m by 5 m rectangle and a 3 m by 4 m rectangle "
+                "side by side. What is its area?", f"{v} m²", [f"{v} m²", f"{v} m2", f"{v} square m",
+                                                             f"{v} square meters"], True,
+                "8 × 5 = 40 and 3 × 4 = 12; 40 + 12 = 52 square meters", "g6areapolyrw", "m²"))
+    qs.append(Q("A cyclist rides 150 miles in 3 hours. Which describes the rate? A: 50 miles for "
+                "each hour  B: 50 hours for each mile. Write A or B.", "A", ["A"], False,
+                "150 ÷ 3 = 50 miles in 1 hour", "g6ratelang"))
+    qs.append(Q("Which single number tells how spread out a data set is: mean, median or range?",
+                "range", ["range", "Range"], False,
+                "The range, greatest minus least, describes the spread", "g6variation"))
+    plot2 = {"kind": "lineplot", "denominator": 8, "max": 1, "caption": "length of each strip (m)",
+             "values": {"1/8": 1, "1/4": 1, "1/2": 3, "7/8": 1}}
+    vals2 = {F(k): n for k, n in plot2["values"].items()}
+    v = max(vals2) - min(vals2)
+    qs.append(Q("How much longer is the longest strip than the shortest?",
+                f"{mixed(v)} m", [f"{mixed(v)} m", f"{frac(v)} m"], True,
+                "Longest 7/8 m, shortest 1/8 m: 7/8 – 1/8 = 6/8 = 3/4 m", "g5lineplot", "m", figure=plot2))
+    px, py = 7, -3
+    quad = 1 if px > 0 and py > 0 else 2 if px < 0 < py else 3 if px < 0 and py < 0 else 4
+    qs.append(Q("In which quadrant is the point (7, –3)? Write 1, 2, 3 or 4.", str(quad),
+                [str(quad), f"quadrant {quad}", f"Quadrant {quad}"], False,
+                "x is positive (right), y is negative (down): quadrant 4", "g6quadrant"))
+    return qs
+
+
+def test_be():
+    qs = []
+    v = -F(7, 2) + 6 - F(5, 2)
+    assert v == 0
+    qs.append(Q("Work out –3 1/2 + 6 – 2 1/2", str(v), [str(v)], False,
+                "Combine the fractions: –3 1/2 – 2 1/2 = –6. Then –6 + 6 = 0", "g7addsub"))
+    qs.append(Q("A jug holds 3 1/2 liters. Each glass takes 1/2 liter. Let g be the number of glasses. "
+                "Which equation fits? A: g = 3 1/2 × 1/2  B: g = 3 1/2 ÷ 1/2  C: g = 3 1/2 + 1/2. "
+                "Write A, B or C.", "B", ["B"], False,
+                "How many 1/2s fit in 3 1/2: divide", "g6fdiveq"))
+    forms = ["6(2x + 3)", "6 × (2x + 3)", "6(2x+3)", "6×(2x+3)", "(2x + 3) × 6", "(2x+3)×6"]
+    _expr_ok(forms, 12 * 4 + 18, x=4)
+    qs.append(Q("Factor 12x + 18 using the greatest common factor of 12 and 18.", forms[0], forms, False,
+                "GCF is 6: 12x = 6 × 2x and 18 = 6 × 3, so 6(2x + 3)", "g6factor"))
+    v = 9 + 3 * 7
+    qs.append(Q("A taxi costs 9 + 3m dollars for m miles. How much is a ride of 7 miles?",
+                f"${v}", [f"${v}", str(v), f"{v} dollars"], False,
+                "Put m = 7: 9 + 3 × 7 = 9 + 21 = 30", "g6evalrw"))
+    qs.append(Q("A box is filled with sand. Which tells how much space the sand takes up: its "
+                "weight, its surface or its volume?", "volume", ["volume", "Volume"], False,
+                "Space taken up is volume", "g5volspace"))
+    v = F(1, 2) * F(3, 4) * 4
+    qs.append(Q("A prism is 1/2 long, 3/4 wide and 4 tall. What is its volume in cubic units?",
+                mixed(v), [mixed(v), frac(v), f"{mixed(v)} cubic units", f"{mixed(v)} units³"], False,
+                "1/2 × 3/4 = 3/8; 3/8 × 4 = 12/8 = 1 1/2", "g6volmath"))
+    qs.append(Q("There are 3 feet in 1 yard. To change 7 yards into feet, do you multiply or divide by 3? "
+                "Write multiply or divide.", "multiply", ["multiply", "Multiply", "times"], False,
+                "Feet are smaller than yards, so there are more of them: 7 × 3 = 21 feet",
+                "g6convfactor"))
+    v = F(10, 3) + F(-29, 6) + F(-5, 6)
+    assert v == F(-7, 3)
+    qs.append(Q("Work out 3 1/3 + (–4 5/6) + (–5/6)", f"–{mixed(-v)}", [f"–{mixed(-v)}", f"-{mixed(-v)}"],
+                False, "Negatives together: –4 5/6 – 5/6 = –5 2/3. Then 3 1/3 – 5 2/3 = –2 1/3", "g7rat"))
+    forms = ["7x + 5", "7x+5", "5 + 7x", "5+7x"]
+    _expr_ok(forms, 3 * 2 + 5 + 4 * 2, x=2)
+    qs.append(Q("Write 3x + 5 + 4x in its simplest form.", forms[0], forms, False,
+                "Combine like terms: 3x + 4x = 7x, so 7x + 5", "g6combine"))
+    v = F(5, 2) / F(5, 6)
+    qs.append(Q("How many 5/6-m pieces can be cut from a ribbon 2 1/2 m long?", str(v),
+                [str(v), f"{v} pieces"], False,
+                "2 1/2 = 5/2, and 5/2 ÷ 5/6 = 5/2 × 6/5 = 3", "g6fdivword"))
+    return qs
+
+
+def test_bf():
+    qs = []
+    v = 4 * 7
+    qs.append(Q("A plant's height h (cm) after w weeks: week 1 is 4, week 2 is 8, week 3 is 12. What "
+                "is h at week 7?", str(v), [str(v), f"{v} cm"], False,
+                "It grows 4 each week, so h = 4w: 4 × 7 = 28", "g6depmodel"))
+    import math
+    g = math.gcd(24, 40)
+    forms = [f"{g}(3 + 5)", f"{g} × (3 + 5)", f"{g}(3+5)", f"{g}×(3+5)", "(3 + 5) × 8", "(3+5)×8"]
+    assert g * (3 + 5) == 24 + 40
+    qs.append(Q("Write 24 + 40 as a number times a sum of two numbers that have no common factor.",
+                forms[0], forms, False, "GCF of 24 and 40 is 8: 24 + 40 = 8 × 3 + 8 × 5 = 8(3 + 5)",
+                "g6gcfsum"))
+    qs.append(Q("Does x < 12 have exactly one solution or infinitely many solutions? Write one or "
+                "infinitely many.", "infinitely many",
+                ["infinitely many", "infinite", "infinitely many solutions", "Infinitely many"], False,
+                "11, 10, 0, –5, 3.5 ... every number below 12 works", "g6inf"))
+    v = D(120) * D("0.15")
+    qs.append(Q("What is 15% of 120?", dec(v), [dec(v)], False,
+                "10% of 120 is 12 and 5% is 6: 18", "g6pct_of"))
+    qs.append(Q("A bag holds 4 kg of rice. Ana has r bags and 36 kg of rice in all. Which equation "
+                "fits? A: r + 4 = 36  B: 4r = 36  C: r = 36 × 4. Write A, B or C.", "B", ["B"], False,
+                "Bags × 4 kg each = 36: 4r = 36", "g6eqrep_px"))
+    qs.append(Q("On a number line, are 7 and –7 on the same side of 0 or on opposite sides? Write "
+                "same or opposite.", "opposite", ["opposite", "opposite sides", "Opposite"], False,
+                "–7 is left of 0 and 7 is right of 0: opposite sides", "g6oppsides"))
+    qs.append(Q("A data set has most values low and a few very high values. Is it skewed left or "
+                "skewed right? Write left or right.", "right", ["right", "skewed right", "Right"], False,
+                "The long tail is on the high side, so it is skewed right", "g6skew"))
+    eq = ["c = 8n", "c=8n", "c = 8 × n", "c=8×n", "c = n × 8"]
+    _expr_ok([e.split("=")[1] for e in eq], 8 * 3, n=3)
+    qs.append(Q("A cinema ticket costs $8. Write an equation for the cost c of n tickets.", eq[0], eq,
+                False, "The cost depends on the tickets: c = 8n", "g6depvar"))
+    v = math.gcd(54, 72)
+    qs.append(Q("What is the greatest common factor of 54 and 72?", str(v), [str(v)], False,
+                "54 ÷ 18 = 3 and 72 ÷ 18 = 4, and nothing larger divides both. 6 and 9 are shared "
+                "but smaller", "g6gcf"))
+    v = F(5, 6) * F(18, 5)
+    qs.append(Q("A pipe is 3 3/5 m long. A piece 5/6 of its length is cut off. How long is the piece?",
+                f"{mixed(v)} m", [f"{mixed(v)} m"], True,
+                "5/6 × 18/5 = 90/30 = 3 m", "g5fmulword", "m"))
+    return qs
+
+
+SK.update({
+    "g6areapolyrw": ("Find the area of a polygon by composing rectangles, real-world", "6.G.A.1",
+                     ["68e69e23-c527-5dbc-b54a-7e1d0b1115fb"]),
+    "g6ratelang": ("Use rate language in the context of a ratio relationship", "6.RP.A.2",
+                   ["523d04e7-47d8-55c7-bc44-792f3e01bfda"]),
+    "g6variation": ("The variation of a data set can be described with a single number", "6.SP.A.3",
+                    ["d6f0d3bc-e9a8-5d0c-ae9e-f04c04660fad"]),
+    "g6volmath": ("Volume with V = lwh and fractional edges, mathematical", "6.G.A.2",
+                  ["e270cd96-fc42-5768-93ac-81c1a7e74069"]),
+    "g6convfactor": ("Use ratios as conversion factors", "6.RP.A.3.d",
+                     ["534e2e4c-8189-515f-9241-1b4c011556a7"]),
+    "g6combine": ("Combine like terms to generate an equivalent expression", "6.EE.A.3",
+                  ["e1d1c595-427d-5dcd-a1e3-8e37184e2a64"]),
+    "g6depmodel": ("Model a relationship between variables to solve a real-world problem", "6.EE.C.9",
+                   ["3435b2aa-520a-583e-9fbf-47110867a9de"]),
+    "g6oppsides": ("Opposite signs are on opposite sides of 0 on the number line", "6.NS.C.6.a",
+                   ["22156372-ad11-5837-9b62-4489288590bb"]),
+    "g6skew": ("Recognize a distribution that is skewed left or right", "6.SP.A.2",
+               ["24b6a84f-6d61-5663-986d-2494dcef865a"]),
+})
+
+
+SK.update({
+    "g7ineqcon": ("Construct a simple inequality for a real-world problem", "7.EE.B.4",
+                  ["7c6deb43-5973-5923-8c6e-e5d29adbaba1"]),
+    "g6eqsolve_xp_rw": ("Solve a real-world problem with x + p = q", "6.EE.B.7",
+                        ["cd69a8c5-90aa-5e64-9abf-112fa7051095"]),
+    # Word g6distone questions as BH7 did ("one number or many numbers?"). "How many
+    # numbers does the median/mean use" is ambiguous - it also reads as how many values
+    # the statistic is computed from - and voided BJ6 and BM4.
+    "g6distone": ("The distribution of a data set can be described with a single number", "6.SP.A.3",
+                  ["f6b991bd-d534-5502-9a22-b0bc2f095797"]),
+    "g6trimath": ("Find the area of a triangle, mathematical", "6.G.A.1",
+                  ["c2509042-cd73-5665-88f3-317d399b8e9d"]),
+    "g6commute": ("Use the commutative property to combine like terms", "6.EE.A.3",
+                  ["a629106a-c48e-5417-a29e-68ab652c8c5d"]),
+})
+
+
+# Tests BG, BH and BI are one batch from `skills.py --plan --sheets 3` after BD, BE and
+# BF were marked. The plan returned 27 picks for 30 questions, so each sheet gets one
+# extra on a weak standard, on a different component than its plan pick. Two picks were
+# retargeted after reading the diagnoses: 5.MD.B.2 misses are almost all units-only, so
+# the line plot asks for an equal share instead of another sum; 6.G.A.1's polygon miss
+# was units-only, so it aims at the never-asked triangle component, where the earlier
+# miss (not halving) was a real one.
+def test_bg():
+    qs = []
+    v = -F(11, 4) + 5 - F(5, 4)
+    assert v == 1
+    qs.append(Q("Work out –2 3/4 + 5 – 1 1/4", str(v), [str(v)], False,
+                "Combine the fractions: –2 3/4 – 1 1/4 = –4. Then –4 + 5 = 1", "g7addsub"))
+    qs.append(Q("A bag holds 4 1/2 kg of flour. Each cake uses 3/4 kg. Let c be the number of cakes. "
+                "Which equation fits? A: c = 4 1/2 × 3/4  B: c = 3/4 ÷ 4 1/2  C: c = 4 1/2 ÷ 3/4. "
+                "Write A, B or C.", "C", ["C"], False,
+                "How many 3/4s fit in 4 1/2: divide 4 1/2 by 3/4", "g6fdiveq"))
+    forms = ["5(3x + 4)", "5 × (3x + 4)", "5(3x+4)", "5×(3x+4)", "(3x + 4) × 5", "(3x+4)×5"]
+    _expr_ok(forms, 15 * 2 + 20, x=2)
+    qs.append(Q("Factor 15x + 20 using the greatest common factor of 15 and 20.", forms[0], forms, False,
+                "GCF is 5: 15x = 5 × 3x and 20 = 5 × 4, so 5(3x + 4)", "g6factor"))
+    v = D("12.05") - D("7.38")
+    qs.append(Q("Work out 12.05 – 7.38", dec(v), [dec(v)], False,
+                "Borrow across the 0: 12.05 – 7.38 = 4.67", "sub"))
+    v = D(12) / D("0.30")
+    assert v == 40
+    qs.append(Q("12 is 30% of a number. What is the number?", dec(v), [dec(v)], False,
+                "30% is 12, so 10% is 4 and 100% is 40", "whole"))
+    qs.append(Q("Which unit could measure the volume of a box: cm, cm² or cm³?", "cm³",
+                ["cm³", "cm3", "cubic cm", "cubic centimeters"], False,
+                "Volume is counted in cubes: cubic centimeters, cm³", "g5volunit"))
+    v = F(15, 2) * F(2, 3)
+    qs.append(Q("The base of a box has an area of 7 1/2 square inches. The box is 2/3 inch tall. "
+                "What is its volume in cubic inches?", mixed(v),
+                [mixed(v), f"{mixed(v)} cubic inches", f"{mixed(v)} in³"], False,
+                "V = bh: 15/2 × 2/3 = 30/6 = 5", "g6volbh"))
+    qs.append(Q("A taxi costs $3 plus $2 per mile. Sam can spend at most $15. Which inequality fits "
+                "the miles m? A: 3 + 2m ≤ 15  B: 3 + 2m ≥ 15  C: 2 + 3m ≤ 15. Write A, B or C.",
+                "A", ["A"], False,
+                "$3 once plus $2 for each mile, and at most $15 means ≤ 15", "g7ineqcon"))
+    v = D("0.064") * 1000
+    qs.append(Q("Work out 0.064 × 1000", dec(v), [dec(v)], False,
+                "× 1000 moves every digit three places left: 64", "g5pow10_mul"))
+    import math
+    v = math.gcd(48, 72)
+    qs.append(Q("What is the greatest common factor of 48 and 72?", str(v), [str(v)], False,
+                "48 = 24 × 2 and 72 = 24 × 3, and 2 and 3 share nothing more", "g6gcf"))
+    return qs
+
+
+def test_bh():
+    qs = []
+    plot = {"kind": "lineplot", "denominator": 4, "max": 1, "caption": "liters of water in each beaker",
+            "values": {"1/4": 2, "1/2": 2, "3/4": 2, "1": 2}}
+    vals = {F(k): n for k, n in plot["values"].items()}
+    total = sum(k * n for k, n in vals.items())
+    v = total / sum(vals.values())
+    qs.append(Q("All the water is shared out equally among the 8 beakers. How much is in each?",
+                f"{frac(v)} liter", [f"{frac(v)} liter", f"{frac(v)} liters", f"{frac(v)} L"], True,
+                "Total: 1/2 + 1 + 1 1/2 + 2 = 5 liters. 5 ÷ 8 = 5/8 liter each", "g5lineplot",
+                "liter", figure=plot))
+    import math
+    g = math.gcd(36, 54)
+    a, b = 36 // g, 54 // g
+    assert math.gcd(a, b) == 1
+    forms = [f"{g}({a} + {b})", f"{g} × ({a} + {b})", f"{g}({a}+{b})", f"{g}×({a}+{b})",
+             f"({a} + {b}) × {g}", f"({a}+{b})×{g}"]
+    qs.append(Q("Write 36 + 54 as a number times a sum of two numbers that have no common factor.",
+                forms[0], forms, False, "GCF of 36 and 54 is 18: 36 + 54 = 18 × 2 + 18 × 3 = 18(2 + 3)",
+                "g6gcfsum"))
+    qs.append(Q("How many numbers make y > 4 true? Write one or infinitely many.", "infinitely many",
+                ["infinitely many", "infinite", "infinitely many solutions", "Infinitely many"], False,
+                "5, 4.1, 10, 1000 ... every number above 4 works", "g6inf"))
+    qs.append(Q("Most test scores are high and a few are very low. Is the data skewed left or "
+                "skewed right? Write left or right.", "left", ["left", "skewed left", "Left"], False,
+                "The long tail is on the low side, so it is skewed left", "g6skew"))
+    qs.append(Q("Is every square also a rectangle? Write yes or no.", "yes", ["yes", "Yes"], False,
+                "A square has four right angles, so it is a rectangle (with equal sides too)",
+                "g5shapeclass"))
+    v = D("12.50") - D("4.75")
+    qs.append(Q("Lia had some money. Her aunt gave her $4.75 and now she has $12.50. How much did she "
+                "have at first?", usd(v), [usd(v), dec(v), f"{dec(v)} dollars"], False,
+                "x + 4.75 = 12.50, so x = 12.50 – 4.75 = 7.75", "g6eqsolve_xp_rw"))
+    qs.append(Q("The median of 20 heights is 142 cm. Does the median describe the data set with one "
+                "number or many numbers? Write one or many.", "one", ["one", "One", "one number"], False,
+                "A median is a single number that sums up the whole set", "g6distone"))
+    v = 2592 // 36
+    assert 36 * v == 2592
+    qs.append(Q("Work out 2592 ÷ 36", str(v), [str(v)], False,
+                "259 ÷ 36 = 7 r 7, bring down 2: 72 ÷ 36 = 2", "g5divw"))
+    v = F(-3, 4) * F(-8, 9)
+    qs.append(Q("Work out (–3/4) × (–8/9)", frac(v), [frac(v)], False,
+                "Two negatives make a positive: 3/4 × 8/9 = 24/36 = 2/3", "g7ratmul"))
+    v = F(9, 4) / F(3, 8)
+    assert v == 6
+    qs.append(Q("How many 3/8-cup scoops are in 2 1/4 cups of rice?", str(v),
+                [str(v), f"{v} scoops"], False,
+                "2 1/4 = 9/4, and 9/4 ÷ 3/8 = 9/4 × 8/3 = 6", "g6fdivword"))
+    return qs
+
+
+def test_bi():
+    qs = []
+    eq = ["p = 6b", "p=6b", "p = 6 × b", "p=6×b", "p = b × 6"]
+    _expr_ok([e.split("=")[1] for e in eq], 6 * 5, b=5)
+    qs.append(Q("Each box holds 6 pens. Write an equation for the number of pens p in b boxes.",
+                eq[0], eq, False, "The pens depend on the boxes: p = 6b", "g6depvar"))
+    v = F(9, 2) * F(2, 3)
+    qs.append(Q("A rope is 4 1/2 m long. Lee uses 2/3 of it. How long a piece does Lee use?",
+                f"{mixed(v)} m", [f"{mixed(v)} m"], True,
+                "2/3 × 9/2 = 18/6 = 3 m", "g5fmulword", "m"))
+    px, py = -4, -6
+    quad = 1 if px > 0 and py > 0 else 2 if px < 0 < py else 3 if px < 0 and py < 0 else 4
+    qs.append(Q("In which quadrant is the point (–4, –6)? Write 1, 2, 3 or 4.", str(quad),
+                [str(quad), f"quadrant {quad}", f"Quadrant {quad}"], False,
+                "x is negative (left), y is negative (down): quadrant 3", "g6quadrant"))
+    v = 2 * 4 ** 2 + 3
+    qs.append(Q("Find the value of 2x² + 3 when x = 4.", str(v), [str(v)], False,
+                "Square first: 4² = 16. Then 2 × 16 + 3 = 35", "g6evalexp"))
+    v = F(9, 3)
+    qs.append(Q("The ratio of flour to sugar is 9 : 3. How many cups of flour are there for each cup "
+                "of sugar?", str(v), [str(v), f"{v} cups"], False,
+                "9 : 3 as a unit rate is 9/3 = 3 cups of flour per cup of sugar", "g6unitrate_ab"))
+    v = F(14 * 9, 2)
+    qs.append(Q("A triangle has a base of 14 cm and a height of 9 cm. What is its area?",
+                f"{v} cm²", [f"{v} cm²", f"{v} cm2", f"{v} square cm"], True,
+                "Half of base × height: 14 × 9 = 126, half is 63 cm²", "g6trimath", "cm²"))
+    qs.append(Q("Which is further left on a number line: –2.5 or –1.5?", "–2.5", ["–2.5", "-2.5"], False,
+                "–2.5 is further below 0, so it is further left", "g6numline"))
+    v = max(D("0.407"), D("0.47"))
+    qs.append(Q("Which is greater: 0.407 or 0.47?", dec(v), [dec(v)], False,
+                "Compare tenths first: 4 = 4, then hundredths: 7 > 0, so 0.47", "g5cmp"))
+    qs.append(Q("Which is a statistical question? A: How old is Mia?  B: How old are the students in "
+                "Mia's class? Write A or B.", "B", ["B"], False,
+                "B expects many different answers, so the data varies", "g6statq"))
+    forms = ["6y + 8", "6y+8", "8 + 6y", "8+6y"]
+    _expr_ok(forms, 5 + 2 * 3 + 3 + 4 * 3, y=3)
+    qs.append(Q("Write 5 + 2y + 3 + 4y in its simplest form.", forms[0], forms, False,
+                "Reorder: 2y + 4y + 5 + 3 = 6y + 8", "g6commute"))
+    return qs
+
+
+SK.update({
+    "g6eqrep_xp_rw": ("Represent a real-world problem with x + p = q", "6.EE.B.7",
+                      ["ed92d2a4-92cb-5365-8471-7494e0390c77"]),
+    "g6eqsolve_px_rw": ("Solve a real-world problem with px = q", "6.EE.B.7",
+                        ["fafaead4-3eb8-51f9-aac0-5bbfa4b64f3e"]),
+    "g6volbh_math": ("Volume with V = bh and a fractional edge, mathematical", "6.G.A.2",
+                     ["1756aedc-6f52-52e3-a1c7-d46cfbba1a88"]),
+    "g6quadrw": ("Area of a quadrilateral by composing and decomposing, real-world", "6.G.A.1",
+                 ["924ca975-15b2-59d6-9093-d59fbbc7bbdb"]),
+})
+
+
+# Tests BJ, BK and BL are one batch from `skills.py --plan --sheets 3` after BG, BH and
+# BI were marked. The plan returned only 19 picks for 30 questions (every weak standard,
+# two with never-asked components, one review due), so as with BG-BI the spare slots go
+# to second questions on weak standards, each on a different component from that
+# standard's plan pick and on a different sheet. 6.EE.B.8's recent misses were about
+# "infinitely many", which BH3 then got right, so its pick goes back to writing an
+# inequality with the stated variable. 6.NS.C.6.b aims at reflections, where its real
+# misses are; quadrant questions have been right since AV5.
+def _neg(v):
+    return [f"{s}{t}" for s in ("–", "-") for t in dict.fromkeys((mixed(-v), frac(-v)))]
+
+
+def test_bj():
+    qs = []
+    v = F(13, 4) - 5 + F(3, 2)
+    assert v == F(-1, 4)
+    qs.append(Q("Work out 3 1/4 – 5 + 1 1/2", f"–{mixed(-v)}", _neg(v), False,
+                "Group the fractions: 3 1/4 + 1 1/2 = 4 3/4. Then 4 3/4 – 5 = –1/4", "g7addsub"))
+    import math
+    g = math.gcd(42, 56)
+    a, b = 42 // g, 56 // g
+    assert math.gcd(a, b) == 1
+    forms = [f"{g}({a} + {b})", f"{g} × ({a} + {b})", f"{g}({a}+{b})", f"{g}×({a}+{b})",
+             f"({a} + {b}) × {g}", f"({a}+{b})×{g}"]
+    qs.append(Q("Write 42 + 56 as a number times a sum of two numbers that have no common factor.",
+                forms[0], forms, False, f"GCF of 42 and 56 is {g}: 42 + 56 = {g} × {a} + {g} × {b} "
+                f"= {g}({a} + {b})", "g6gcfsum"))
+    forms = ["h < 140", "h<140", "140 > h", "140>h"]
+    qs.append(Q("A ride is only for children shorter than 140 cm. Write an inequality for the "
+                "height h of a child who may ride.", forms[0], forms, False,
+                "Shorter than 140 means less than 140, not equal to it: h < 140", "g6ineqwrite"))
+    qs.append(Q("Most children read 1 or 2 books a month and a few read 15 or more. Is the data "
+                "skewed left or skewed right? Write left or right.", "right",
+                ["right", "skewed right", "Right"], False,
+                "The long tail is on the high side, so it is skewed right", "g6skew"))
+    v = F(10, 4)
+    qs.append(Q("Paint is mixed 10 cans of white to 4 cans of blue. How many cans of white are "
+                "there for each can of blue?", mixed(v),
+                [mixed(v), frac(v), dec(D(v.numerator) / v.denominator), f"{mixed(v)} cans"], False,
+                "10 : 4 as a unit rate is 10/4 = 2 1/2 cans of white per can of blue", "g6unitrate_ab"))
+    qs.append(Q("Ana's 12 quiz scores have a median of 7. How many numbers does the median use to "
+                "describe all 12 scores?", "1", ["1", "one", "One", "1 number", "one number"], False,
+                "A median is a single number that sums up the whole set", "g6distone"))
+    v = D("4.50") / 3 * 7
+    qs.append(Q("3 notebooks cost $4.50. At the same price, how much do 7 notebooks cost?", usd(v),
+                [usd(v), dec(v), f"{dec(v)} dollars"], False,
+                "One notebook: 4.50 ÷ 3 = 1.50. Seven: 7 × 1.50 = 10.50", "g7prop_rep"))
+    v = F(14, 3) / F(2, 3)
+    assert v == 7
+    qs.append(Q("How many 2/3-cup servings are in 4 2/3 cups of soup?", str(v),
+                [str(v), f"{v} servings"], False,
+                "4 2/3 = 14/3, and 14/3 ÷ 2/3 = 14/3 × 3/2 = 7", "g6fdivword"))
+    v = F(8 * 15, 2)
+    qs.append(Q("A sail is a triangle with a base of 8 ft and a height of 15 ft. What is its area?",
+                f"{v} ft²", [f"{v} ft²", f"{v} ft2", f"{v} square feet", f"{v} sq ft"], True,
+                "Half of base × height: 8 × 15 = 120, half is 60 ft²", "g6tri", "ft²"))
+    v = F(-3, 4) / F(1, 8)
+    assert v == -6
+    qs.append(Q("Work out (–3/4) ÷ (1/8)", f"–{mixed(-v)}", _neg(v), False,
+                "Multiply by the flipped divisor: –3/4 × 8 = –6. One negative, so negative",
+                "g7ratdiv"))
+    return qs
+
+
+def test_bk():
+    qs = []
+    plot = {"kind": "lineplot", "denominator": 8, "max": 1, "caption": "length of each ribbon (m)",
+            "values": {"1/8": 2, "3/8": 1, "5/8": 3, "7/8": 2}}
+    vals = {F(k): n for k, n in plot["values"].items()}
+    v = sum(k * n for k, n in vals.items() if k > F(1, 2))
+    qs.append(Q("What is the total length of only the ribbons longer than 1/2 m?",
+                f"{mixed(v)} m", [f"{mixed(v)} m", f"{mixed(v)}m", f"{frac(v)} m"], True,
+                "Longer than 1/2 m: three of 5/8 and two of 7/8: 15/8 + 14/8 = 29/8 = 3 5/8 m",
+                "g5lineplot", "m", figure=plot))
+    v = F(27, 4) * F(2, 3)
+    qs.append(Q("A tank holds 6 3/4 liters. 2/3 of it is used. How many liters are used?",
+                f"{mixed(v)} L", [f"{mixed(v)} L", f"{mixed(v)} liters", f"{mixed(v)} liter",
+                                  f"{frac(v)} L", f"{frac(v)} liters"], True,
+                "6 3/4 = 27/4, and 2/3 × 27/4 = 54/12 = 4 1/2 liters", "g5fmulword", "L"))
+    qs.append(Q("The point (–6, 2) is reflected across the x-axis. Write the new point.", "(–6, –2)",
+                ["(–6, –2)", "(-6, -2)", "(-6,-2)", "(–6,–2)", "-6, -2", "-6,-2"], False,
+                "Reflecting across the x-axis flips the sign of y only: (–6, 2) goes to (–6, –2)",
+                "g6reflect"))
+    v = D(18) / D("0.24")
+    assert v == 75
+    qs.append(Q("Work out 18 ÷ 0.24", dec(v), [dec(v)], False,
+                "Multiply both by 100: 1800 ÷ 24 = 75", "g6divdecwhole"))
+    v = 25 + 40 * 3
+    qs.append(Q("A plumber charges 25 + 40h dollars for h hours. How much is it for 3 hours?",
+                f"${v}", [f"${v}", str(v), f"{v} dollars"], False,
+                "Put h = 3: 25 + 40 × 3 = 25 + 120 = 145", "g6evalrw"))
+    qs.append(Q("Jo has some stickers. After getting 15 more she has 42. Which equation fits? "
+                "A: 15s = 42  B: s + 15 = 42  C: s – 15 = 42. Write A, B or C.", "B", ["B"], False,
+                "Some stickers plus 15 more makes 42: s + 15 = 42", "g6eqrep_xp_rw"))
+    import math
+    v = math.gcd(36, 60)
+    qs.append(Q("What is the greatest common factor of 36 and 60?", str(v), [str(v)], False,
+                "36 = 12 × 3 and 60 = 12 × 5, and 3 and 5 share nothing more", "g6gcf"))
+    qs.append(Q("Which one number tells the typical value of a data set? A: the range  "
+                "B: the median  C: how many values there are. Write A, B or C.", "B", ["B"], False,
+                "The median is a measure of center: one number for a typical value", "g6center"))
+    v = F(21, 4) * F(8, 3)
+    assert v == 14
+    qs.append(Q("A prism has a base area of 5 1/4 cm² and a height of 2 2/3 cm. What is its volume?",
+                str(v), [str(v), f"{v} cm³", f"{v} cm3", f"{v} cubic cm"], False,
+                "V = bh: 21/4 × 8/3 = 168/12 = 14 cm³", "g6volbh_math"))
+    v = -F(11, 8) - F(21, 8)
+    assert v == -4
+    qs.append(Q("Work out –1 3/8 – 2 5/8", f"–{mixed(-v)}", _neg(v), False,
+                "Both go down: –1 3/8 – 2 5/8 = –(1 3/8 + 2 5/8) = –4", "g7ratsub"))
+    return qs
+
+
+def test_bl():
+    qs = []
+    # \u00a0 keeps each mixed number and each option on one line: "1" at a line end and
+    # "1/2" on the next reads as two numbers.
+    qs.append(Q("5\u00a01/4 m of ribbon is cut into 3/4 m pieces. Which gives the number of pieces? "
+                "A:\u00a05\u00a01/4\u00a0×\u00a03/4  B:\u00a05\u00a01/4\u00a0÷\u00a03/4  "
+                "C:\u00a03/4\u00a0÷\u00a05\u00a01/4", "B", ["B"], False,
+                "How many 3/4s fit in 5 1/4: divide 5 1/4 by 3/4", "g6fdiveq"))
+    forms = ["6(3y + 4)", "6 × (3y + 4)", "6(3y+4)", "6×(3y+4)", "(3y + 4) × 6", "(3y+4)×6"]
+    _expr_ok(forms, 18 * 2 + 24, y=2)
+    qs.append(Q("Factor 18y + 24 using the greatest common factor of 18 and 24.", forms[0], forms,
+                False, "GCF is 6: 18y = 6 × 3y and 24 = 6 × 4, so 6(3y + 4)", "g6factor"))
+    v = F(-2, 5) * F(-15, 4)
+    assert v == F(3, 2)
+    qs.append(Q("Work out (–2/5) × (–15/4)", mixed(v), [mixed(v), frac(v), "1.5"], False,
+                "Two negatives make a positive: 2/5 × 15/4 = 30/20 = 1 1/2", "g7ratmul"))
+    v = F(10 + 6, 2) * 4
+    assert v == 6 * 4 + F(4 * 4, 2)
+    qs.append(Q("A patio is a trapezoid. Its parallel sides are 10 m and 6 m, and they are 4 m "
+                "apart. What is its area?", f"{v} m²",
+                [f"{v} m²", f"{v} m2", f"{v} square meters", f"{v} sq m"], True,
+                "Rectangle 6 × 4 = 24, plus two triangles that make 4 × 4 ÷ 2 = 8: 32 m²",
+                "g6quadrw", "m²"))
+    v = D(260) * D("0.15")
+    qs.append(Q("Find 15% of 260.", dec(v), [dec(v)], False,
+                "10% is 26 and 5% is 13, so 15% is 39", "g6pct_of"))
+    v = F(9, 2) * F(8, 3)
+    assert v == 12
+    qs.append(Q("A fish tank has a base area of 4 1/2 square feet and is 2 2/3 feet tall. What is "
+                "its volume in cubic feet?", str(v),
+                [str(v), f"{v} ft³", f"{v} ft3", f"{v} cubic feet"], False,
+                "V = bh: 9/2 × 8/3 = 72/6 = 12", "g6volbh"))
+    v = F(162, 6)
+    assert v == 27
+    qs.append(Q("A car goes 162 miles on 6 gallons of gas. How many miles is that per gallon?", str(v),
+                [str(v), f"{v} miles", f"{v} miles per gallon", f"{v} mpg"], False,
+                "Miles per gallon: 162 ÷ 6 = 27", "g6unitrate"))
+    v = D("4.20") / D("0.35")
+    assert v == 12
+    qs.append(Q("Pencils cost $0.35 each. Mia spent $4.20 on pencils. How many did she buy?", dec(v),
+                [dec(v), f"{dec(v)} pencils"], False,
+                "0.35p = 4.20, so p = 4.20 ÷ 0.35 = 420 ÷ 35 = 12", "g6eqsolve_px_rw"))
+    qs.append(Q("Sam fills 3\u00a01/3 jars with 1\u00a01/2 cups each. Which gives the cups used? "
+                "A:\u00a01\u00a01/2\u00a0÷\u00a03\u00a01/3  B:\u00a03\u00a01/3\u00a0×\u00a01\u00a01/2  "
+                "C:\u00a03\u00a01/3\u00a0÷\u00a01\u00a01/2", "B", ["B"],
+                False, "3 1/3 jars of 1 1/2 cups each is 3 1/3 times 1 1/2", "g5fmuleq"))
+    v = 3 * 3 ** 2 - 5
+    qs.append(Q("Find the value of 3a² – 5 when a = 3.", str(v), [str(v)], False,
+                "Square first: 3² = 9. Then 3 × 9 – 5 = 22", "g6evalexp"))
+    return qs
+
+
+SK.update({
+    "g7ratio_multi": ("Solve a multi-step ratio problem", "7.RP.A.3",
+                      ["da9fc2c7-7cf2-52ef-bd89-1f1c625401e6"]),
+    "g6eqrep_px_math": ("Represent a mathematical problem with px = q", "6.EE.B.7",
+                        ["e54e642e-caef-5e93-956e-a382564f8e4f"]),
+    "g6volboth_rw": ("Volume with V = lwh and V = bh and fractional edges, real-world", "6.G.A.2",
+                     ["f873f320-ef6b-55f6-ab04-ce9b8dc30224"]),
+})
+
+
+def _nb(s):
+    """Non-breaking spaces inside an answer option, so '2 1/4' never splits across lines."""
+    return s.replace(" ", " ")
+
+
+# Skew questions. BF7, BH4, BJ4 and BN3 were words only ("most values low and a few very
+# high") with two choices, which had three faults: a guess was right half the time, so
+# BN3 being right said little; every miss got the same diagnosis whatever its cause; and
+# the child first had to turn "low values" into "the left of a number line" before she
+# could look for a tail. These show a dot plot on a whole-number line and offer three
+# answers. The answer is computed from the plotted data: mean right of the median means
+# the tail is on the right.
+def _skew_answer(values):
+    data = sorted(int(k) for k, n in values.items() for _ in range(n))
+    n = len(data)
+    mean, med = F(sum(data), n), F(data[(n - 1) // 2] + data[n // 2], 2)
+    counts = {int(k): c for k, c in values.items()}
+    lo, hi = min(counts), max(counts)
+    if all(counts.get(lo + hi - k, 0) == c for k, c in counts.items()):
+        return "symmetric"
+    mode = max(counts, key=counts.get)
+    side = "right" if mean > med else "left"
+    # A clear skew: the peak sits on the opposite half from the tail.
+    assert mean != med and ((mode < (lo + hi) / 2) if side == "right" else (mode > (lo + hi) / 2)), values
+    return side
+
+
+def _skew_q(values, top, caption):
+    ans = _skew_answer(values)
+    forms = {"right": ["right", "skewed right", "Right"], "left": ["left", "skewed left", "Left"],
+             "symmetric": ["symmetric", "Symmetric", "symmetrical"]}[ans]
+    work = {"right": "The long tail stretches out to the right (high values), so it is skewed right",
+            "left": "The long tail stretches out to the left (low values), so it is skewed left",
+            "symmetric": "Both sides are mirror images, so it is symmetric"}[ans]
+    return Q("Is this plot skewed left, skewed right or symmetric?", forms[0], forms, False,
+             work, "g6skew",
+             figure={"kind": "lineplot", "denominator": 1, "max": top, "caption": caption,
+                     "values": {str(k): n for k, n in values.items()}})
+
+
+def _skew_wrong(ans):
+    """The other two answers, each with the one route that reaches it."""
+    if ans == "symmetric":
+        return {s: "Saw a tail in a plot whose two sides are mirror images" for s in ("left", "right")}
+    bunch = "left" if ans == "right" else "right"
+    return {bunch: "Named the skew after the side where the data bunches, not the side the tail "
+                   "points to, as on BF7, BH4 and BJ4",
+            "symmetric": "Did not see the tail: called a lopsided plot symmetric"}
+
+
+SK.update({
+    "g6volboth_math": ("Volume with V = lwh and V = bh and fractional edges, mathematical", "6.G.A.2",
+                       ["2a84aba3-bc85-5130-b97c-7002f6d4e147"]),
+    "g6eqrep_xp_math": ("Represent a mathematical problem with x + p = q", "6.EE.B.7",
+                        ["099ceccb-4732-56c0-bdb1-61f9c6fcbd65"]),
+})
+
+
+# Tests BP, BQ and BR are one batch from `skills.py --plan --sheets 3`, re-run after the
+# mastery rule changed: a standard is no longer mastered while one of its parts is still
+# failing by the same three-days rule (5.NBT.B.5 had been green with 3-digit x 3-digit at
+# one right since its last miss). That made 12 standards weak again, so the plan is 22
+# failures, 2 coverage and 6 reviews, with no spare slots. Each failure aims at a part the
+# plan names as failing. Departures, from reading the diagnoses:
+# - 5.NF.A.2 and 5.MD.C.5: the recent misses are units only, with the arithmetic right,
+#   so both questions require the unit - the unit is the gap being measured.
+# - 5.NBT.B.5: the misses are copying and adding slips inside a correct method; it gets a
+#   3-digit x 3-digit product, the part that has not recovered.
+# - 6.SP.A.2 uses the dot-plot skew question; 6.G.A.2 and 6.EE.B.7 take their never-asked
+#   parts (the coverage reason) rather than the failing ones.
+# - Left out, because the plan is full: 6.RP.A.2, 6.SP.A.3, 4.OA.A.3, 5.G.B.4, 5.MD.C.3,
+#   5.NBT.A.2 and 5.NBT.B.7, all weak.
+def test_bp():
+    qs = []
+    v = F(11, 4) + F(11, 6)
+    assert v == F(55, 12)
+    qs.append(Q("Mia walked 2 3/4 km in the morning and 1 5/6 km in the afternoon. How far "
+                "did she walk in all?", f"{mixed(v)} km", [f"{mixed(v)} km", f"{mixed(v)}km",
+                                                          f"{frac(v)} km"], True,
+                "Common denominator 12: 2 9/12 + 1 10/12 = 3 19/12 = 4 7/12 km", "g5fword_add", "km"))
+    v = 734 * 268
+    qs.append(Q("Work out 734 × 268", str(v), [str(v), f"{v:,}"], False,
+                "734 × 8 = 5872, 734 × 60 = 44040, 734 × 200 = 146800; add: 196712", "g5mul33"))
+    qs.append(Q("How many 2/3-cup scoops are in 5 1/3 cups of rice? Which gives the answer? "
+                f"{_nb('A: 2/3 ÷ 5 1/3')}  {_nb('B: 5 1/3 × 2/3')}  {_nb('C: 5 1/3 ÷ 2/3')}",
+                "C", ["C"], False, "How many 2/3s fit in 5 1/3: divide 5 1/3 by 2/3", "g6fdiveq"))
+    mango = F(30 * 3, 2 + 3)
+    assert mango == 18
+    qs.append(Q("A fruit mix has 2 cups of apple for every 3 cups of mango. There are 30 cups in all. "
+                "How many cups are mango?", str(mango), [str(mango), f"{mango} cups"], False,
+                "2 + 3 = 5 cups in each batch, 30 ÷ 5 = 6 batches, 6 × 3 = 18 mango", "g7ratio_multi"))
+    v = F(-2, 3) / F(-4, 9)
+    assert v == F(3, 2)
+    qs.append(Q("Work out (–2/3) ÷ (–4/9)", mixed(v), [mixed(v), frac(v), "1.5"], False,
+                "Multiply by the flipped divisor: 2/3 × 9/4 = 18/12 = 1 1/2. Two negatives, so positive",
+                "g7ratdiv"))
+    qs.append(Q("A freezer is set to 15 degrees below zero. Write its temperature as a number.", "–15",
+                ["–15", "-15", "–15 degrees", "-15 degrees", "–15°", "-15°"], False,
+                "Zero degrees is 0 and below it is negative: –15", "g6signed"))
+    pt = (7, 4)
+    qs.append(Q(f"A point is at ({pt[0]}, {pt[1]}). How far is it from the y-axis?", str(pt[0]),
+                [str(pt[0]), f"{pt[0]} units"], False,
+                "Distance from the y-axis is how far across: the x-coordinate, 7", "g5coord_x"))
+    v = D(30) - 4 * D("3.85")
+    assert v == D("14.60")
+    qs.append(Q("Sam has $30. He buys 4 books at $3.85 each. How much change does he get?", usd(v),
+                [usd(v), "$14.6"], True, "4 × $3.85 = $15.40; $30 – $15.40 = $14.60", "money", "$"))
+    data = [14, 9, 17, 12]
+    v = F(sum(data), len(data))
+    assert v == 13
+    qs.append(Q("Four plants are 14, 9, 17 and 12 cm tall. What is their mean height?", str(v),
+                [str(v), f"{v} cm"], False, f"Add them: {sum(data)}. Share among 4: {sum(data)} ÷ 4 = {v}",
+                "g6mean"))
+    forms = ["5t + 3", "5t+3", "3 + 5t", "3+5t", "5 × t + 3", "5×t+3"]
+    _expr_ok(forms, 5 * 4 + 3, t=4)
+    qs.append(Q("Tickets cost t dollars each. Write an expression for the cost of 5 tickets and a "
+                "$3 booking fee.", forms[0], forms, False,
+                "5 tickets cost 5 × t = 5t dollars; add 3 for the fee", "g6expr"))
+    return qs
+
+
+def test_bq():
+    qs = []
+    v = -F(21, 8) - F(27, 8)
+    assert v == -6
+    qs.append(Q("Work out –2 5/8 – 3 3/8", f"–{mixed(-v)}", _neg(v), False,
+                "Both go down: –2 5/8 – 3 3/8 = –(2 5/8 + 3 3/8) = –6", "g7ratsub"))
+    v = 12 * 5 * 4
+    qs.append(Q("A box is 12 cm long, 5 cm wide and 4 cm tall. What is its volume?", f"{v} cm³",
+                [f"{v} cm³", f"{v} cm3", f"{v} cubic cm", f"{v} cubic centimeters"], True,
+                "12 × 5 = 60 cm² for the base; 60 × 4 = 240 cm³", "g5vol_math", "cm³"))
+    forms = ["7(3y + 4)", "7 × (3y + 4)", "7(3y+4)", "7×(3y+4)", "(3y + 4) × 7", "(3y+4)×7"]
+    _expr_ok(forms, 21 * 2 + 28, y=2)
+    qs.append(Q("Factor 21y + 28 using the greatest common factor of 21 and 28.", forms[0], forms,
+                False, "GCF is 7: 21y = 7 × 3y and 28 = 7 × 4, so 7(3y + 4)", "g6factor"))
+    forms = ["w < 23", "w<23", "23 > w", "23>w"]
+    qs.append(Q("A suitcase can be checked in only if it weighs less than 23 kg. Write an inequality "
+                "for the weight w of a suitcase that can be checked in.", forms[0], forms, False,
+                "Less than 23, not equal to it: w < 23", "g6ineqwrite"))
+    forms = ["2m – 5", "2m - 5", "2m–5", "2m-5", "2 × m – 5", "2×m–5"]
+    _expr_ok(forms, 2 * 6 - 5, m=6)
+    qs.append(Q("Write an expression for: 5 less than 2 times m.", forms[0], forms, False,
+                "2 times m is 2m; 5 less than that takes 5 away: 2m – 5", "g6expr_write"))
+    qs.append(Q("The point (6, –3) is reflected across the y-axis. Write the new point.", "(–6, –3)",
+                ["(–6, –3)", "(-6, -3)", "(-6,-3)", "(–6,–3)", "-6, -3", "-6,-3"], False,
+                "Reflecting across the y-axis flips the sign of x only: (6, –3) goes to (–6, –3)",
+                "g6reflect"))
+    v = 5 + 2 * 3 ** 2
+    qs.append(Q("Find the value of 5 + 2k² when k = 3.", str(v), [str(v)], False,
+                "Square first: 3² = 9. Then 5 + 2 × 9 = 23", "g6evalexp"))
+    qs.append(Q(f"A number n plus 2.5 is 9. Which equation fits? {_nb('A: 2.5n = 9')}  "
+                f"{_nb('B: n – 2.5 = 9')}  {_nb('C: n + 2.5 = 9')}. Write A, B or C.", "C", ["C"], False,
+                "n plus 2.5 is n + 2.5, and it equals 9: n + 2.5 = 9", "g6eqrep_xp_math"))
+    qs.append(Q(f"Which statement is true? {_nb('A: |–3| > |–10|')}  {_nb('B: –3 > –10')}. "
+                "Write the letter.", "B", ["B"],
+                False, "–3 is further right than –10, so –3 > –10; but 3 is less than 10, so "
+                "|–3| > |–10| is false", "g6absorder"))
+    v = D("4.6952").quantize(D("0.01"))
+    qs.append(Q("Round 4.6952 to the nearest hundredth.", str(v), [str(v), dec(v)], False,
+                "The thousandths digit is 5, so 4.69 rounds up to 4.70", "g5round"))
+    return qs
+
+
+def test_br():
+    qs = []
+    import math
+    g = math.gcd(48, 72)
+    a, b = 48 // g, 72 // g
+    assert math.gcd(a, b) == 1
+    forms = [f"{g}({a} + {b})", f"{g} × ({a} + {b})", f"{g}({a}+{b})", f"{g}×({a}+{b})",
+             f"({a} + {b}) × {g}", f"({a}+{b})×{g}"]
+    qs.append(Q("Write 48 + 72 as a number times a sum of two numbers that have no common factor.",
+                forms[0], forms, False, f"GCF of 48 and 72 is {g}: 48 + 72 = {g} × {a} + {g} × {b} "
+                f"= {g}({a} + {b})", "g6gcfsum"))
+    v = F(9, 2) * F(2, 3)
+    assert v == 3
+    qs.append(Q("A jug holds 4 1/2 cups of juice. Sam drinks 2/3 of it. How many cups does he "
+                "drink?", f"{v} cups", [f"{v} cups", f"{v} cup"], True,
+                "4 1/2 = 9/2, and 2/3 × 9/2 = 18/6 = 3 cups", "g5fmulword", "cups"))
+    forms = ["a = 6b", "a=6b", "a = 6 × b", "a=6×b", "6b = a", "6b=a"]
+    qs.append(Q("Each bag holds 6 apples. Write an equation for the number of apples a in b bags.",
+                forms[0], forms, False, "Apples depend on bags: 6 in each bag, so a = 6b", "g6depvar"))
+    v = F(14 + 10, 2) * 6
+    assert v == 10 * 6 + 2 * F(2 * 6, 2)
+    qs.append(Q("A table top is a trapezoid. Its parallel sides are 14 ft and 10 ft, and the height "
+                "between them is 6 ft. What is its area?", f"{v} ft²",
+                [f"{v} ft²", f"{v} ft2", f"{v} square feet", f"{v} sq ft"], True,
+                "Rectangle 10 × 6 = 60, plus two triangles 2 × 6 ÷ 2 = 6 each: 72 ft²", "g6quadrw", "ft²"))
+    qs.append(_skew_q({2: 3, 3: 5, 4: 4, 5: 2, 6: 1, 8: 1, 10: 1}, 10, "minutes to walk to school"))
+    v = F(27) / F(30, 100)
+    assert v == 90
+    qs.append(Q("30% of a number is 27. What is the number?", str(v), [str(v)], False,
+                "10% is 27 ÷ 3 = 9, so 100% is 90", "whole"))
+    v = D(21) / D("0.35")
+    assert v == 60
+    qs.append(Q("Work out 21 ÷ 0.35", dec(v), [dec(v)], False,
+                "Multiply both by 100: 2100 ÷ 35 = 60", "g6divdecwhole"))
+    base = F(5, 2) * 4
+    v = base * F(8, 5)
+    assert v == 16
+    qs.append(Q("A prism is 2 1/2 cm long, 4 cm wide and 1 3/5 cm tall. Use the area of "
+                "its base to find its volume.", str(v),
+                [str(v), f"{v} cm³", f"{v} cm3", f"{v} cubic cm"], False,
+                "Base: 2 1/2 × 4 = 10 cm². V = bh: 10 × 1 3/5 = 16 cm³", "g6volboth_math"))
+    v = 6552 // 26
+    assert v * 26 == 6552
+    qs.append(Q("Work out 6552 ÷ 26", str(v), [str(v)], False,
+                "65 ÷ 26 = 2 r 13, bring down 5: 135 ÷ 26 = 5 r 5, bring down 2: 52 ÷ 26 = 2", "g6div"))
+    l, w, h = 5, 2, 4
+    v = l * w * h
+    qs.append(Q("This box is full of unit cubes. How many cubes?", str(v),
+                [str(v), f"{v} cubes", f"{v} unit cubes", f"{v} cubic units"], False,
+                f"{l} × {w} in each layer = {l * w}, × {h} layers = {v}", "g5cubes",
+                figure={"kind": "cubes", "l": l, "w": w, "h": h}))
+    return qs
+
+
+# Tests BM, BN and BO are one batch from `skills.py --plan --sheets 3` after BJ, BK and
+# BL were marked. The plan returned 16 picks for 30 questions (13 failures, 2 coverage,
+# 1 review), so as with BJ-BL each of the 14 weak standards gets a second question on a
+# different component, on a different sheet from its plan pick. Departures from the plan,
+# from reading the diagnoses:
+# - 5.NF.B.6's recent misses are a units-only slip (BK2), a copying slip (BI2) and a
+#   wrong operation choice (BL9); only the last is a gap, so its pick is the equation.
+# - 6.EE.B.8's misses are wording (BF3) and the wrong letter (BJ3), not the inequality;
+#   both its questions name the variable and still test the direction.
+# - 6.G.A.2's misses are two blanks and halving a correct 14 (BK9), so its pick stays on
+#   V = bh with a given base area; the never-asked lwh-and-bh real-world part is BN10.
+#   The lwh-and-bh mathematical component (2a84aba3) is left for the next batch.
+# - 6.EE.B.7 had two never-asked parts; this batch covers px = q (mathematical) only.
+def test_bm():
+    qs = []
+    v = -F(19, 6) - F(11, 6)
+    assert v == -5
+    qs.append(Q("Work out –3 1/6 – 1 5/6", f"–{mixed(-v)}", _neg(v), False,
+                "Both go down: –3 1/6 – 1 5/6 = –(3 1/6 + 1 5/6) = –5", "g7ratsub"))
+    v = F(15, 4) / F(5, 8)
+    assert v == 6
+    qs.append(Q("A 3 3/4 m rope is cut into 5/8 m pieces. How many pieces are there?", str(v),
+                [str(v), f"{v} pieces"], False,
+                "3 3/4 = 15/4, and 15/4 ÷ 5/8 = 15/4 × 8/5 = 6", "g6fdivword"))
+    v = F(-5, 6) / F(-1, 3)
+    assert v == F(5, 2)
+    qs.append(Q("Work out (–5/6) ÷ (–1/3)", mixed(v), [mixed(v), frac(v), dec(D(5) / 2)], False,
+                "Multiply by the flipped divisor: 5/6 × 3 = 5/2 = 2 1/2. Two negatives, so positive",
+                "g7ratdiv"))
+    qs.append(Q("Leo's 30 jump distances have a mean of 2 m. How many numbers does the mean use "
+                "to sum up all 30 jumps?", "1", ["1", "one", "One", "1 number", "one number"], False,
+                "A mean is a single number that sums up the whole set", "g6distone"))
+    v = F(14, 4)
+    qs.append(Q("A recipe uses 14 cups of flour for 4 cups of sugar. How many cups of flour is that "
+                "for each cup of sugar?", mixed(v),
+                [mixed(v), frac(v), dec(D(14) / 4), f"{mixed(v)} cups"], False,
+                "14 : 4 as a unit rate is 14/4 = 3 1/2 cups of flour per cup of sugar", "g6unitrate_ab"))
+    red = F(40 * 3, 3 + 5)
+    assert red == 15
+    qs.append(Q("Paint is mixed 3 cans of red to 5 cans of white. Ben uses 40 cans in all. How many "
+                "cans are red?", str(red), [str(red), f"{red} cans"], False,
+                "3 + 5 = 8 cans in each batch, 40 ÷ 8 = 5 batches, 5 × 3 = 15 red", "g7ratio_multi"))
+    import math
+    v = 9 * 12 // math.gcd(9, 12)
+    qs.append(Q("What is the least common multiple of 9 and 12?", str(v), [str(v)], False,
+                "Multiples of 12: 12, 24, 36. 36 is the first that 9 also divides", "g6lcm"))
+    forms = ["8x + 20", "8x+20", "20 + 8x", "20+8x"]
+    _expr_ok(forms, 4 * (2 * 3 + 5), x=3)
+    qs.append(Q("Expand 4(2x + 5).", forms[0], forms, False,
+                "Multiply both terms by 4: 4 × 2x = 8x and 4 × 5 = 20", "g6distrib"))
+    v = F(16 * 11, 2)
+    qs.append(Q("A triangle has a base of 16 cm and a height of 11 cm. What is its area?",
+                f"{v} cm²", [f"{v} cm²", f"{v} cm2", f"{v} square cm", f"{v} sq cm"], True,
+                "Half of base × height: 16 × 11 = 176, half is 88 cm²", "g6trimath", "cm²"))
+    v = F(26) / F(40, 100)
+    assert v == 65
+    qs.append(Q("40% of a number is 26. What is the number?", str(v), [str(v)], False,
+                "10% is 26 ÷ 4 = 6.5, so 100% is 65", "whole"))
+    return qs
+
+
+def test_bn():
+    qs = []
+    import math
+    g = math.gcd(36, 84)
+    a, b = 36 // g, 84 // g
+    assert math.gcd(a, b) == 1
+    forms = [f"{g}({a} + {b})", f"{g} × ({a} + {b})", f"{g}({a}+{b})", f"{g}×({a}+{b})",
+             f"({a} + {b}) × {g}", f"({a}+{b})×{g}"]
+    qs.append(Q("Write 36 + 84 as a number times a sum of two numbers that have no common factor.",
+                forms[0], forms, False, f"GCF of 36 and 84 is {g}: 36 + 84 = {g} × {a} + {g} × {b} "
+                f"= {g}({a} + {b})", "g6gcfsum"))
+    forms = ["5(4x + 7)", "5 × (4x + 7)", "5(4x+7)", "5×(4x+7)", "(4x + 7) × 5", "(4x+7)×5"]
+    _expr_ok(forms, 20 * 2 + 35, x=2)
+    qs.append(Q("Factor 20x + 35 using the greatest common factor of 20 and 35.", forms[0], forms,
+                False, "GCF is 5: 20x = 5 × 4x and 35 = 5 × 7, so 5(4x + 7)", "g6factor"))
+    qs.append(Q("Most test scores were high, 85 to 100, and a few were very low, near 40. Is the "
+                "data skewed left or skewed right? Write left or right.", "left",
+                ["left", "skewed left", "Left"], False,
+                "The long tail is on the low side, so it is skewed left", "g6skew"))
+    v = 2 * 4 ** 2 + 7
+    qs.append(Q("Find the value of 2m² + 7 when m = 4.", str(v), [str(v)], False,
+                "Square first: 4² = 16. Then 2 × 16 + 7 = 39", "g6evalexp"))
+    qs.append(Q("A number n times 7 is 63. Which equation fits? A: n + 7 = 63  B: 7n = 63  "
+                "C: n = 7 × 63. Write A, B or C.", "B", ["B"], False,
+                "n times 7 is 7n, and it equals 63: 7n = 63", "g6eqrep_px_math"))
+    v = -F(13, 3) + 9 + -F(8, 3)
+    assert v == 2
+    qs.append(Q("Work out –4 1/3 + 9 + (–2 2/3)", str(v), [str(v)], False,
+                "Group the negatives: –4 1/3 + (–2 2/3) = –7. Then –7 + 9 = 2", "g7rat"))
+    qs.append(Q("Which one number describes the middle of a data set? A: the median  B: the range  "
+                "C: the largest value. Write A, B or C.", "A", ["A"], False,
+                "The median is a measure of center", "g6center"))
+    v = F(15, 2) * F(2, 5)
+    assert v == 3
+    qs.append(Q("A fence is 7 1/2 m long. Tom paints 2/5 of it. How many meters does he paint?",
+                f"{v} m", [f"{v} m", f"{v}m", f"{v} meters"], True,
+                "7 1/2 = 15/2, and 2/5 × 15/2 = 30/10 = 3 m", "g5fmulword", "m"))
+    forms = ["t < 2 1/2", "t<2 1/2", "t < 5/2", "t<5/2", "t < 2.5", "t<2.5",
+             "2 1/2 > t", "5/2 > t", "2.5 > t"]
+    qs.append(Q("Write an inequality that says the number t is less than 2 1/2.", forms[0], forms,
+                False, "Less than 2 1/2, not equal to it: t < 2 1/2", "g6ineqmath"))
+    v = F(7, 2) * 2 * F(3, 2)
+    qs.append(Q("A box is 3 1/2 in long, 2 in wide and 1 1/2 in tall. What is its volume "
+                "in cubic inches?", mixed(v),
+                [mixed(v), frac(v), dec(D(21) / 2), f"{mixed(v)} in³", f"{mixed(v)} in3",
+                 f"{mixed(v)} cubic inches"], False,
+                "Base 3 1/2 × 2 = 7 in². Then V = bh: 7 × 1 1/2 = 10 1/2 in³", "g6volboth_rw"))
+    return qs
+
+
+def test_bo():
+    qs = []
+    qs.append(Q("Each bag holds 2 1/4 kg of rice. Ana fills 2 2/3 bags. Which gives the "
+                f"rice used? {_nb('A: 2 2/3 × 2 1/4')}  {_nb('B: 2 1/4 ÷ 2 2/3')}  "
+                f"{_nb('C: 2 2/3 ÷ 2 1/4')}", "A", ["A"], False,
+                "2 2/3 bags of 2 1/4 kg each is 2 2/3 times 2 1/4", "g5fmuleq"))
+    forms = ["L < 450", "L<450", "450 > L", "450>L"]
+    qs.append(Q("A lift can only carry loads lighter than 450 kg. Write an inequality for the load L "
+                "that the lift may carry.", forms[0], forms, False,
+                "Lighter than 450 means less than 450, not equal to it: L < 450", "g6ineqwrite"))
+    v = F(12 + 8, 2) * 5
+    assert v == 50
+    qs.append(Q("A garden is a trapezoid. Its parallel sides are 12 m and 8 m, and the height "
+                "between them is 5 m. What is its area?", f"{v} m²",
+                [f"{v} m²", f"{v} m2", f"{v} square meters", f"{v} sq m"], True,
+                "Average the parallel sides: (12 + 8) ÷ 2 = 10. Then 10 × 5 = 50 m²", "g6quadrw", "m²"))
+    v = D(180) * D("0.35")
+    assert v == 63
+    qs.append(Q("Find 35% of 180.", dec(v), [dec(v)], False,
+                "10% is 18, so 30% is 54, and 5% is 9: 54 + 9 = 63", "g6pct_of"))
+    v = F(27, 4) * F(8, 3)
+    assert v == 18
+    qs.append(Q("A prism has a base area of 6 3/4 in² and a height of 2 2/3 in. What is its "
+                "volume?", str(v), [str(v), f"{v} in³", f"{v} in3", f"{v} cubic inches"], False,
+                "V = bh: 27/4 × 8/3 = 216/12 = 18 in³", "g6volbh_math"))
+    qs.append(Q("How many 3/8 kg bags can be filled from 4 1/2 kg of flour? Which gives the "
+                f"answer? {_nb('A: 4 1/2 ÷ 3/8')}  {_nb('B: 3/8 ÷ 4 1/2')}  {_nb('C: 4 1/2 × 3/8')}",
+                "A", ["A"], False, "How many 3/8s fit in 4 1/2: divide 4 1/2 by 3/8", "g6fdiveq"))
+    v = F(-3, 4) * F(-8, 3)
+    assert v == 2
+    qs.append(Q("Work out (–3/4) × (–2 2/3)", str(v), [str(v)], False,
+                "Two negatives make a positive: 3/4 × 8/3 = 24/12 = 2", "g7ratmul"))
+    v = F(96, 8)
+    assert v == 12
+    qs.append(Q("A printer prints 96 pages in 8 minutes. How many pages is that per minute?", str(v),
+                [str(v), f"{v} pages", f"{v} pages per minute"], False,
+                "Pages per minute: 96 ÷ 8 = 12", "g6unitrate"))
+    ages = [9, 11, 12, 12, 14, 17]
+    v = max(ages) - min(ages)
+    qs.append(Q("The ages in a club are 9, 11, 12, 12, 14 and 17. What is the range of the ages?",
+                str(v), [str(v), f"{v} years"], False,
+                "Range is largest minus smallest: 17 – 9 = 8", "g6spread"))
+    v = 15 + 8 * 5
+    qs.append(Q("A gym charges 15 + 8w dollars for w weeks. How much is it for 5 weeks?", f"${v}",
+                [f"${v}", str(v), f"{v} dollars"], False,
+                "Put w = 5: 15 + 8 × 5 = 15 + 40 = 55", "g6evalrw"))
+    return qs
+
+
+# Tests BS, BT and BU are one batch from `skills.py --plan --sheets 3` after BP, BQ and
+# BR were marked: 25 failures and 4 reviews, so 29 picks with one spare slot. The spare
+# goes to a second expression question (6.EE.A.2.a): writing a number where the letter
+# belongs has now happened on AI3, AS10 and BQ5. Departures, from the diagnoses:
+# - 5.NF.A.2 and 5.MD.C.5: the misses are still units only (BP1, BQ2), so both keep a
+#   required unit; the arithmetic has been right every time.
+# - 5.NBT.B.7: the misses were a copying slip and a dropped carry; the question needs a carry.
+# - 5.G.B.4: the miss is that an equilateral triangle is also isosceles (AX7).
+# - Multiple-choice answers avoid slot A where the trap would sit there: on S7 and BK8 a
+#   default guess of A was the wrong answer.
+def test_bs():
+    qs = []
+    v = F(16, 3) - F(11, 4)
+    assert v == F(31, 12)
+    qs.append(Q("A tank has 5 1/3 liters of water. 2 3/4 liters leak out. How much water is "
+                "left?", f"{mixed(v)} L", [f"{mixed(v)} L", f"{mixed(v)} liters", f"{frac(v)} L"],
+                True, "Common denominator 12: 5 4/12 – 2 9/12 = 4 16/12 – 2 9/12 = 2 7/12 L",
+                "g5fword_sub", "L"))
+    import math
+    v = math.gcd(72, 96)
+    assert v == 24
+    qs.append(Q("What is the greatest common factor of 72 and 96?", str(v), [str(v)], False,
+                "72 = 24 × 3 and 96 = 24 × 4, and 3 and 4 share nothing more", "g6gcf"))
+    qs.append(Q("Each jar holds 3/4 cup of jam. Lena fills 2 2/3 jars. Which gives the jam used? "
+                f"{_nb('A: 2 2/3 ÷ 3/4')}  {_nb('B: 2 2/3 × 3/4')}  {_nb('C: 3/4 ÷ 2 2/3')}", "B", ["B"],
+                False, "2 2/3 jars of 3/4 cup each is 2 2/3 times 3/4", "g5fmuleq"))
+    v = F(16 + 10, 2) * 4
+    assert v == 52
+    qs.append(Q("A patio is a trapezoid. Its parallel sides are 16 m and 10 m, and the height between "
+                "them is 4 m. What is its area?", f"{v} m²",
+                [f"{v} m²", f"{v} m2", f"{v} square meters", f"{v} sq m"], True,
+                "Rectangle 10 × 4 = 40, plus two triangles 3 × 4 ÷ 2 = 6 each: 52 m²", "g6quadrw", "m²"))
+    qs.append(Q("In which quadrant is the point (–4, –7)? Write 1, 2, 3 or 4.", "3", ["3"], False,
+                "x negative (left) and y negative (down): quadrant 3", "g6quadrant"))
+    v = 3 * 5 ** 2 - 4
+    qs.append(Q("Find the value of 3n² – 4 when n = 5.", str(v), [str(v)], False,
+                "Square first: 5² = 25. Then 3 × 25 – 4 = 71", "g6evalexp"))
+    v = F(15, 4) * F(8, 5)
+    assert v == 6
+    qs.append(Q("A fish tank has a base area of 3 3/4 square feet and is 1 3/5 feet tall. What "
+                "is its volume in cubic feet?", str(v), [str(v), f"{v} ft³", f"{v} ft3", f"{v} cubic feet"],
+                False, "V = bh: 15/4 × 8/5 = 120/20 = 6", "g6volbh"))
+    qs.append(Q("Triangle T has 3 equal sides. Which names fit it? A: equilateral only  B: isosceles "
+                "only  C: both equilateral and isosceles. Write A, B or C.", "C", ["C"], False,
+                "Isosceles means at least 2 equal sides, so 3 equal sides counts too: both", "g5tri"))
+    qs.append(Q("Two boxes take up exactly the same amount of space. Which must be the same for both? "
+                "A: perimeter  B: volume  C: height. Write A, B or C.", "B", ["B"], False,
+                "Volume is the space an object takes up", "g5volspace"))
+    v = D(340) * D("0.15")
+    assert v == 51
+    qs.append(Q("Find 15% of 340.", dec(v), [dec(v)], False,
+                "10% is 34 and 5% is 17: 34 + 17 = 51", "g6pct_of"))
+    return qs
+
+
+def test_bt():
+    qs = []
+    v = -F(23, 4) + 9 + -F(9, 4)
+    assert v == 1
+    qs.append(Q("Work out –5 3/4 + 9 + (–2 1/4)", str(v), [str(v)], False,
+                "Group the negatives: –5 3/4 + (–2 1/4) = –8. Then –8 + 9 = 1", "g7rat"))
+    blue = F(56 * 4, 3 + 4)
+    assert blue == 32
+    qs.append(Q("A bead kit has 3 red beads for every 4 blue beads. There are 56 beads in all. How "
+                "many are blue?", str(blue), [str(blue), f"{blue} beads", f"{blue} blue"], False,
+                "3 + 4 = 7 beads in each group, 56 ÷ 7 = 8 groups, 8 × 4 = 32 blue", "g7ratio_multi"))
+    forms = ["8(3x + 5)", "8 × (3x + 5)", "8(3x+5)", "8×(3x+5)", "(3x + 5) × 8", "(3x+5)×8"]
+    _expr_ok(forms, 24 * 2 + 40, x=2)
+    qs.append(Q("Factor 24x + 40 using the greatest common factor of 24 and 40.", forms[0], forms,
+                False, "GCF is 8: 24x = 8 × 3x and 40 = 8 × 5, so 8(3x + 5)", "g6factor"))
+    forms = ["4p + 7", "4p+7", "7 + 4p", "7+4p", "4 × p + 7", "4×p+7"]
+    _expr_ok(forms, 4 * 3 + 7, p=3)
+    qs.append(Q("Write an expression for: 7 more than 4 times p.", forms[0], forms, False,
+                "4 times p is 4p; 7 more than that adds 7: 4p + 7", "g6expr_write"))
+    qs.append(_skew_q({1: 1, 3: 1, 5: 2, 6: 3, 7: 4, 8: 5, 9: 3}, 10, "goals scored"))
+    v = D(80) - 6 * D("12.75")
+    assert v == D("3.50")
+    qs.append(Q("A phone plan costs $12.75 a month. Lily pays for 6 months with $80. How much change "
+                "does she get?", usd(v), [usd(v), "$3.5"], True,
+                "6 × $12.75 = $76.50; $80 – $76.50 = $3.50", "money", "$"))
+    v = D("6.85") + D("3.7")
+    qs.append(Q("Work out 6.85 + 3.7", dec(v), [dec(v)], False,
+                "Line up the points: 6.85 + 3.70 = 10.55", "g5decadd"))
+    v = -(-158 // 24)
+    assert v == 7
+    qs.append(Q("158 students go on a trip. Each bus holds 24 students. How many buses are needed?",
+                str(v), [str(v), f"{v} buses"], False,
+                "158 ÷ 24 = 6 r 14. The 14 left over still need a bus, so 7 buses", "g4multi"))
+    qs.append(Q("The median of 40 test scores is 81. Does the median describe the data set with one "
+                "number or many numbers? Write one or many.", "one", ["one", "One", "1"], False,
+                "A median is a single number that sums up the whole set", "g6distone"))
+    qs.append(Q("–2 > –9. Which of these two numbers is further to the right on a number line?", "–2",
+                ["–2", "-2"], False, "Greater means further right: –2 is to the right of –9",
+                "g6ineqpos"))
+    return qs
+
+
+def test_bu():
+    qs = []
+    v = 15 * 6 * 3
+    qs.append(Q("A box is 15 cm long, 6 cm wide and 3 cm tall. What is its volume?", f"{v} cm³",
+                [f"{v} cm³", f"{v} cm3", f"{v} cubic cm", f"{v} cubic centimeters"], True,
+                "15 × 6 = 90 cm² for the base; 90 × 3 = 270 cm³", "g5vol_math", "cm³"))
+    v = 856 * 347
+    qs.append(Q("Work out 856 × 347", str(v), [str(v), f"{v:,}"], False,
+                "856 × 7 = 5992, 856 × 40 = 34240, 856 × 300 = 256800; add: 297032", "g5mul33"))
+    forms = ["p = 8b", "p=8b", "p = 8 × b", "p=8×b", "8b = p", "8b=p"]
+    qs.append(Q("Boxes b: 1, 2, 3. Pens p: 8, 16, 24. Write an equation for the number of pens p in "
+                "b boxes.", forms[0], forms, False,
+                "Each box adds 8 pens, and the pens depend on the boxes: p = 8b", "g6tableeq"))
+    forms = ["infinitely many", "Infinitely many", "infinite", "infinitely many numbers", "infinitely"]
+    qs.append(Q("How many numbers make x > 9 true? Write one, none or infinitely many.", forms[0], forms,
+                False, "9.1, 10, 100 and every number above 9 work: infinitely many", "g6inf"))
+    pt = (3, 10)
+    qs.append(Q(f"A point is at ({pt[0]}, {pt[1]}). How far is it from the y-axis?", str(pt[0]),
+                [str(pt[0]), f"{pt[0]} units"], False,
+                "Distance from the y-axis is how far across: the x-coordinate, 3", "g5coord_x"))
+    v = F(10, 4)
+    qs.append(Q("A recipe uses 10 cups of water for 4 cups of rice. How many cups of water is that for "
+                "each cup of rice?", mixed(v), [mixed(v), frac(v), "2.5", f"{mixed(v)} cups"], False,
+                "10 : 4 as a unit rate is 10/4 = 2 1/2 cups of water per cup of rice", "g6unitrate_ab"))
+    v = D("47.3") / 1000
+    qs.append(Q("Work out 47.3 ÷ 10³", dec(v), [dec(v)], False,
+                "10³ = 1000, so the point moves three places left: 0.0473", "g5pow10"))
+    qs.append(Q("Pens cost $3 each. Sam spends $27 on p pens. Which equation fits? "
+                f"{_nb('A: p + 3 = 27')}  {_nb('B: 27p = 3')}  {_nb('C: 3p = 27')}. Write A, B or C.",
+                "C", ["C"], False, "p pens at $3 each cost 3p, and that is 27: 3p = 27", "g6eqrep_px"))
+    v = F(-5, 8) * F(-12, 5)
+    assert v == F(3, 2)
+    qs.append(Q("Work out (–5/8) × (–2 2/5)", mixed(v), [mixed(v), frac(v), "1.5"], False,
+                "Two negatives make a positive: 5/8 × 12/5 = 60/40 = 1 1/2", "g7ratmul"))
+    forms = ["6k – 2", "6k - 2", "6k–2", "6k-2", "6 × k – 2", "6×k–2"]
+    _expr_ok(forms, 6 * 5 - 2, k=5)
+    qs.append(Q("Write an expression for: 2 less than 6 times k.", forms[0], forms, False,
+                "6 times k is 6k; 2 less than that takes 2 away: 6k – 2", "g6expr_write"))
+    return qs
+
+
+# Tests BV, BW and BX are one batch from `skills.py --plan --sheets 3` after BS, BT and
+# BU were marked: 21 failures, no reviews due and no coverage left, so 9 spare slots.
+# The spares go to second questions on the real misses of the last batch and the
+# standards still failing most: a ratio part (BT2), percent of / whole (BS10, BM10),
+# subtracting rationals (BK10, BM1), a 3-digit row slip (BU2), the trapezoid (BL4, BO3,
+# BR4), letters in an equation (BU3), an expression with brackets, an inequality, and
+# cubic units (BS7, BU1, BM9: an area or length unit on a volume, three times).
+# Departures, from the diagnoses:
+# - 5.MD.C.5 and 6.G.A.2: the misses are units only, so both require a cubic unit.
+# - 6.G.A.1: the triangle miss was cm³ for an area, so the unit is required.
+# - 7.RP.A.3: every miss gave the other part of the ratio, so one sheet asks for the
+#   first-named part and the other for the second.
+def test_bv():
+    qs = []
+    v = F(19, 8) + F(11, 6)
+    assert v == F(101, 24)
+    qs.append(Q("Mia walks 2 3/8 km to the park, then 1 5/6 km to the shop. How far does she walk "
+                "in all?", f"{mixed(v)} km", [f"{mixed(v)} km", f"{mixed(v)}km", f"{frac(v)} km"],
+                True, "Common denominator 24: 2 9/24 + 1 20/24 = 3 29/24 = 4 5/24 km",
+                "g5fword_add", "km"))
+    boys = F(36 * 5, 5 + 4)
+    assert boys == 20
+    qs.append(Q("A club has 5 boys for every 4 girls. There are 36 children in all. How many are "
+                "boys?", str(boys), [str(boys), f"{boys} boys"], False,
+                "5 + 4 = 9 in each group, 36 ÷ 9 = 4 groups, 4 × 5 = 20 boys", "g7ratio_multi"))
+    forms = ["d = 12h", "d=12h", "d = 12 × h", "d=12×h", "12h = d", "12h=d"]
+    qs.append(Q("Hours h: 1, 2, 3. Pay d: 12, 24, 36 dollars. Write an equation for the pay d "
+                "after h hours.", forms[0], forms, False,
+                "Each hour adds $12, and the pay depends on the hours: d = 12h", "g6tableeq"))
+    v = F(12 * 15, 2)
+    assert v == 90
+    qs.append(Q("A triangle has a base of 12 cm and a height of 15 cm. What is its area?",
+                f"{v} cm²", [f"{v} cm²", f"{v} cm2", f"{v} square cm", f"{v} sq cm"], True,
+                "Half of base × height: 12 × 15 = 180, half is 90 cm²", "g6trimath", "cm²"))
+    v = F(-4, 5) / F(2, 15)
+    assert v == -6
+    qs.append(Q("Work out (–4/5) ÷ (2/15)", f"–{-v}", [f"–{-v}", f"-{-v}"], False,
+                "Multiply by the flipped divisor: 4/5 × 15/2 = 60/10 = 6. One negative, so –6",
+                "g7ratdiv"))
+    grid = {"kind": "grid", "size": 7, "points": {"P": [5, 2], "Q": [2, 6]}}
+    px, py = grid["points"]["P"]
+    qs.append(Q("Write the coordinates of point P.", f"({px}, {py})",
+                [f"({px}, {py})", f"({px},{py})", f"{px}, {py}", f"{px},{py}"], False,
+                "Across 5 first, then up 2: (5, 2)", "g5coord", figure=grid))
+    qs.append(Q("A bottle and a mug take up exactly the same amount of space. Which is the same for "
+                "both: area, perimeter or volume? Write the word.", "volume",
+                ["volume", "Volume"], False, "The space an object takes up is its volume",
+                "g5volspace"))
+    v = F(28) / F(35, 100)
+    assert v == 80
+    qs.append(Q("28 is 35% of a number. What is the number?", str(v), [str(v)], False,
+                "35% is 28, so 5% is 4 and 100% is 80", "whole"))
+    forms = ["L < 600", "L<600", "600 > L", "600>L"]
+    qs.append(Q("A lift can only carry a load that is less than 600 kg. Write an inequality for the "
+                "load L the lift can carry.", forms[0], forms, False,
+                "Less than 600, not equal to it: L < 600", "g6ineqwrite"))
+    v = 748 * 569
+    qs.append(Q("Work out 748 × 569", str(v), [str(v), f"{v:,}"], False,
+                "748 × 9 = 6732, 748 × 60 = 44880, 748 × 500 = 374000; add: 425612", "g5mul33"))
+    return qs
+
+
+def test_bw():
+    qs = []
+    v = -F(10, 3) + 10 + -F(8, 3)
+    assert v == 4
+    qs.append(Q("Work out –3 1/3 + 10 + (–2 2/3)", str(v), [str(v)], False,
+                "Group the negatives: –3 1/3 + (–2 2/3) = –6. Then –6 + 10 = 4", "g7rat"))
+    v = 3407 * 46
+    qs.append(Q("Work out 3407 × 46", str(v), [str(v), f"{v:,}"], False,
+                "3407 × 6 = 20442, 3407 × 40 = 136280; add: 156722", "g5mul24"))
+    v = F(21, 4) * F(2, 3)
+    assert v == F(7, 2)
+    qs.append(Q("A rope is 5 1/4 m long. Ana uses 2/3 of it. How many meters does she use?",
+                f"{mixed(v)} m", [f"{mixed(v)} m", f"{mixed(v)}m", f"{frac(v)} m", "3.5 m"], True,
+                "5 1/4 = 21/4, and 2/3 × 21/4 = 42/12 = 3 1/2 m", "g5fmulword", "m"))
+    forms = ["5w – 8", "5w - 8", "5w–8", "5w-8", "5 × w – 8", "5×w–8"]
+    _expr_ok(forms, 5 * 4 - 8, w=4)
+    qs.append(Q("Write an expression for: 8 less than 5 times w.", forms[0], forms, False,
+                "5 times w is 5w; 8 less than that takes 8 away: 5w – 8", "g6expr_write"))
+    qs.append(Q("The point (4, –7) is reflected across the x-axis. Write the new point.", "(4, 7)",
+                ["(4, 7)", "(4,7)", "4, 7", "4,7"], False,
+                "Reflecting across the x-axis flips the sign of y only: (4, –7) goes to (4, 7)",
+                "g6reflect"))
+    v = F(9, 2) * F(8, 3)
+    assert v == 12
+    qs.append(Q("A prism has a base area of 4 1/2 cm² and a height of 2 2/3 cm. What is its "
+                "volume?", f"{v} cm³", [f"{v} cm³", f"{v} cm3", f"{v} cubic cm"], True,
+                "V = bh: 9/2 × 8/3 = 72/6 = 12 cm³", "g6volbh_math", "cm³"))
+    qs.append(Q("The mean height of 25 plants is 14 cm. Does the mean describe the data set with one "
+                "number or many numbers? Write one or many.", "one", ["one", "One", "1"], False,
+                "A mean is a single number that sums up the whole set", "g6distone"))
+    yellow = F(45 * 2, 2 + 7)
+    assert yellow == 10
+    qs.append(Q("A paint mix uses 2 cans of yellow for every 7 cans of blue. There are 45 cans in "
+                "all. How many are yellow?", str(yellow), [str(yellow), f"{yellow} cans"], False,
+                "2 + 7 = 9 cans in each batch, 45 ÷ 9 = 5 batches, 5 × 2 = 10 yellow", "g7ratio_multi"))
+    v = F(20 + 12, 2) * 5
+    assert v == 12 * 5 + 2 * F(4 * 5, 2)
+    qs.append(Q("A garden is a trapezoid. Its parallel sides are 20 m and 12 m, and the height "
+                "between them is 5 m. What is its area?", f"{v} m²",
+                [f"{v} m²", f"{v} m2", f"{v} square meters", f"{v} sq m"], True,
+                "Rectangle 12 × 5 = 60, plus two triangles 4 × 5 ÷ 2 = 10 each: 80 m²", "g6quadrw", "m²"))
+    forms = ["c = 9t", "c=9t", "c = 9 × t", "c=9×t", "9t = c", "9t=c"]
+    qs.append(Q("Each ticket costs $9. Write an equation for the total cost c of t tickets.",
+                forms[0], forms, False, "Cost depends on tickets: $9 for each, so c = 9t", "g6depvar"))
+    return qs
+
+
+def test_bx():
+    qs = []
+    v = 7 ** 3
+    qs.append(Q("A cube has edges of 7 m. What is its volume?", f"{v} m³",
+                [f"{v} m³", f"{v} m3", f"{v} cubic m", f"{v} cubic meters"], True,
+                "7 × 7 = 49 m² for the base; 49 × 7 = 343 m³", "g5vol_math", "m³"))
+    import math
+    g = math.gcd(36, 60)
+    a, b = 36 // g, 60 // g
+    assert g == 12 and math.gcd(a, b) == 1
+    forms = [f"{g}({a} + {b})", f"{g} × ({a} + {b})", f"{g}({a}+{b})", f"{g}×({a}+{b})",
+             f"({a} + {b}) × {g}", f"({a}+{b})×{g}"]
+    qs.append(Q("Write 36 + 60 as a number times a sum of two numbers that have no common factor.",
+                forms[0], forms, False, f"GCF of 36 and 60 is {g}: 36 + 60 = {g} × {a} + {g} × {b} "
+                f"= {g}({a} + {b})", "g6gcfsum"))
+    forms = ["5(3y + 7)", "5 × (3y + 7)", "5(3y+7)", "5×(3y+7)", "(3y + 7) × 5", "(3y+7)×5"]
+    _expr_ok(forms, 15 * 2 + 35, y=2)
+    qs.append(Q("Factor 15y + 35 using the greatest common factor of 15 and 35.", forms[0], forms,
+                False, "GCF is 5: 15y = 5 × 3y and 35 = 5 × 7, so 5(3y + 7)", "g6factor"))
+    forms = ["k > –4", "k > -4", "k>-4", "k>–4", "–4 < k", "-4 < k", "-4<k"]
+    qs.append(Q("Write an inequality that says the number k is greater than –4.", forms[0], forms,
+                False, "Greater than –4, not equal to it: k > –4", "g6ineqmath"))
+    v = D(180) * D("0.45")
+    assert v == 81
+    qs.append(Q("Find 45% of 180.", dec(v), [dec(v)], False,
+                "10% is 18, so 40% is 72; 5% is 9: 72 + 9 = 81", "g6pct_of"))
+    v = F(12, 8)
+    qs.append(Q("A recipe uses 12 cups of flour for 8 cups of sugar. How many cups of flour is that "
+                "for each cup of sugar?", mixed(v), [mixed(v), frac(v), "1.5", f"{mixed(v)} cups"],
+                False, "12 : 8 as a unit rate is 12/8 = 1 1/2 cups of flour per cup of sugar",
+                "g6unitrate_ab"))
+    qs.append(Q("Each box holds 6 eggs. Ana has 42 eggs in x boxes. Which equation fits? "
+                f"{_nb('A: x + 6 = 42')}  {_nb('B: 6x = 42')}  {_nb('C: 42x = 6')}. Write A, B or C.",
+                "B", ["B"], False, "x boxes of 6 eggs is 6x, and that is 42: 6x = 42", "g6eqrep_px"))
+    v = -F(13, 8) - F(27, 8)
+    assert v == -5
+    qs.append(Q("Work out –1 5/8 – 3 3/8", f"–{-v}", [f"–{-v}", f"-{-v}"], False,
+                "Both go down: –1 5/8 – 3 3/8 = –(1 5/8 + 3 3/8) = –5", "g7ratsub"))
+    forms = ["3(n + 9)", "3(n+9)", "3 × (n + 9)", "3×(n+9)", "(n + 9) × 3", "(n+9)×3",
+             "3n + 27", "3n+27"]
+    _expr_ok(forms, 3 * (4 + 9), n=4)
+    qs.append(Q("Write an expression for: 3 times the sum of n and 9.", forms[0], forms, False,
+                "The sum of n and 9 is n + 9; 3 times all of it needs brackets: 3(n + 9)",
+                "g6expr_write"))
+    qs.append(Q("Which unit could measure the volume of a fish tank: m, m² or m³?", "m³",
+                ["m³", "m3", "cubic m", "cubic meters"], False,
+                "Volume is counted in cubes: cubic meters, m³", "g5volunit"))
+    return qs
+
+
 def colswap(a, b, places=2):
     """Subtract by taking the smaller digit from the larger in each column."""
     fa, fb = (f"{D(x):.{places}f}".replace(".", "") for x in (a, b))
@@ -3082,6 +4446,14 @@ AOq, APq, AQq = test_ao(), test_ap(), test_aq()
 ARq, ASq, ATq = test_ar(), test_as(), test_at()
 AUq, AVq, AWq = test_au(), test_av(), test_aw()
 AXq, AYq, AZq = test_ax(), test_ay(), test_az()
+BAq, BBq, BCq = test_ba(), test_bb(), test_bc()
+BDq, BEq, BFq = test_bd(), test_be(), test_bf()
+BGq, BHq, BIq = test_bg(), test_bh(), test_bi()
+BJq, BKq, BLq = test_bj(), test_bk(), test_bl()
+BMq, BNq, BOq = test_bm(), test_bn(), test_bo()
+BPq, BQq, BRq = test_bp(), test_bq(), test_br()
+BSq, BTq, BUq = test_bs(), test_bt(), test_bu()
+BVq, BWq, BXq = test_bv(), test_bw(), test_bx()
 ACq, ADq, AEq = test_ac(), test_ad(), test_ae()
 
 # Predictable wrong answers -> diagnosis (computed, so code can diagnose without AI)
@@ -3517,6 +4889,301 @@ WRONG["V"] = {
 WRONG["W"] = {4: {"–5": "Right size, wrong sign: carried a minus through instead of applying that two negative factors make a positive",
                    "-5": "Right size, wrong sign: carried a minus through instead of applying that two negative factors make a positive"}}
 WRONG["X"] = {}
+WRONG["BD"] = {}
+WRONG["BE"] = {}
+WRONG["BF"] = {}
+WRONG["BG"] = {
+    1: {"2": "Combined the whole numbers only and dropped the fractions (–2 + 5 – 1), as on BE1"},
+    2: {"A": "Multiplied for a how-many-groups problem instead of dividing, as on BE2 and BE10",
+        "B": "Divided the wrong way round: the size of a cake by the flour in the bag"},
+    3: {"95": "Substituted the GCF 5 for x and worked out 15(5) + 20 instead of factoring, as on BE3"},
+    4: {colswap("12.05", "7.38"): "Took the smaller digit from the larger in each column instead of borrowing"},
+    5: {"3.6": "Found 30% of 12 instead of the number that 12 is 30% of"},
+    6: {"cm²": "Gave a unit of area, not volume", "cm": "Gave a unit of length, not volume"},
+    8: {"B": "Reversed the direction: at most means ≤, not ≥",
+        "C": "Swapped the fixed charge and the charge per mile"},
+    9: {"6.4": "Moved the decimal point one place instead of three"},
+}
+WRONG["BH"] = {
+    1: {"5 liters": "Found the total but did not share it among the 8 beakers",
+        "5 liter": "Found the total but did not share it among the 8 beakers"},
+    2: {"90": "Added 36 + 54 instead of factoring out the common factor, as on BF2",
+        "6(6 + 9)": "Factored out a common factor but not the greatest; 6 and 9 still share 3",
+        "9(4 + 6)": "Factored out a common factor but not the greatest; 4 and 6 still share 2"},
+    3: {"one": "Thought only one number makes y > 4 true"},
+    4: {"right": "Named the skew after where the data bunches, not the side of the tail, as on BF7"},
+    5: {"no": "Treated square and rectangle as separate kinds instead of a square being a special rectangle"},
+    6: {"$17.25": "Added 4.75 to 12.50 instead of subtracting", "17.25": "Added 4.75 to 12.50 instead of subtracting"},
+    9: {"–2/3": "Two negatives multiply to a positive; kept a minus sign",
+        "-2/3": "Two negatives multiply to a positive; kept a minus sign"},
+    10: {"27/32": "Multiplied 9/4 × 3/8 instead of dividing, as on BE10"},
+}
+WRONG["BI"] = {
+    1: {"b = 6p": "Letters swapped: the boxes made the subject, the same swap as on earlier sheets",
+        "b=6p": "Letters swapped: the boxes made the subject, the same swap as on earlier sheets"},
+    2: {"1 1/2 m": "Found 1/3 of the rope instead of 2/3",
+        "5 1/6 m": "Added 2/3 to the length instead of multiplying"},
+    4: {"67": "Squared 2x instead of only x: (2 × 4)² + 3"},
+    5: {"1/3": "Turned the ratio upside down: sugar per cup of flour"},
+    6: {"126 cm²": "Multiplied base × height and did not halve it"},
+    8: {"0.407": "Took the number with more digits as the larger"},
+    10: {"14y": "Added the numbers and the y terms together as if they were all like terms"},
+}
+_SIGN = "Right size, wrong sign"
+WRONG["BJ"] = {
+    1: {"1/4": f"{_SIGN}: lost the minus when 4 3/4 – 5 went below zero, as on AZ1",
+        "–1": "Combined the whole numbers only (3 – 5 + 1) and dropped the fractions, as on BE1",
+        "-1": "Combined the whole numbers only (3 – 5 + 1) and dropped the fractions, as on BE1"},
+    2: {"98": "Added 42 + 56 instead of factoring out the common factor, as on BF2",
+        "7(6 + 8)": "Factored out a common factor but not the greatest; 6 and 8 still share 2",
+        "2(21 + 28)": "Factored out a common factor but not the greatest; 21 and 28 still share 7"},
+    3: {"h > 140": "Reversed the direction: shorter than means less than",
+        "h>140": "Reversed the direction: shorter than means less than",
+        "h ≤ 140": "Included 140: shorter than means less than, not equal to it"},
+    4: {"left": "Named the skew after where the data bunches, not the side of the tail, as on BF7 and BH4"},
+    5: {"2/5": "Turned the ratio upside down: blue per can of white, as on BA9",
+        "0.4": "Turned the ratio upside down: blue per can of white, as on BA9",
+        "10": "Gave the first number of the ratio instead of dividing it by the second, as on BI5"},
+    # 6: no stored wrong answers. "How many numbers does the median use" also reads as
+    # "how many values it is computed from" (2 for 12 scores, the 6th and 7th), so the
+    # question is ambiguous and was voided in the record. Ask it as BH7 did instead:
+    # "Does the median describe the data set with one number or many numbers?"
+    7: {"$8.50": "Added the change in notebooks (4) to the price instead of scaling, as on S1",
+        "8.50": "Added the change in notebooks (4) to the price instead of scaling, as on S1"},
+    8: {"28/9": "Multiplied 14/3 × 2/3 instead of dividing, as on BE10",
+        "3 1/9": "Multiplied 14/3 × 2/3 instead of dividing, as on BE10"},
+    9: {"120 ft²": "Multiplied base × height and did not halve it, as on BI6"},
+    10: {"6": f"{_SIGN}: a negative divided by a positive is negative",
+         "–3/32": "Multiplied by 1/8 instead of dividing by it",
+         "-3/32": "Multiplied by 1/8 instead of dividing by it"},
+}
+WRONG["BK"] = {
+    1: {"4 1/4 m": "Added every ribbon, not only those longer than 1/2 m"},
+    2: {"2 1/4 L": "Found 1/3 of the tank instead of 2/3"},
+    3: {"(2, –6)": "Swapped the two numbers, as on AX5", "(2, -6)": "Swapped the two numbers, as on AX5",
+        "(6, 2)": "Reflected across the y-axis instead: flipped x, not y",
+        "(6,2)": "Reflected across the y-axis instead: flipped x, not y"},
+    4: {"7.5": "Moved the decimal point one place instead of two"},
+    5: {"$195": "Added 25 + 40 first and then multiplied by 3, instead of multiplying first",
+        "195": "Added 25 + 40 first and then multiplied by 3, instead of multiplying first"},
+    6: {"A": "Wrote a multiplication equation for an add-on situation",
+        "C": "Subtracted where stickers were added"},
+    7: {"180": "Found the least common multiple instead of the greatest common factor"},
+    # 8: voided in the record. "Typical value" is not a term the child has been taught, and
+    # "which one number" fits all three options (the range is one number too). Word it as
+    # BN7 did ("describes the middle"). Range sat in slot A on both misses (S7, BK8); keep
+    # it out of A so a default guess of A cannot score or fail the question.
+    10: {"1 1/4": "Subtracted the sizes (2 5/8 – 1 3/8) and dropped the sign",
+         "4": f"{_SIGN}: both numbers go below zero, so the total is negative"},
+}
+WRONG["BL"] = {
+    1: {"A": "Multiplied for a how-many-pieces problem instead of dividing, as on BE2, BG2",
+        "C": "Divided the wrong way round: the piece by the whole ribbon"},
+    2: {"6": "Wrote the GCF only, not the factored expression, as on AX10 and BC3",
+        "132": "Substituted the GCF 6 for y and worked out 18(6) + 24 instead of factoring, as on BE3 and BG3",
+        "3(6y + 8)": "Factored out a common factor but not the greatest; 6 and 8 still share 2",
+        "2(9y + 12)": "Factored out a common factor but not the greatest; 9 and 12 still share 3"},
+    3: {"–1 1/2": f"{_SIGN}: two negatives multiply to a positive, as on BH9",
+        "-1 1/2": f"{_SIGN}: two negatives multiply to a positive, as on BH9",
+        "–3/2": f"{_SIGN}: two negatives multiply to a positive, as on BH9",
+        "-3/2": f"{_SIGN}: two negatives multiply to a positive, as on BH9"},
+    4: {"64 m²": "Multiplied the sum of the parallel sides by the distance and did not halve it"},
+    7: {"1/27": "Divided the wrong way round: gallons per mile, as on O9"},
+    8: {"1.47": "Multiplied 4.20 × 0.35 instead of dividing",
+        "$1.47": "Multiplied 4.20 × 0.35 instead of dividing"},
+    9: {"A": "Divided where the problem is a multiplication, as on AX8",
+        "C": "Divided where the problem is a multiplication, as on AX8"},
+    10: {"76": "Squared 3a instead of only a: (3 × 3)² – 5"},
+}
+_TAKE = "Subtracted the smaller size from the larger and put a minus in front, instead of adding two negatives, as on BK10"
+_HALF = "Halved the volume as if it were a triangle or pyramid, as on BK9"
+WRONG["BM"] = {
+    1: {f"–{mixed(F(19, 6) - F(11, 6))}": _TAKE, f"-{mixed(F(19, 6) - F(11, 6))}": _TAKE},
+    2: {mixed(F(15, 4) * F(5, 8)): "Multiplied instead of dividing for a how-many-pieces problem, as on BE10"},
+    3: {s: f"{_SIGN}: two negatives divide to a positive"
+        for s in ("–2 1/2", "-2 1/2", "–5/2", "-5/2", "-2.5", "–2.5")},
+    # 4: no stored wrong answers - same ambiguity as BJ6, and worse: a mean is computed
+    # from all 30 values, so "30" is a defensible reading. Voided in the record.
+    5: {"2/7": "Turned the ratio upside down: sugar per cup of flour, as on BA9",
+        "14": "Gave the flour figure straight from the ratio instead of dividing, as on BI5",
+        "14 cups": "Gave the flour figure straight from the ratio instead of dividing, as on BI5"},
+    6: {"25": "Gave the white cans, not the red",
+        "24": "Treated the 5 white cans as the whole: 40 ÷ 5 × 3"},
+    7: {"108": "Multiplied the numbers: a common multiple, but not the least, as on AY4",
+        "3": "Gave the greatest common factor, not the least common multiple, as on AY4"},
+    8: {"8x + 5": "Multiplied the first term only, not the 5", "8x+5": "Multiplied the first term only, not the 5"},
+    9: {"176 cm²": "Multiplied base × height and did not halve it, as on BI6"},
+    10: {dec(D(26) * D("0.4")): "Found 40% of 26 instead of the whole"},
+}
+WRONG["BP"] = {
+    1: {f"{2 + 1} {3 + 5}/{4 + 6} km":"Added the tops and added the bottoms: 2 3/4 + 1 5/6 as 3 8/10"},
+    3: {"B": "Multiplied for a how-many-groups problem instead of dividing, as on BE2 and BG2",
+        "A": "Divided the wrong way round: the scoop by the whole amount"},
+    4: {"12": "Gave the apple cups, not the mango", "45": "Treated the 2 apple cups as the whole: 30 ÷ 2 × 3"},
+    5: {s: f"{_SIGN}: two negatives divide to a positive" for s in ("–1 1/2", "-1 1/2", "–3/2", "-3/2")},
+    6: {"15": "Dropped the sign: below zero is negative",
+        "15 degrees": "Dropped the sign: below zero is negative"},
+    7: {"4": "Gave the y-coordinate as the distance from the y-axis, as on O3 and W3",
+        "11": "Added the two coordinates, as on L6"},
+    8: {usd(4 * D("3.85")): "Gave the total cost, not the change",
+        usd(D(30) - D("3.85")): "Took off one book only: did not multiply by 4"},
+    10: {"5(t + 3)": "Added the fee to every ticket instead of once", "5(t+3)": "Added the fee to every ticket instead of once"},
+}
+WRONG["BQ"] = {
+    1: {f"–{mixed(F(27, 8) - F(21, 8))}": _TAKE, f"-{mixed(F(27, 8) - F(21, 8))}": _TAKE,
+        mixed(F(27, 8) - F(21, 8)): "Subtracted the smaller size from the larger and dropped the "
+                                    "minus, instead of adding two negatives, as on BM1"},
+    2: {f"{12 * 5 * 4} cm²": "Used square units for a volume"},
+    3: {"7": "Wrote the GCF only, not the factored expression, as on BC3",
+        "7(3 + 4)": "Dropped the variable y from the factored term, as on BL2",
+        "7(3+4)": "Dropped the variable y from the factored term, as on BL2",
+        str(21 * 7 + 28): "Substituted the GCF 7 for y and worked out 21(7) + 28 instead of factoring, as on BE3 and BG3"},
+    4: {"w > 23": "Inequality sign the wrong way round", "w>23": "Inequality sign the wrong way round"},
+    5: {s: "Built it in the order the words are spoken, 5 first, as on AG3" for s in ("5 – 2m", "5 - 2m", "5–2m", "5-2m")},
+    6: {s: "Reflected across the x-axis instead of the y-axis" for s in ("(6, 3)", "(6,3)", "6, 3", "6,3")},
+    7: {str((2 * 3) ** 2 + 5): "Squared 2k instead of only k: (2 × 3)² + 5"},
+    8: {"A": "Chose a times equation where the problem says plus, as on BA6",
+        "B": "Subtracted where the problem adds"},
+    10: {"4.69": "Cut off after the hundredths instead of rounding up"},
+}
+WRONG["BR"] = {
+    1: {"120": "Added 48 + 72 instead of factoring out the common factor, as on BF2",
+        "24": "Wrote the GCF only, not the expression",
+        **{f"{c}({48 // c} + {72 // c})": "Factored out a common factor but not the greatest"
+           for c in (2, 3, 4, 6, 8, 12)}},
+    2: {f"{mixed(F(9, 2) * F(1, 3))} cups": "Found 1/3 of the jug (the part left) instead of 2/3"},
+    3: {s: "Letters swapped: the bags made the subject, as on AU7 and AV7" for s in ("b = 6a", "b=6a")},
+    4: {f"{(14 + 10) * 6} ft²": "Multiplied the sum of the parallel sides by the height and did not halve it",
+        f"{10 * 6 + 2 * (14 - 10) * 6} ft²": "Used the whole 4 ft difference on both sides as rectangles, as on BO3"},
+    5: _skew_wrong(BRq[4]["answer"]),
+    6: {dec(D(27) * D("0.3")): "Found 30% of 27 instead of the whole, as on BM10"},
+    7: {"6": "Moved the decimal point in 0.35 one place but not in 21: worked out 21 ÷ 3.5"},
+    8: {"8": _HALF, "10": "Gave the base area, not the volume"},
+    10: {str(cubes_visible(5, 2, 4)): "Counted only the cubes that show, not the hidden ones"},
+}
+WRONG["BV"] = {
+    2: {"16": "Gave the girls, not the boys: the other part of the ratio, as on BM6 and BT2",
+        "4": "Wrote the number of groups instead of finishing, as on BP4"},
+    3: {s: "Letters swapped: the hours made the subject, as on BU3" for s in ("h = 12d", "h=12d")},
+    4: {"180 cm²": "Multiplied base by height and did not halve it"},
+    5: {"6": f"{_SIGN}: a negative divided by a positive is negative",
+        "–1/6": "Flipped the first fraction instead of the divisor: 5/4 × 2/15",
+        "-1/6": "Flipped the first fraction instead of the divisor: 5/4 × 2/15"},
+    6: {s: "Wrote the coordinates in the wrong order: up first, then across" for s in ("(2, 5)", "(2,5)", "2, 5", "2,5")},
+    7: {"perimeter": "Chose perimeter for the space an object takes up, as on AY7 and BS9",
+        "area": "Chose area for the space an object takes up"},
+    8: {dec(D(28) * D("0.35")): "Worked out 35% of 28 instead of finding the whole that 28 is 35% of, as on BM10"},
+}
+WRONG["BW"] = {
+    4: {s: "Built it in the order the words are spoken, 8 first, as on AG3" for s in ("8 – 5w", "8 - 5w", "8-5w")},
+    5: {s: "Flipped the sign of x instead of y: that is a reflection across the y-axis"
+        for s in ("(–4, –7)", "(-4, -7)", "(-4,-7)", "-4, -7")},
+    8: {"35": "Gave the blue cans, not the yellow: the other part of the ratio, as on BT2",
+        "5": "Wrote the number of batches instead of finishing, as on BP4"},
+    9: {"160 m²": "Multiplied the sum of the parallel sides by the height and did not halve it"},
+    10: {s: "Letters swapped: the tickets made the subject, as on BU3" for s in ("t = 9c", "t=9c")},
+}
+WRONG["BX"] = {
+    2: {f"6({36 // 6} + {60 // 6})": "Took out a common factor but not the greatest",
+        f"6({36 // 6}+{60 // 6})": "Took out a common factor but not the greatest"},
+    3: {s: "Dropped the variable y from the factored term, as on BL2" for s in ("5(3 + 7)", "5(3+7)")},
+    5: {dec(D(45) * 9 / 100): "Cancelled 180 down to 9 but kept the 100 below: the factor came off the "
+        "top only, as on BS10"},
+    6: {"2/3": "Turned the ratio upside down: sugar per cup of flour, as on BA9",
+        "12": "Gave the flour figure straight from the ratio instead of dividing, as on BI5"},
+    7: {"A": "Chose an addition equation where each box holds the same, as on BA6"},
+    8: {"1 3/4": "Took the smaller number from the larger and dropped the sign, as on BK10 and BM1",
+        "–1 3/4": "Took the smaller number from the larger and put a minus in front, as on BK10 and BM1",
+        "-1 3/4": "Took the smaller number from the larger and put a minus in front, as on BK10 and BM1"},
+    9: {s: "Multiplied only n by 3, not the whole sum" for s in ("3n + 9", "3n+9")},
+    10: {"m²": "Chose a square unit, which measures area", "m": "Chose a length unit"},
+}
+WRONG["BS"] = {
+    1: {f"{5 - 2} {(F(3, 4) - F(1, 3)).numerator}/{(F(3, 4) - F(1, 3)).denominator} L":
+        "Took the smaller fraction from the larger (3/4 – 1/3) instead of regrouping, as on AY6"},
+    2: {"12": "Missed one common factor of 2, as on BF9 where only some matching factors were circled"},
+    3: {"A": "Divided where the problem is a multiplication, as on BL9",
+        "C": "Divided where the problem is a multiplication, as on BL9"},
+    4: {f"{(16 + 10) * 4} m²": "Multiplied the sum of the parallel sides by the height and did not halve it",
+        f"{10 * 4 + 2 * (16 - 10) * 4} m²": "Used the whole 6 m difference on both sides as rectangles, as on BO3"},
+    6: {str((3 * 5) ** 2 - 4): "Squared 3n instead of only n: (3 × 5)² – 4"},
+    7: {"3": _HALF},
+    8: {"A": "Did not see that 3 equal sides also counts as isosceles (at least 2), as on AX7"},
+    9: {"A": "Chose perimeter for the space a box takes up, as on AY7"},
+    10: {dec(D(68) * 3 / 20): "Cancelled a 5 from 340 and again from 15/100: the same factor twice, as on BL5"},
+}
+WRONG["BT"] = {
+    1: {str(-5 + 9 - 2): "Combined the whole numbers and dropped the fractions, as on BE1"},
+    2: {"24": "Gave the red beads, not the blue",
+        "4": "Wrote a number from the ratio instead of finishing, as on BP4"},
+    3: {"8": "Wrote the GCF only, not the factored expression, as on BC3",
+        "8(3 + 5)": "Dropped the variable x from the factored term, as on BL2",
+        "8(3+5)": "Dropped the variable x from the factored term, as on BL2",
+        str(24 * 8 + 40): "Substituted the GCF 8 for x and worked out 24(8) + 40 instead of factoring, as on BE3 and BG3",
+        "4(6x + 10)": "Factored out a common factor but not the greatest",
+        "2(12x + 20)": "Factored out a common factor but not the greatest"},
+    4: {"4(p + 7)": "Added 7 before multiplying by 4", "4(p+7)": "Added 7 before multiplying by 4"},
+    5: _skew_wrong(BTq[4]["answer"]),
+    6: {usd(6 * D("12.75")): "Gave the total cost, not the change"},
+    7: {dec(D("6.85") + D("0.37")): "Lined up the last digits instead of the decimal points",
+        dec(D("6.85") + D("3.7") - 1): "Dropped the carry into the ones, as on G4"},
+    8: {"6": "Dropped the remainder: the 14 students left over still need a bus",
+        "6 r 14": "Gave the division, not the number of buses", "6r14": "Gave the division, not the number of buses"},
+    9: {"many": "Thought a summary needs as many numbers as there are values, as on BH7"},
+    10: {"–9": "Picked the number further left, as on AG9", "-9": "Picked the number further left, as on AG9"},
+}
+WRONG["BU"] = {
+    1: {f"{15 * 6 * 3} cm²": "Used square units for a volume"},
+    3: {s: "Letters swapped: the boxes made the subject, as on AU7 and AV7" for s in ("b = 8p", "b=8p")},
+    4: {"one": "Thought only one number solves an inequality"},
+    5: {"10": "Gave the y-coordinate as the distance from the y-axis, as on O3 and W3",
+        "13": "Added the two coordinates, as on L6"},
+    6: {"2/5": "Turned the ratio upside down: rice per cup of water, as on BA9",
+        "10": "Gave the water figure straight from the ratio instead of dividing, as on BI5"},
+    7: {dec(D("47.3") / 100): "Moved the point two places instead of three, as on L9",
+        dec(D("47.3") * 1000): "Multiplied by 1000 instead of dividing"},
+    8: {"A": "Chose an addition equation where each pen costs the same, as on BA6"},
+    9: {"–1 1/2": f"{_SIGN}: two negatives multiply to a positive, as on BH9",
+        "-1 1/2": f"{_SIGN}: two negatives multiply to a positive, as on BH9"},
+    10: {s: "Built it in the order the words are spoken, 2 first, as on AG3" for s in ("2 – 6k", "2 - 6k", "2-6k")},
+}
+WRONG["BN"] = {
+    1: {"120": "Added 36 + 84 instead of factoring out the common factor, as on BF2",
+        "12": "Wrote the GCF only, not the expression",
+        **{f"{c}({36 // c} + {84 // c})": "Factored out a common factor but not the greatest"
+           for c in (2, 3, 4, 6)}},
+    2: {"5": "Wrote the GCF only, not the factored expression, as on BC3",
+        "5(4 + 7)": "Dropped the variable x from the factored term, as on BL2",
+        "5(4+7)": "Dropped the variable x from the factored term, as on BL2",
+        str(20 * 5 + 35): "Substituted the GCF 5 for x and worked out 20(5) + 35 instead of factoring, as on BE3 and BG3"},
+    3: {"right": "Named the skew after where the data bunches, not the side of the tail, as on BF7, BH4 and BJ4",
+        "Right": "Named the skew after where the data bunches, not the side of the tail, as on BF7, BH4 and BJ4"},
+    4: {str((2 * 4) ** 2 + 7): "Squared 2m instead of only m: (2 × 4)² + 7"},
+    5: {"A": "Chose an addition equation where the problem says times, as on BA6"},
+    6: {str(-4 + 9 - 2): "Combined the whole numbers and dropped the fractions, as on BE1"},
+    7: {"B": "Chose the measure of spread, not of center, as on BK8"},
+    8: {f"{mixed(F(15, 2) * F(3, 5))} m": "Found the part not painted (3/5) instead of 2/5"},
+    9: {"t > 2 1/2": "Inequality sign the wrong way round", "t>2 1/2": "Inequality sign the wrong way round"},
+    10: {mixed(F(21, 4)): _HALF, str(F(7, 2) + 2 + F(3, 2)): "Added the three edges instead of multiplying"},
+}
+WRONG["BO"] = {
+    1: {"B": "Divided where the problem is a multiplication, as on BL9",
+        "C": "Divided where the problem is a multiplication, as on BL9"},
+    2: {"L > 450": "Inequality sign the wrong way round", "L>450": "Inequality sign the wrong way round"},
+    3: {f"{(12 + 8) * 5} m²": "Multiplied the sum of the parallel sides by the height and did not halve it"},
+    4: {dec(D(36) * 7 / 20): "Cancelled a 5 from 180 and again from 35/100: the same factor twice, as on BL5",
+        mixed(F(36 * 7, 20)): "Cancelled a 5 from 180 and again from 35/100: the same factor twice, as on BL5"},
+    5: {"9": _HALF},
+    6: {"C": "Multiplied for a how-many-groups problem instead of dividing, as on BE2 and BG2",
+        "B": "Divided the wrong way round: the bag by the whole flour"},
+    7: {"–2": f"{_SIGN}: two negatives multiply to a positive, as on BH9",
+        "-2": f"{_SIGN}: two negatives multiply to a positive, as on BH9"},
+    8: {"1/12": "Divided the wrong way round: minutes per page, as on BA9"},
+    10: {f"${(15 + 8) * 5}": "Added 15 + 8 before multiplying by 5", str((15 + 8) * 5): "Added 15 + 8 before multiplying by 5"},
+}
+WRONG["BA"] = {}
+WRONG["BB"] = {}
+WRONG["BC"] = {}
 WRONG["AX"] = {
     3: {"A": "Wrote it in the order the words are spoken, 6 first, as on Test AA"},
     4: {"A": "Compared pack size or total price, not the cost of one"},
@@ -3606,7 +5273,15 @@ TESTS = (("A", A), ("B", B), ("C", C), ("D", Dd), ("E", E), ("F", Ff), ("G", G),
          ("AO", AOq), ("AP", APq), ("AQ", AQq),
          ("AR", ARq), ("AS", ASq), ("AT", ATq),
          ("AU", AUq), ("AV", AVq), ("AW", AWq),
-         ("AX", AXq), ("AY", AYq), ("AZ", AZq))
+         ("AX", AXq), ("AY", AYq), ("AZ", AZq),
+         ("BA", BAq), ("BB", BBq), ("BC", BCq),
+         ("BD", BDq), ("BE", BEq), ("BF", BFq),
+         ("BG", BGq), ("BH", BHq), ("BI", BIq),
+         ("BJ", BJq), ("BK", BKq), ("BL", BLq),
+         ("BM", BMq), ("BN", BNq), ("BO", BOq),
+         ("BP", BPq), ("BQ", BQq), ("BR", BRq),
+         ("BS", BSq), ("BT", BTq), ("BU", BUq),
+         ("BV", BVq), ("BW", BWq), ("BX", BXq))
 
 for code, qs in TESTS:
     for i, q in enumerate(qs):

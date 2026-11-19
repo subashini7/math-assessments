@@ -130,7 +130,9 @@ def _expr_values(s):
     """(variable, values at a few points) for an expression in one letter such as
     "2m – 4", "L = (2m) - 4" or "7p+45"; None for anything else."""
     t = _clean(s).replace("×", "*").replace("·", "*")
+    t = t.replace("$", "")                               # "5t + $3": money sign on a term
     t = re.sub(r"^[a-z]\s*=\s*", "", t)                 # "L = ..." names the answer
+    t = re.sub(r"\s*=\s*[a-z]$", "", t)                 # "... = a", the name on the right
     if not re.fullmatch(r"[0-9a-z+\-*/(). ]+", t) or re.search(r"[a-z]{2,}", t):
         return None
     names = set(re.findall(r"[a-z]", t))
@@ -144,6 +146,13 @@ def _expr_values(s):
         return var, tuple(eval(code, {"__builtins__": {}}, {var: Fraction(v)}) for v in (2, 3, 7))
     except Exception:
         return None
+
+
+def _named(s):
+    """The letter an equation names: 'a' in "a = 6b" and in "b × 6 = a"; else None."""
+    t = _clean(s)
+    m = re.match(r"^([a-z])\s*=", t) or re.search(r"=\s*([a-z])$", t)
+    return m.group(1) if m else None
 
 
 def same(a, b, units=True):
@@ -163,7 +172,10 @@ def same(a, b, units=True):
             # variable in the expected answer is not x.
             ea = _expr_values(re.sub(r"(?<![a-z])x(?![a-z])", "×", _clean(a))) or ea
         if ea and eb:
-            return ea == eb
+            # "b = 6a" for "a = 6b" swaps the letters (seen on AU7, AV7): when both
+            # name the answer, the names must agree as well as the values.
+            na, nb = _named(a), _named(b)
+            return ea == eb and (na is None or nb is None or na == nb)
     if _LETTER_LIST.fullmatch(str(b)):
         # "Which shapes ...? Write the letters": order and separators do not matter.
         return _letters(a) is not None and _letters(a) == _letters(b)
@@ -185,7 +197,8 @@ NEEDS_MODEL = "-> send working to model"
 def judge(q, r):
     """Mark one answer. `diag` is NEEDS_MODEL when the code cannot explain it."""
     # "A = 60 students" or "7/4 m = 1 3/4 m": the final answer is after the last "=".
-    if "=" in str(r):
+    # Not when the answer IS an equation: "B×6=A" would be cut down to "A".
+    if "=" in str(r) and not any("=" in str(a) for a in q["accept"]):
         r = str(r).rsplit("=", 1)[1].strip() or r
     ok = any(same(r, a, units=False) for a in q["accept"])
     if (not ok and not q["unit_required"] and not (q.get("unit") or "").strip()
@@ -211,7 +224,8 @@ def judge(q, r):
             ok = any(same(r2, a, units=False) for a in q["accept"])
     got_unit = parse(r)[1]
     want_unit = (q.get("unit") or "").strip() or None
-    want_unit = UNIT_ALIASES.get(want_unit, want_unit)
+    # Specs write "L"; the alias table is lower-case.
+    want_unit = UNIT_ALIASES.get(want_unit, UNIT_ALIASES.get((want_unit or "").lower(), want_unit))
     if want_unit is None:
         # Older specs leave `unit` empty; the expected answer itself says it.
         want_unit = parse(q["answer"], _is_pair(q["answer"]))[1]

@@ -57,8 +57,10 @@ def component_record(papers):
     """Per-component tally. A standard like 6.NS.B.3 bundles four operations, so
     its headline score hides which one is actually failing."""
     by = defaultdict(lambda: {"right": 0, "wrong": 0, "standard": None,
-                              "name": None, "diagnoses": []})
-    for p in papers:
+                              "name": None, "diagnoses": [], "history": []})
+    # Oldest first, so each part gets the same streak rule as its standard: a part
+    # with two old misses that is now right three days running is no longer red.
+    for p in sorted(papers, key=lambda p: p.get("date") or ""):
         for q in p.get("questions", []):
             if q.get("needs_review") and not q.get("confirmed"):
                 continue
@@ -69,9 +71,18 @@ def component_record(papers):
                 r["standard"] = q.get("standard")
                 r["name"] = prereq.component_name(cid) or q.get("skill")
                 r["right" if q["right"] else "wrong"] += 1
+                r["history"].append((p.get("date") or "", q["right"]))
                 if not q["right"] and q.get("diagnosis"):
                     r["diagnoses"].append(q["diagnosis"])
+    for r in by.values():
+        r["streak"], r["streak_days"] = _streak(r["history"])
     return dict(by)
+
+
+def _streak(history):
+    """Right answers in a row since the last mistake, and on how many different days."""
+    n = next((i for i, (_, ok) in enumerate(reversed(history)) if not ok), len(history))
+    return n, len({day for day, _ in history[len(history) - n:]})
 
 
 def record(papers):
@@ -102,10 +113,20 @@ def record(papers):
             if q.get("right") is not None:
                 r["history"].append((p.get("date") or "", q["right"]))
                 r["asked"].update(q.get("learning_component_ids") or [])
+                for cid in q.get("learning_component_ids") or []:
+                    r.setdefault("part_history", {}).setdefault(cid, []).append(
+                        (p.get("date") or "", q["right"]))
     for code, r in by.items():
         h = r["history"]
-        r["streak"] = next((i for i, (_, ok) in enumerate(reversed(h)) if not ok), len(h))
-        r["streak_days"] = len({day for day, _ in h[len(h) - r["streak"]:]})
+        r["streak"], r["streak_days"] = _streak(h)
+        # The standard's streak can come entirely from its easy parts: 5.NBT.B.5 was
+        # "mastered" on four right answers while 3-digit x 3-digit, the size she keeps
+        # getting wrong, had one right since its last miss. A part still failing by
+        # the same rule holds the standard back.
+        r["parts_failing"] = sorted(
+            cid for cid, ph in r.pop("part_history", {}).items()
+            if status({"right": sum(ok for _, ok in ph), "wrong": sum(not ok for _, ok in ph),
+                       "streak_days": _streak(ph)[1]}) in ("weak", "shaky"))
         r["unasked"] = {c: d for c, d in prereq.sheet_components(code).items()
                         if c not in r["asked"]}
         r["asked"] = sorted(r["asked"])
@@ -122,7 +143,8 @@ def status(r):
     # Three right in a row since the last mistake, on three different days, counts
     # too, so one old slip does not hold a skill - and everything gated on it - back
     # forever. Answers from one sitting are one piece of evidence, not three.
-    if (r["wrong"] == 0 and r["right"] >= 2) or r.get("streak_days", 0) >= MASTERED_STREAK:
+    if ((r["wrong"] == 0 and r["right"] >= 2) or r.get("streak_days", 0) >= MASTERED_STREAK) \
+            and not r.get("parts_failing"):
         # A standard bundles components: 6.NS.B.4 is GCF, LCM and the distributive
         # property, and nine GCF answers say nothing about the other two.
         return "ok" if r.get("unasked") else "mastered"
@@ -272,8 +294,12 @@ def plan_tests(rec, comp=None, base_grade="5", n=10, quota=None, coverage_grades
             return
         seen.add(code)
         used[bucket] = used.get(bucket, 0) + 1
+        # Aim at the parts still failing by the streak rule - the ones holding the
+        # standard back - not only the parts never once answered right.
+        failing = set((rec.get(code) or {}).get("parts_failing") or [])
         parts = sorted((cid, r["name"]) for cid, r in (comp or {}).items()
-                       if r["standard"] == code and r["wrong"] and not r["right"])
+                       if r["standard"] == code
+                       and (cid in failing or (r["wrong"] and not r["right"])))
         picks.append({"standard": code, "grade": grade, "reason": source, "why": why,
                       "description": (roster.get(grade) or {}).get(code)
                                      or prereq.describe(code),

@@ -32,7 +32,8 @@ def planner_status(r):
     if not r or not (r.get("right", 0) + r.get("wrong", 0)):
         return "untested"
     return status({"right": r.get("right", 0), "wrong": r.get("wrong", 0),
-                   "streak_days": r.get("streak_days", 0), "unasked": r.get("unasked")})
+                   "streak_days": r.get("streak_days", 0), "unasked": r.get("unasked"),
+                   "parts_failing": r.get("parts_failing")})
 
 
 def to_mastered(r):
@@ -155,9 +156,11 @@ def render(rec, comp=None, cache=None, width=100):
                 flag = "  <-- the weak part" if r["wrong"] and not r["right"] else ""
                 out.append(f"      {STATUS[st][0]} {r['right']}/{n}  "
                            f"{clip(r['name'], width - 34)}{flag}")
+            askable = prereq.sheet_components(code)
             untested = {c: d for c, d in prereq.components_of(code).items() if c not in mine}
-            for c, d in sorted(untested.items(), key=lambda kv: kv[1] or ""):
-                out.append(f"      untested 0/0  {clip(d, width - 34)}")
+            for c, d in sorted(untested.items(), key=lambda kv: (kv[0] not in askable, kv[1] or "")):
+                tag = "untested 0/0" if c in askable else "not on a sheet"
+                out.append(f"      {tag}  {clip(d, width - 36)}")
         for pre in sorted(by_child.get(code, [])):
             p = nodes[pre]
             tag = "tested" if p["tested"] else "NEVER TESTED"
@@ -295,6 +298,56 @@ def _order_rows(rows, edges, passes=4):
     return rows
 
 
+def _parts(code, comp, components):
+    """(name, right, asked, streak_days) per part of a standard, failing parts first.
+    asked == -1 marks a part only a drawing or an explanation can show."""
+    mine = {cid: r for cid, r in (comp or {}).items() if r["standard"] == code}
+    rowset = [(r["name"], r["right"], r["right"] + r["wrong"], r.get("streak_days", 0))
+              for r in mine.values()]
+    askable = prereq.sheet_components(code)
+    for cid, desc in components.items():
+        if cid not in mine:
+            rowset.append((desc, 0, 0 if cid in askable else -1, 0))
+    return sorted(rowset, key=lambda z: (z[2] <= 0, -(z[2] - z[1]), z[0] or ""))
+
+
+def _distinct_labels(names):
+    """Sibling parts often open with the same words ("Explain patterns in the ...",
+    "Find quotients with ..."), so clipped to fit a card they read identically.
+    Drop the opening words a part shares with any sibling, keeping what differs."""
+    words = [str(n or "").split() for n in names]
+    out = []
+    for i, w in enumerate(words):
+        shared = 0
+        for j, v in enumerate(words):
+            if i != j:
+                k = 0
+                while k < min(len(w), len(v)) and w[k].lower() == v[k].lower():
+                    k += 1
+                shared = max(shared, k)
+        # Only when it leaves something to read; a one-word tail says too little.
+        out.append("…" + " ".join(w[shared:]) if shared >= 2 and len(w) - shared >= 2
+                   else " ".join(w))
+    return out
+
+
+def _part_lines(out, x, y, w, rows, label_chars=30):
+    """One line per part: status dot, name, score. 14 px each, starting at y."""
+    labels = _distinct_labels([r[0] for r in rows])
+    for j, ((_, k, n, days), name) in enumerate(zip(rows, labels)):
+        ty = y + j * 14
+        # n == -1: a part only a drawing or an explanation can show; never asked
+        # on a sheet by design, so grey and labelled as such, not "untested".
+        st = planner_status({"right": k, "wrong": max(n, 0) - k, "streak_days": days})
+        out.append(f'<circle cx="{x + 13:.0f}" cy="{ty + 5:.0f}" r="3.6" '
+                   f'fill="{COLOUR[st]}"/>')
+        tail = f"{k}/{n}" if n > 0 else ("untested" if n == 0 else "not on sheet")
+        out.append(f'<text x="{x + 22:.0f}" y="{ty + 9:.0f}" font-size="9.5" '
+                   f'fill="#3c4043">{escape(clip(name, label_chars - (6 if n < 0 else 0)))}</text>')
+        out.append(f'<text x="{x + w - 7:.0f}" y="{ty + 9:.0f}" text-anchor="end" '
+                   f'font-size="9" fill="{COLOUR[st]}">{tail}</text>')
+
+
 def to_svg(rec, comp=None, cache=None, box=(206, 48), gap=(26, 86), pad=28):
     nodes, edges, unknown = build(rec, cache)
     # Components of each tested standard, so the picture shows which PART is
@@ -303,13 +356,9 @@ def to_svg(rec, comp=None, cache=None, box=(206, 48), gap=(26, 86), pad=28):
     for code, nd in nodes.items():
         if not nd["tested"]:
             continue
-        mine = {cid: r for cid, r in (comp or {}).items() if r["standard"] == code}
-        rowset = [(r["name"], r["right"], r["right"] + r["wrong"]) for r in mine.values()]
-        for cid, desc in prereq.components_of(code).items():
-            if cid not in mine:
-                rowset.append((desc, 0, 0))
+        rowset = _parts(code, comp, prereq.components_of(code))
         if rowset:
-            parts[code] = sorted(rowset, key=lambda z: (z[2] == 0, -(z[2] - z[1]), z[0] or ""))
+            parts[code] = rowset
     if not nodes:
         return '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="40"></svg>'
     bw, bh = box
@@ -373,17 +422,7 @@ def to_svg(rec, comp=None, cache=None, box=(206, 48), gap=(26, 86), pad=28):
         # may just be where the cached map runs out. Say which, or the picture
         # claims the child's weaknesses bottom out here when they may not.
         # One line per component: the part of the standard, and how it scored.
-        for j, (name, k, n) in enumerate(parts.get(code, [])):
-            ty = y + bh + 4 + j * 14
-            st = planner_status({"right": k, "wrong": n - k})
-            out.append(f'<circle cx="{x + 13:.0f}" cy="{ty + 5:.0f}" r="3.6" '
-                       f'fill="{COLOUR[st]}"/>')
-            label = clip(name, 30)
-            tail = f"{k}/{n}" if n else "untested"
-            out.append(f'<text x="{x + 22:.0f}" y="{ty + 9:.0f}" font-size="9.5" '
-                       f'fill="#3c4043">{escape(label)}</text>')
-            out.append(f'<text x="{x + bw - 7:.0f}" y="{ty + 9:.0f}" text-anchor="end" '
-                       f'font-size="9" fill="{COLOUR[st]}">{tail}</text>')
+        _part_lines(out, x, y + bh + 4, bw, parts.get(code, []))
         if code in unknown_set:
             cx = x + bw / 2
             yb = y + node_h(code)
@@ -559,6 +598,28 @@ def to_svg_by_grade(rec, comp=None, cache=None, cols=5, card=(200, 78), gap=12, 
         parts = c.split(".")
         return parts[1] if len(parts) > 1 else ""
 
+    # The parts of each standard, as in graph.svg, so a green card cannot hide a red
+    # part. Cached components only: the roster standards never asked would otherwise
+    # each cost an API call.
+    cached = prereq.load_components()["by_standard"]
+
+    def compact(rows, limit=8):
+        # 4.OA.A.3 has 18 parts, most near-duplicates never asked; past `limit`, keep
+        # the asked parts by name and fold the rest into one line per kind.
+        if len(rows) <= limit:
+            return rows
+        un = sum(1 for z in rows if z[2] == 0)
+        no = sum(1 for z in rows if z[2] < 0)
+        return ([z for z in rows if z[2] > 0]
+                + ([(f"+{un} more parts", 0, 0, 0)] if un else [])
+                + ([(f"+{no} more parts", 0, -1, 0)] if no else []))
+
+    parts = {code: compact(_parts(code, comp, cached.get(code) or {})) for code in known}
+    PART_TOP = 58                                  # below the code and two topic lines
+
+    def card_h(code):
+        return ch + (14 * len(parts[code]) + 2 if parts[code] else 0)
+
     width = pad * 2 + cols * (cw + gap) - gap
     y = pad
     blocks = []
@@ -566,25 +627,24 @@ def to_svg_by_grade(rec, comp=None, cache=None, cols=5, card=(200, 78), gap=12, 
         codes = sorted(by_grade[g], key=lambda c: (domain(c), c))
         blocks.append(("grade", g, y, len(codes)))
         y += 30
-        # keep each domain starting on its own row, so the eye can group them
-        row_used = 0
-        last_domain = None
+        # keep each domain starting on its own row, so the eye can group them;
+        # a row is as tall as its tallest card, which grows with its parts
+        rows = []
         for code in codes:
             d = domain(code)
+            if not rows or rows[-1][0] != d or len(rows[-1][1]) >= cols:
+                rows.append((d, []))
+            rows[-1][1].append(code)
+        last_domain = None
+        for d, row in rows:
             if d != last_domain:
-                if row_used:
-                    y += ch + gap
-                    row_used = 0
                 blocks.append(("domain", d, y, None))
                 y += 20
-            last_domain = d
-            blocks.append(("card", code, (pad + row_used * (cw + gap), y), None))
-            row_used += 1
-            if row_used >= cols:
-                y += ch + gap
-                row_used = 0
-        if row_used:
-            y += ch + gap
+                last_domain = d
+            rh = max(card_h(c) for c in row)
+            for i, code in enumerate(row):
+                blocks.append(("card", code, (pad + i * (cw + gap), y), rh))
+            y += rh + gap
         y += 14
     height = y + pad
 
@@ -607,7 +667,7 @@ def to_svg_by_grade(rec, comp=None, cache=None, cols=5, card=(200, 78), gap=12, 
             out.append(f'<text x="{pad}" y="{b + 13:.0f}" font-size="11.5" font-weight="600" '
                        f'fill="#5f6368">{escape(a)}{" · " + escape(name) if name else ""}</text>')
             continue
-        code, (x, yy) = a, b
+        code, (x, yy), ch = a, b, c
         r = rec.get(code)
         k = r["right"] if r else 0
         n = (r["right"] + r["wrong"]) if r else 0
@@ -625,6 +685,10 @@ def to_svg_by_grade(rec, comp=None, cache=None, cols=5, card=(200, 78), gap=12, 
         for i, line in enumerate(_topic_lines(code, roster)):
             out.append(f'<text x="{x + 10}" y="{yy + 37 + i * 13:.0f}" font-size="10.5" '
                        f'fill="#3c4043">{escape(line)}</text>')
+        if parts[code]:
+            out.append(f'<line x1="{x + 8}" y1="{yy + PART_TOP - 5:.0f}" x2="{x + cw - 8}" '
+                       f'y2="{yy + PART_TOP - 5:.0f}" stroke="{col}" stroke-opacity="0.25"/>')
+            _part_lines(out, x - 3, yy + PART_TOP, cw - 3, parts[code], label_chars=28)
         if n:
             _, lo, hi = wilson(k, n)
             out.append(f'<text x="{x + cw - 10}" y="{yy + 21:.0f}" text-anchor="end" '
